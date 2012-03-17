@@ -19,8 +19,8 @@ error_reporting(E_ALL);
 	 * by session => true
 	 */
 	define('CONFIG_ACCESS_CONTROL_MODE', true);
-	define("CONFIG_LOGIN_USERNAME", 'emileokada');
-	define('CONFIG_LOGIN_PASSWORD', 'takahiro');
+	define("CONFIG_LOGIN_USERNAME", 'admin@gmail.com');
+	define('CONFIG_LOGIN_PASSWORD', 'admin');
 	define('CONFIG_LOGIN_PAGE', 'ajax_login.php'); //the url to the login page
 	
 	//SYSTEM MODE CONFIG
