@@ -1,4 +1,4 @@
-h1. Kaimonokago 1.4
+h1. Kaimonokago 2.0
 
 Multi-Languages Shopping Cart on CodeIgniter 2.1.0 and BackendPro 0.6.7
 PHP 5.3 compatible
@@ -34,8 +34,7 @@ h2. Installation
 # Modify application/config/config.php and application/config/database.php accordingly.
 # Change application/modules/recaptcha/config/recaptcha.php.original to recaptcha.php. Visit http://recaptcha.net/ to get your keys. If you need keys for your localhost, just add a newsite "localhost".
 # The following folders and files must be writable or chmod 777. After installation please don’t forget checking and changing some of files, especially files in config directory, to 644.
- <pre><code>    
- 	/var/www/kaimonokago2.0/application/logs/
+ <pre><code>/var/www/kaimonokago2.0/application/logs/
     /var/www/kaimonokago/assets/cache/
     /var/www/kaimonokago/application/config/config.php
     /var/www/kaimonokago/application/config/database.php
@@ -50,21 +49,20 @@ h2. Installation
 </code></pre>
 # Enter your public and private key to modules/recaptcha/config/recaptcha.php
 # Add password to the ajaxfilemanager assets/js/plugins/ajaxfilemanager/inc/config.base.php
- <pre><code>    
- 	define('CONFIG_ACCESS_CONTROL_MODE', ture);
+ <pre><code>define('CONFIG_ACCESS_CONTROL_MODE', ture);
     define("CONFIG_LOGIN_USERNAME", 'admin@gmail.com');
     define('CONFIG_LOGIN_PASSWORD', 'admin');
 </code></pre>
 # Further Security
 Open application/config/config.php and change encryption key.
-<pre><code>    
-	$config['encryption_key'] = "yourkey here";
+<pre><code>$config['encryption_key'] = "yourkey here";
 </code></pre>
 For your Encryption Key, visit "http://www.ideaspace.net/misc/hash/":http://www.ideaspace.net/misc/hash/ or "http://www.whatsmyip.org/hash_generator/":http://www.whatsmyip.org/hash_generator/ to
 generate at least 32 characters long code.
 After doing this you need to register a new user and change the group field to 2 in be_users in the database. Then try to login.
 
-h2. Go to System->Settings and add necessary information for your website. The Settings include followings.
+h2. Configure Your website
+Go to System->Settings and add necessary information for your website. The Settings include followings.
 # General Configuration
 # Member Settings
 # Security Preferences
