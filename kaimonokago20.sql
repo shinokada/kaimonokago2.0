@@ -557,10 +557,10 @@ CREATE TABLE `omc_email` (
 -- Dumping data for table `omc_email`
 --
 
-INSERT INTO `omc_email` VALUES(7, 'testing email', '<p>testing email here.</p>', '', '', '', '1_okada.shin@gmail.com', '2012-03-09 22:08:56');
-INSERT INTO `omc_email` VALUES(9, 'sending blue', '<p>hahah</p>', '', '', '', '1_okada.shin@gmail.com', '2012-03-10 08:43:21');
-INSERT INTO `omc_email` VALUES(10, 'sendig agagi ', '<p>haha djh asdjfh</p>', '', '', '', '1_okada.shin@gmail.com', '2012-03-10 08:44:19');
-INSERT INTO `omc_email` VALUES(11, 'test', '<p>test</p>', '', '', '', '1_okada.shin@gmail.com,3_sokada@canacad.ac.jp', '2012-03-16 21:21:29');
+INSERT INTO `omc_email` VALUES(7, 'testing email', '<p>testing email here.</p>', '', '', '', '1_admin@gmail.com', '2012-03-09 22:08:56');
+INSERT INTO `omc_email` VALUES(9, 'sending blue', '<p>hahah</p>', '', '', '', '1_admin@gmail.com', '2012-03-10 08:43:21');
+INSERT INTO `omc_email` VALUES(10, 'sendig agagi ', '<p>haha djh asdjfh</p>', '', '', '', '1_admin@gmail.com', '2012-03-10 08:44:19');
+INSERT INTO `omc_email` VALUES(11, 'test', '<p>test</p>', '', '', '', '1_admin@gmail.com,3_test@gmail.com', '2012-03-16 21:21:29');
 
 -- --------------------------------------------------------
 
@@ -876,8 +876,8 @@ CREATE TABLE `omc_subscribers` (
 -- Dumping data for table `omc_subscribers`
 --
 
-INSERT INTO `omc_subscribers` VALUES(1, 'shin', 'okada.shin@gmail.com');
-INSERT INTO `omc_subscribers` VALUES(3, 'sokada', 'sokada@canacad.ac.jp');
+INSERT INTO `omc_subscribers` VALUES(1, 'shin', 'admin@gmail.com');
+INSERT INTO `omc_subscribers` VALUES(3, 'sokada', 'test1@gmail.com');
 
 -- --------------------------------------------------------
 
