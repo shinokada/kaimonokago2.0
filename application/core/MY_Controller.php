@@ -39,6 +39,7 @@ class MY_Controller extends CI_Controller
 
 		// Load Base BackendPro files
 		$this->load->config('backendpro');
+		$this->load->config('kaimonokago');
 		$this->lang->load('backendpro');
 		$this->load->model('base_model');
 

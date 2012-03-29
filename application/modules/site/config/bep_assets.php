@@ -88,9 +88,6 @@ $config['asset'][] = array('file'=>'jquery.datepick.pack.js', 'needs'=>'jquery')
 $config['asset'][] = array('file'=>'coda.js', 'needs'=>'jquery');
 $config['asset'][] = array('file'=>'site.js', 'needs'=>'jquery');
 
-// Back-end Messages js
-$config['asset'][] = array('file'=>'shoutbox.js', 'needs'=>'jquery');
-
 // Back-end dataTables js
 $config['asset'][] = array('file'=>'jquery.dataTables.min.js', 'needs'=>'jquery');
 $config['asset'][] = array('file'=>'demo_table.css');
@@ -163,7 +160,7 @@ $config['asset_group']['ADMIN'] = 'bep_admin_layout|bep_admin_style|FlashStatus|
 
 // Added from here 
 $config['asset_group']['SHOP'] = 'shopcustomtools|FlashStatus|webshop|menu.init';
-$config['asset_group']['SHOPADMIN'] = 'jquery_ui|admin|shoutbox|master|jquery.datepick|jquery.datepick.pack|coda|site|jquery.dataTables.min|jquery.accordion|demo_table|jqaccordion';
+$config['asset_group']['SHOPADMIN'] = 'jquery_ui|admin|master|jquery.datepick|jquery.datepick.pack|coda|site|jquery.dataTables.min|jquery.accordion|demo_table|jqaccordion';
 
 // TinyMCE group
 $config['asset_group']['TINYMCE'] = "tinymce.init";

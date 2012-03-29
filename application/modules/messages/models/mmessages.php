@@ -3,20 +3,25 @@
 class MMessages extends CI_Model
 {
 
+
+
     function __construct()
     {
         parent::__construct();
     }
 
+
+
     function updateMessage()
     {
         $data = array( 
-        'message' => db_clean($_POST['message']),
-        'user_id' => id_clean($_POST['user_id']),
-        'user' => db_clean($_POST['user'])
+            'message'=>$this->input->post('message'),
+            'user_id'=>$this->input->post('user_id'), 
+            'user'=>$this->input->post('user'),  
         );
         $this->db->insert('shoutbox', $data);
     }
+
 
 
     function getToDoMessages()
@@ -67,7 +72,6 @@ class MMessages extends CI_Model
 
     function delete($id)
     {
-        $id = db_clean($id);
         $this->db->delete('shoutbox', array('id' => $id)); 
     }
 
@@ -81,13 +85,13 @@ class MMessages extends CI_Model
         if($status =='to do')
         {
             $data = array('status' => 'completed');
-            $this->db->where('id', id_clean($id));
+            $this->db->where('id', $id);
             $this->db->update('shoutbox', $data);	
         }
         else
         {
             $data = array('status' => 'to do');
-            $this->db->where('id', id_clean($id));
+            $this->db->where('id', $id);
             $this->db->update('shoutbox', $data);	
         }	
     }
@@ -97,8 +101,8 @@ class MMessages extends CI_Model
     function getMessage($id)
     {
         $data = array();
-        $options = array('id' =>id_clean($id));
-        $Q = $this->db->getwhere('shoutbox',$options,1);
+        $options = array('id' =>$id);
+        $Q = $this->db->get_where('shoutbox',$options,1);
         if ($Q->num_rows() > 0)
         {
             $data = $Q->row_array();
@@ -106,6 +110,5 @@ class MMessages extends CI_Model
         $Q->free_result();    
         return $data;    
     }
-
 }
 
