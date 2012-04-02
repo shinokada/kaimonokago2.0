@@ -1,4 +1,4 @@
-<?php
+<?php /* modules/category/views/admin/admin_home_cont.php   */
 if (count($categories))
 {
     echo "<table id='tablesorter1' class='tablesorter' border='1' cellspacing='0' cellpadding='3' width='100%'>\n";

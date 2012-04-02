@@ -216,3 +216,10 @@ unmask
   margin-right:3px;
   vertical-align: bottom;
 }
+
+/******
+table td
+***********/
+#preference_form td{
+	border: none;
+}

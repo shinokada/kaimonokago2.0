@@ -43,4 +43,4 @@ class Twitter_widget
 }
 
 /* End of file Statistic_Widget.php */
-/* Location: ./application/modules/dashboard/libraries/Twitter_Widget.php */
+/* Location: ./modules/dashboard/libraries/Statistic_Widget.php */

@@ -1,33 +1,50 @@
 <?php print displayStatus();?>
 <h2><?php echo $title;?></h2>
     <?php
-if($pagecontent['lang_id']==0 AND $multilang){
+if($pagecontent['lang_id']==0 AND $multilang)
+{
     //echo "Current config language is : ".$this->configlang;
     echo showtranslang($languages,$translanguages,$pagecontent, $module);
 }
 
 echo form_open('pages/admin/edit');
-echo "\n<table id='preference_form'><tr><td class='label'><label for='menuname'>".$this->lang->line('kago_name')."</label></td>\n";
+echo "\n<table id='preference_form'><tr><td class='label'><label for='menuname'>".$this->lang->line('kago_name')."</label>\n";
+if(!$pagecontent['lang_id']==0)
+{
+    echo $this->lang->line('kago_original').$original['name'];
+}
+echo "</td>";
 $data = array('name'=>'name','id'=>'pname', 'value' => $pagecontent['name'],'class'=>'text');
 echo "<td>";
 echo form_input($data);
 echo "</td></tr>\n";
 
-echo "<tr><td class='label'><label for='metakeyword'>".$this->lang->line('kago_meta_keyword')."</label></td>\n";
+echo "<tr><td class='label'><label for='metakeyword'>".$this->lang->line('kago_meta_keyword')."</label>\n";
+if(!$pagecontent['lang_id']==0)
+{
+    echo $this->lang->line('kago_original').$original['metakeyword'];
+}
+echo "</td>";
 $data = array('name'=>'metakeyword','id'=>'metakeyword', 'value' => $pagecontent['metakeyword'],'class'=>'text');
 echo "<td>";
 echo form_input($data);
 echo "</td></tr>\n";
 
-echo "<tr><td class='label'><label for='metadesc'>".$this->lang->line('kago_meta_desc')."</label></td>\n";
+echo "<tr><td class='label'><label for='metadesc'>".$this->lang->line('kago_meta_desc')."</label>\n";
+if(!$pagecontent['lang_id']==0)
+{
+    echo $this->lang->line('kago_original').$original['metadesc'];
+}
+echo "</td>";
 $data = array('name'=>'metadesc','id'=>'metadesc', 'value' => $pagecontent['metadesc'],'class'=>'text');
 echo "<td>";
 echo form_input($data);
 echo "</td></tr>\n";
 
 //if($pagecontent['lang_id']==0){
-    echo "<tr><td class='label'><label for='fpath'>".$this->lang->line('kago_path_furl')."</label></td>\n";
-    $data = array('name'=>'path','id'=>'fpath', 'value' => $pagecontent['path'],'class'=>'text');
+echo "<tr><td class='label'><label for='fpath'>".$this->lang->line('kago_path_furl')."</label>\n";
+echo "</td>";
+$data = array('name'=>'path','id'=>'fpath', 'value' => $pagecontent['path'],'class'=>'text');
 echo "<td>";
 echo form_input($data);
 echo "</td></tr>\n";
@@ -38,7 +55,12 @@ echo "</td></tr>\n";
     echo form_hidden('path', $pagecontent['path']);
 }
 */
-echo "<tr><td class='label'><label for='long'>".$this->lang->line('kago_content')."</label></td>\n";
+echo "<tr><td class='label'><label for='long'>".$this->lang->line('kago_content')."</label>\n";
+if(!$pagecontent['lang_id']==0)
+{
+    echo $this->lang->line('kago_original').$original['content'];
+}
+echo "</td>";
 $data = array('name'=>'content','id'=>'long','rows'=>'30', 'cols'=>'80', 'value' => $pagecontent['content']);
 echo "<td id='nopad' >";
 echo form_textarea($data);
@@ -72,5 +94,17 @@ echo form_hidden('id',$pagecontent['id']);
 //echo form_submit('submit',$this->lang->line('kago_create_menu'));
 echo form_close();
 
+/*
+echo "<pre>pagecontent lang_id";
+print_r($pagecontent['lang_id']);
+echo "</pre>";
 
+echo "<pre>pagecontent";
+print_r($pagecontent);
+echo "</pre>";
+
+echo "<pre>original";
+print_r($original);
+echo "</pre>";
+*/
 ?>

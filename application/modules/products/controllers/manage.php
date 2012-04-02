@@ -35,19 +35,8 @@ class Manage extends Shop_Admin_Controller
     {
         if($this->uri->segment(4))
         {
-            $catid = $this->uri->segment(4);
-            $orderby='table_id';
-            $data['products']= $this->MProducts->getAllProductsByCategory($catid,'',$orderby);
-            $category = $this->MCats->getCategory($catid);
-            $category_name = $category['name'];
-            $data['category_name']=$category_name;// this is for patterns page in order to display
-            $data['classname']=$this->classname;
-            $data['languages'] =$this->MLangs->getLangDropDownWithId();
-            $data['title'] = 'Manage '.$this->lang->line('kago_product'). " of ".$category_name;
-            $data['header'] = $this->lang->line('backendpro_access_control');
+            $data = $this->common_home();      
             $data['page'] =  "manage/admin_product_home";
-            $this->bep_site->set_crumb('Manage '.$this->lang->line('backendpro_products'). " of ".$category_name,$this->module.'/admin/'.$catid);
-            $data['module'] = $this->module;
             $this->load->view($this->_container,$data);           
         }
         else
@@ -57,28 +46,66 @@ class Manage extends Shop_Admin_Controller
         }
     }
 
-     function _field()
-     {
+
+
+    function _field()
+    {
         $data = array(
-            'name'              => db_clean($_POST['name']),
-            'shortdesc' 	    => db_clean($_POST['shortdesc']),
-            'longdesc' 		    => db_clean($_POST['longdesc'],5000),
-            'thumbnail'		    => db_clean($_POST['thumbnail']),
-            'image'		        => db_clean($_POST['image']),
-            'product_order'     => db_clean($_POST['product_order']),
-            'class' 		    => db_clean($_POST['class'],30),
-            'grouping' 		    => db_clean($_POST['grouping'],16),
-            'status' 		    => db_clean($_POST['status'],8),
-            'category_id' 	    => id_clean($_POST['category_id']),
-            'featured' 		    => db_clean($_POST['featured'],20),
-            'other_feature'     => db_clean($_POST['other_feature'],20),
-            'price' 		    => db_clean($_POST['price'],16),
-            'lang_id'           => db_clean($_POST['lang_id']),
-            'table_id'          => db_clean($_POST['table_id']),
-            'public'            => db_clean($_POST['public']),
+            'name'              => $this->input->post('name'),
+            'public'            => $this->input->post('public'),
+            'shortdesc'         => $this->input->post('shortdesc'),
+            'longdesc'          => $this->input->post('longdesc'),
+            'thumbnail'         => $this->input->post('thumbnail'),
+            'image'             => $this->input->post('image'),
+            'weblink'           => $this->input->post('weblink'),
+            'product_order'     => $this->input->post('product_order'),
+            'class'             => $this->input->post('class'),
+            'grouping'          => $this->input->post('grouping'),
+            'status'            => $this->input->post('status'),
+            'category_id'       => $this->input->post('category_id'),
+            'featured'          => $this->input->post('featured'),
+            'other_feature'     => $this->input->post('other_feature'),
+            'price'             => $this->input->post('price'),
+            'lang_id'           => $this->input->post('lang_id'),
+            'table_id'          => $this->input->post('table_id'),
         );
         return $data;
     }
+
+
+   /*
+    * This is used in index() and function Ajaxgetupdatecat()
+    */ 
+
+    function common_home()
+    {
+        $data['category_id'] = $catid = $this->uri->segment(4);
+        $orderby='table_id';
+        $data['products']= $this->MProducts->getAllProductsByCategory($catid,'',$orderby);
+        $category = $this->MCats->getCategory($catid);
+        $category_name = $category['name'];
+        $data['category_name']=$category_name;// this is for patterns page in order to display
+        $data['classname']=$this->classname;
+        $data['languages'] =$this->MLangs->getLangDropDownWithId();
+        $data['title'] = 'Manage '.$this->lang->line('kago_product'). " of ".$category_name;
+        $data['header'] = $this->lang->line('backendpro_access_control');
+        $this->bep_site->set_crumb('Manage '.$this->lang->line('backendpro_products'). " of ".$category_name,$this->module.'/admin/'.$catid);
+        $data['module'] = $this->module;
+        return $data;
+    }
+
+
+    /*
+    * ajax functions
+    */
+
+
+    function Ajaxgetupdate()
+    {
+        $data = $this->common_home();
+        $this->load->view('manage/admin_home_cont',$data);
+    }
+
 
 
     function create()
@@ -121,6 +148,7 @@ class Manage extends Shop_Admin_Controller
             $this->load->view($this->_container,$data);
         }
     }
+
 
 
     function edit($id=0)
@@ -185,6 +213,7 @@ class Manage extends Shop_Admin_Controller
             $this->load->view($this->_container,$data);
         }
     }
+
 
 
     function langcreate()
@@ -282,6 +311,8 @@ class Manage extends Shop_Admin_Controller
         redirect($this->module.'/admin/index','refresh');
     }
 
+
+
     function export()
     {
         $this->load->helper('download');
@@ -291,9 +322,12 @@ class Manage extends Shop_Admin_Controller
 
     }
 
+
+
     function import()
     {
-        if ($this->input->post('csvinit')){
+        if ($this->input->post('csvinit'))
+        {
             $data['csv'] = $this->MProducts->importCsv();
             $data['title'] = "Preview Import Data";
             // Set breadcrumb
@@ -317,7 +351,7 @@ class Manage extends Shop_Admin_Controller
             redirect($this->module.'/admin/index','refresh');
         }
     }
-}
+}// end of class
 
 
 ?>

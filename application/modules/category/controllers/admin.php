@@ -32,7 +32,7 @@ class Admin extends Shop_Admin_Controller
 
     function index()
     {
-        $data = $this->_common_home();
+        $data = $this->common_home();
         $data['page'] = $this->config->item('backendpro_template_admin') . "admin_cat_home";
         //$data['test'] = $this->MKaimonokago->getinfo('category', '36');
         $this->load->view($this->_container,$data);
@@ -43,7 +43,7 @@ class Admin extends Shop_Admin_Controller
     * This is used in index() and function Ajaxgetupdatecat()
     */ 
 
-    function _common_home()
+    function common_home()
     {
         $data['title'] = $this->lang->line('kago_category');
         $fields = array('id','order','name','parentid','status','table_id','lang_id');
@@ -56,6 +56,19 @@ class Admin extends Shop_Admin_Controller
     }
 
 
+
+    /*
+    * this is used for ajax function
+    */
+
+    function Ajaxgetupdate()
+    {
+        $data = $this->common_home();
+        $this->load->view('admin/admin_home_cont',$data);
+    }
+
+
+    
 
     function _fields()
     {
@@ -243,15 +256,6 @@ class Admin extends Shop_Admin_Controller
         }
     }
 
-    /*
-    * this is used for ajax function
-    */
-
-    function Ajaxgetupdate()
-    {
-        $data = $this->_common_home();
-        $this->load->view('admin/admin_home_cont',$data);
-    }
 
 
     function _remove_path($folder)

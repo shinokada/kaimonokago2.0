@@ -17,7 +17,7 @@
 
 if (count($emails))
 {
-	echo "<table id='emailtable' class='tablesorter' border='1' cellspacing='0' cellpadding='3' width='800'>\n";
+	echo "<table id='emailtable' class='tablesorter' border='1' cellspacing='0' cellpadding='3' width='100%'>\n";
 	echo "<thead>\n<tr valign='top'>\n";
 	echo "<th>Subject</th><th>Message</th><th>".$this->lang->line('kago_actions')."</th>\n";
 	echo "</tr>\n</thead>\n<tbody>\n";
@@ -41,9 +41,10 @@ echo form_close();
 
 <?php
 // display subject, date
+/*
 echo "<pre>";
 print_r($emails);
 echo "</pre>";
-
+*/
 
 ?>

@@ -57,6 +57,7 @@ $data = array('name'=>'thumbnail','id'=>'uthumb','size'=>80);
 echo form_textarea($data) ."</p>\n";
  */
 echo form_hidden('thumbnail',$product['thumbnail']);
+echo form_hidden('weblink',$product['weblink']);
 /*
 echo "<p><label for='status'>Status</label><br/>";
 $options = array('active' => 'active', 'inactive' => 'inactive');

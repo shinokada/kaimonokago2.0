@@ -35,6 +35,37 @@ class Admin extends Shop_Admin_Controller
 
     function index()
     {
+        $data = $this->common_home();
+        $data['page'] = $this->config->item('backendpro_template_admin') . "admin_menu_home";
+        $data['module'] = $this->module;
+        $this->load->view($this->_container,$data);
+    } 
+
+
+    function _fields()
+    {
+        $data = array(
+            'name'          =>  db_clean($_POST['name']),
+            'shortdesc'     =>  db_clean($_POST['shortdesc']),
+            'status'        =>  db_clean($_POST['status'],8),
+            'parentid'      =>  id_clean($_POST['parentid']),
+            'order'         =>  id_clean($_POST['order'],10),
+            'page_uri_id'   =>  db_clean($_POST['page_uri_id']),
+            'lang_id'       =>  db_clean($_POST['lang_id']),
+            'menu_id'       =>  db_clean($_POST['menu_id'])
+        );
+        // $this->MKaimonokago->addItem($this->module, $data);
+        return $data;
+    }
+
+
+
+    /*
+    * This is used in index() and function Ajaxgetupdatecat()
+    */ 
+
+    function common_home()
+    {
         $data['title'] = $this->lang->line('kago_manage'). " ". $this->lang->line('kago_menu');
         $tree = array();
         $parentid = 0;
@@ -47,27 +78,22 @@ class Admin extends Shop_Admin_Controller
         $data['pages']=$pages;
         $data['languages'] =$this->MLangs->getLangDropDownWithId();
         $data['header'] = $this->lang->line('kago_manage'). " ". $this->lang->line('kago_menu');
-        $data['page'] = $this->config->item('backendpro_template_admin') . "admin_menu_home";
         $data['module'] = $this->module;
-        $this->load->view($this->_container,$data);
-  }
-
-
-    function _fields()
-    {
-        $data = array(
-            'name'          => db_clean($_POST['name']),
-            'shortdesc'     =>  db_clean($_POST['shortdesc']),
-            'status'        =>  db_clean($_POST['status'],8),
-            'parentid'      => id_clean($_POST['parentid']),
-            'order'         => id_clean($_POST['order'],10),
-            'page_uri_id'   =>  db_clean($_POST['page_uri_id']),
-            'lang_id'       =>  db_clean($_POST['lang_id']),
-            'menu_id'       =>  db_clean($_POST['menu_id'])
-        );
-        // $this->MKaimonokago->addItem($this->module, $data);
         return $data;
     }
+
+
+    /*
+    * ajax functions
+    */
+
+
+    function Ajaxgetupdate()
+    {
+        $data = $this->common_home();
+        $this->load->view('admin/admin_home_cont',$data);
+    }
+
 
 
     function create()
@@ -77,19 +103,6 @@ class Admin extends Shop_Admin_Controller
         // 'parentid' ,'0' is in hidden in views/admin_menu_create.php
         if ($this->input->post('name'))
         {
-            /*
-            $data = array(
-            'name' => db_clean($_POST['name']),
-            'shortdesc' =>  db_clean($_POST['shortdesc']),
-            'status' =>  db_clean($_POST['status'],8),
-            'parentid' => id_clean($_POST['parentid']),
-            'order' => id_clean($_POST['order'],10),
-            'page_uri_id' =>  db_clean($_POST['page_uri_id']),
-            'lang_id' =>  db_clean($_POST['lang_id']),
-            'menu_id' =>  db_clean($_POST['menu_id'])
-            );
-             * 
-             */
             $data = $this-> _fields();
             $this->MKaimonokago->addItem($this->module, $data);
             //$this->MMenus->addMenu();
@@ -206,6 +219,8 @@ class Admin extends Shop_Admin_Controller
         }
     }
   
+
+
     function deleteMenu($id)
     {
         // This will be called to delete a menu(not sub-menu item).
@@ -232,6 +247,8 @@ class Admin extends Shop_Admin_Controller
             }
         }
     }
+
+
   
     function changeMenuStatus($id)
     {  
@@ -249,6 +266,7 @@ class Admin extends Shop_Admin_Controller
     	}
     }
   
+
   
     function export()
     {
@@ -257,6 +275,7 @@ class Admin extends Shop_Admin_Controller
     	$name = "Menu_export.csv";
     	force_download($name,$csv);
     }
+
 
 
     function reassign($id=0)
@@ -287,6 +306,7 @@ class Admin extends Shop_Admin_Controller
             $this->load->view($this->_container,$data);
         }
     }
+
 
 
     function langcreate()
@@ -364,5 +384,7 @@ class Admin extends Shop_Admin_Controller
             $this->load->view($this->_container,$data);
         }
     }	
+
+
 }//end class
 ?>

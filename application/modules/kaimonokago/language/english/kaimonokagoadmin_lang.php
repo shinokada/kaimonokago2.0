@@ -71,6 +71,7 @@ $lang['kago_long_desc'] = "Long Description";
 $lang['kago_add_remove'] = "Add/Remove editor";
 $lang['kago_select_img'] = "Select Image";
 $lang['kago_select_thumb'] = "Select Thumbnail";
+$lang['kago_weblink'] = "Web Link";
 $lang['kago_slide_order'] = "Slide Order";
 $lang['kago_add_slide'] = "Add Slide";
 $lang['kago_product_id'] = "product_id";
@@ -122,12 +123,6 @@ $lang['kago_default'] = "Default";
 $lang['kago_temp_added'] = "Template added";
 $lang['kago_add_temp'] = "Add Template";
 $lang['kago_temp_default_changed'] = "Default Template Changed";
-
-
-$lang['kago_recaptcha_response_field'] = "Recaptcha";
-$lang['kago_write_ans'] = "Written answer";
-
-
 
 
 /* End of file kago_lang.php */

@@ -20,7 +20,7 @@ class MCats extends CI_Model
         $Q = $this->db->get_where('omc_category',$options,1);
         if ($Q->num_rows() > 0)
         {
-          $data = $Q->row_array();
+            $data = $Q->row_array();
         }
         $Q->free_result();    
         return $data;    
@@ -126,6 +126,7 @@ class MCats extends CI_Model
     }
 
 
+
     function getCatNav($parentid)
     {
         $data = array();
@@ -143,6 +144,7 @@ class MCats extends CI_Model
         $Q->free_result(); 
         return $data; 
     }
+
 
 
     function getCatNavbyLang($parentid,$order, $lang_id=NULL)
@@ -172,6 +174,7 @@ class MCats extends CI_Model
     }
 
 
+
     function getCatItembyLang($parentid,$order, $lang_id=NULL,$item)
     {
         if($lang_id)
@@ -199,6 +202,7 @@ class MCats extends CI_Model
     }
 
 
+
     function getCategoriesDropDown($parentid=NULL)
     {
         $data = array();
@@ -224,6 +228,7 @@ class MCats extends CI_Model
     }
 
 
+
     function getCategoriesDropDownbyLang($lang_id)
     {
      
@@ -241,38 +246,46 @@ class MCats extends CI_Model
     }
 
 
+
     function getTopCategories($lang_id = NULL)
     {
-     if(!$lang_id){
-         $lang_id = '0';
-     }
-     $data[0] = 'root';
-     $this->db->where('parentid',0);
-     $Q = $this->db->get_where('omc_category',array('lang_id'=>$lang_id));
-     
-     if ($Q->num_rows() > 0){
-       foreach ($Q->result_array() as $row){
-         $data[$row['id']] = $row['name'];
-       }
+        if(!$lang_id)
+        {
+            $lang_id = '0';
+        }
+        $data[0] = 'root';
+        $this->db->where('parentid',0);
+        $Q = $this->db->get_where('omc_category',array('lang_id'=>$lang_id));
+        if ($Q->num_rows() > 0)
+        {
+            foreach ($Q->result_array() as $row)
+            {
+                $data[$row['id']] = $row['name'];
+            }
+        }
+        $Q->free_result();  
+        return $data; 
     }
-    $Q->free_result();  
-    return $data; 
-    }
+
+
 
     function getCategoriesbyLang($lang_id = NULL)
     {
-     $data = array();
-     
-     $Q = $this->db->get_where('omc_category',array('lang_id'=>$lang_id));
+        $data = array();
+        $Q = $this->db->get_where('omc_category',array('lang_id'=>$lang_id));
 
-     if ($Q->num_rows() > 0){
-       foreach ($Q->result_array() as $row){
-         $data[$row['id']] = $row['name'];
-       }
-    }
+        if ($Q->num_rows() > 0)
+        {
+            foreach ($Q->result_array() as $row)
+            {
+                $data[$row['id']] = $row['name'];
+            }
+        }
     $Q->free_result();
     return $data;
     }
+
+
 
     function getParentidbyLang($main_cat_id,$lang_id = NULL)
     {
@@ -300,64 +313,68 @@ class MCats extends CI_Model
     }
 
 
+
     function addCategory()
     {
-
-    $data = array( 
-    	'name' => db_clean($_POST['name']),
-    	'shortdesc' =>  db_clean($_POST['shortdesc']),
-    	'longdesc' =>  db_clean($_POST['longdesc'],5000),
-    	'status' =>  db_clean($_POST['status'],8),
-    	'parentid' => id_clean($_POST['parentid']),
-        'lang_id' => id_clean($_POST['lang_id']),
-        'order' => db_clean($_POST['order']),
-        'table_id' => id_clean($_POST['table_id'])
-    );
-
-    $this->db->insert('omc_category', $data);
-    // need to add table_id if it is english
-    if($_POST['table_id']==0){
-         $this->addcatid();
-     }
-
+        $data = array( 
+        	'name' => db_clean($_POST['name']),
+        	'shortdesc' =>  db_clean($_POST['shortdesc']),
+        	'longdesc' =>  db_clean($_POST['longdesc'],5000),
+        	'status' =>  db_clean($_POST['status'],8),
+        	'parentid' => id_clean($_POST['parentid']),
+            'lang_id' => id_clean($_POST['lang_id']),
+            'order' => db_clean($_POST['order']),
+            'table_id' => id_clean($_POST['table_id'])
+        );
+        $this->db->insert('omc_category', $data);
+        // need to add table_id if it is english
+        if($_POST['table_id']==0)
+        {
+             $this->addcatid();
+        }
     }
 
 
-    function addcatid(){
-     $table_id = $this->db->insert_id();
-     $data = array(
-    	'table_id' =>  $table_id,
-    );
 
-    	$this->db->where('id', $table_id);
-    $this->db->update('omc_category', $data);
+    function addcatid()
+    {
+        $table_id = $this->db->insert_id();
+        $data = array(
+            'table_id' =>  $table_id,
+        );
+
+        $this->db->where('id', $table_id);
+        $this->db->update('omc_category', $data);
     }
 
 
-    function addsubMenu($id){
-    $data = array( 
-    	'name' => db_clean($_POST['name']),
-    	'shortdesc' =>  db_clean($_POST['shortdesc']),
-    	'longdesc' =>  db_clean($_POST['longdesc'],5000),
-    	'status' =>  db_clean($_POST['status'],8),
-    	'parentid' => id_clean($_POST['parentid'])
-    );
 
-    $this->db->insert('omc_category', $data);	 
+    function addsubMenu($id)
+    {
+        $data = array( 
+        	'name' => db_clean($_POST['name']),
+        	'shortdesc' =>  db_clean($_POST['shortdesc']),
+        	'longdesc' =>  db_clean($_POST['longdesc'],5000),
+        	'status' =>  db_clean($_POST['status'],8),
+        	'parentid' => id_clean($_POST['parentid'])
+        );
+        $this->db->insert('omc_category', $data);	 
     }
 
-    function updateCategory(){
-    $data = array( 
-    	'name' =>  db_clean($_POST['name']),
-    	'shortdesc' =>  db_clean($_POST['shortdesc']),
-    	'longdesc' =>  db_clean($_POST['longdesc'],5000),
-    	'status' =>  db_clean($_POST['status'],8),
-    	'parentid' =>  id_clean($_POST['parentid'])
-    );
+
+
+    function updateCategory()
+    {
+        $data = array( 
+        	'name' =>  db_clean($_POST['name']),
+        	'shortdesc' =>  db_clean($_POST['shortdesc']),
+        	'longdesc' =>  db_clean($_POST['longdesc'],5000),
+        	'status' =>  db_clean($_POST['status'],8),
+        	'parentid' =>  id_clean($_POST['parentid'])
+        );
 
     	$this->db->where('id', id_clean($_POST['id']));
-    $this->db->update('omc_category', $data);	
-
+        $this->db->update('omc_category', $data);	
     }
  
 
@@ -369,6 +386,7 @@ class MCats extends CI_Model
     }
  
 
+
     function exportCsv()
     {
     	$this->load->dbutil();
@@ -377,6 +395,7 @@ class MCats extends CI_Model
     }
  
  
+
     function checkOrphans($id)
     {
     	$data = array();
@@ -394,6 +413,7 @@ class MCats extends CI_Model
     return $data;  	
     }
  
+
 
     function changeCatStatus($id)
     {
@@ -414,6 +434,8 @@ class MCats extends CI_Model
         	$this->db->update('omc_category', $data);	
         }
     }
+
+
  
     function getCategoryNamebyProduct($category_id)
     {
@@ -421,16 +443,18 @@ class MCats extends CI_Model
         $this->db->where('id', $category_id);
         $this->db->where('status', 'active');
         $sql = $this->db->get('omc_category');
-
-        if ($sql->num_rows() > 0){
-           foreach ($sql->result_array() as $row){
-             $data[$row['id']] = $row['name'];
-           }
+        if ($sql->num_rows() > 0)
+        {
+            foreach ($sql->result_array() as $row)
+            {
+                $data[$row['id']] = $row['name'];
+            }
         }
         $sql->free_result();  
         return $data;  	
     }
  
+
  
     function getIdbyCatName($name = NULL)
     {
@@ -446,8 +470,6 @@ class MCats extends CI_Model
         $Q->free_result();
         return $data;
     }
-  
-
 }
 
 ?>

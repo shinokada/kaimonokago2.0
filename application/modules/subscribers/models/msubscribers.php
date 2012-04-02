@@ -12,7 +12,7 @@ class MSubscribers extends CI_Model
     {
         $this->db->where('id',id_clean($id));
         $this->db->limit(1);
-        $Q = $this->db->getwhere('omc_subscribers');
+        $Q = $this->db->get_where('omc_subscribers');
         if ($Q->num_rows() > 0)
         {
             $data = $Q->row_array();

@@ -65,6 +65,7 @@ $data = array('name'=>'thumbnail','id'=>'uthumb','size'=>80);
 echo form_textarea($data) ."</p>\n";
  */
 echo form_hidden('thumbnail',$product['thumbnail']);
+echo form_hidden('weblink',$product['weblink']);
 /*
 echo "<p><label for='status'>Status</label><br/>";
 $options = array('active' => 'active', 'inactive' => 'inactive');
@@ -127,7 +128,7 @@ echo form_hidden('lang_id',$selected_lang['id']);
 //echo form_submit('submit',$this->lang->line('kago_add_translation'));
 echo form_close();
 
-
+/*
 echo "<pre>languages";
 print_r ($languages);
 echo "</pre>";
@@ -143,7 +144,7 @@ echo "</pre>";
 echo "<pre>categories";
 print_r ($categories);
 echo "</pre>";
- 
+ */
 ?>
 
  

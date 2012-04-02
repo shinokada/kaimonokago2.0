@@ -1,7 +1,7 @@
 <h2><?php echo $title;?></h2>
 <?php
 
-echo "<table id='template_table' class='tablesorter' border='1' cellspacing='0' cellpadding='3' width='800'>\n";
+echo "<table id='template_table' class='tablesorter' border='1' cellspacing='0' cellpadding='3' width='100%'>\n";
 echo "<thead>\n<tr valign='top'>\n";
 echo "<th>".$this->lang->line('kago_name')."</th>\n<th>".$this->lang->line('kago_default')."</th><th>".$this->lang->line('kago_actions')."</th>\n";
 echo "</tr>\n</thead>\n<tbody>\n";
@@ -32,7 +32,7 @@ foreach($dir_info as $dir)
 echo "</tbody>\n</table>";
 
 echo "<h3>We found the following templates. Do you want to register it?</h3>";
-echo "<table id='template_table' class='tablesorter' border='1' cellspacing='0' cellpadding='3' width='800'>\n";
+echo "<table id='template_table' class='tablesorter' border='1' cellspacing='0' cellpadding='3' width='100%'>\n";
 echo "<thead>\n<tr valign='top'>\n";
 echo "<th>".$this->lang->line('kago_name')."</th>\n<th>".$this->lang->line('kago_actions')."</th>\n";
 echo "</tr>\n</thead>\n<tbody>\n";
@@ -75,6 +75,7 @@ foreach($outputs as $output)
 
 echo "</tbody>\n</table>";
 
+/*
 echo "<br /><pre>templates/in db: ";
 print_r($templates);
 echo "</pre>";
@@ -86,7 +87,7 @@ echo "</pre>";
 echo "<pre>templates: ";
 print_r($default_temp);
 echo "</pre>";
-
+*/
 /*
 echo "template_home";
 

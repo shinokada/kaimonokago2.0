@@ -23,6 +23,43 @@ class Admin extends Shop_Admin_Controller
 
     function index()
     {
+        $data = $this->common_home();
+        $data['page'] = $this->config->item('backendpro_template_admin') . "admin_product_home";
+        $this->load->view($this->_container,$data);
+    }
+  
+
+    function _field()
+    {
+        $data = array(
+            'name'              => $this->input->post('name',TRUE),
+            'public'            => $this->input->post('public',TRUE),
+            'shortdesc' 	    => $this->input->post('shortdesc',TRUE),
+            'longdesc' 		    => $this->input->post('longdesc'),
+            'thumbnail'		    => $this->input->post('thumbnail'),
+            'image'		        => $this->input->post('image'),
+            'weblink'           => $this->input->post('weblink'),
+            'product_order'     => $this->input->post('product_order',TRUE),
+            'class' 		    => $this->input->post('class',TRUE),
+            'grouping' 		    => $this->input->post('grouping',TRUE),
+            'status' 		    => $this->input->post('status',TRUE),
+            'category_id' 	    => $this->input->post('category_id',TRUE),
+            'featured' 		    => $this->input->post('featured',TRUE),
+            'other_feature'     => $this->input->post('other_feature',TRUE),
+            'price' 		    => $this->input->post('price',TRUE),
+            'lang_id'           => $this->input->post('lang_id',TRUE),
+            'table_id'          => $this->input->post('table_id',TRUE),
+        );
+        return $data;
+    }
+
+
+    /*
+    * This is used in index() and function Ajaxgetupdatecat()
+    */ 
+
+    function common_home()
+    {
         // Setting variables
         $data['title'] = "Manage Products";
         //$data['products'] = $this->MProducts->getAllProducts();
@@ -32,33 +69,20 @@ class Admin extends Shop_Admin_Controller
         $data['categories'] = $this->MCats->getCategoriesDropDown();
         // we are pulling a header word from language file
         $data['header'] = $this->lang->line('backendpro_access_control');
-        $data['page'] = $this->config->item('backendpro_template_admin') . "admin_product_home";
         $data['module'] = $this->module;
-        $this->load->view($this->_container,$data);
-    }
-  
-
-    function _field()
-    {
-        $data = array(
-            'name'              => db_clean($_POST['name']),
-            'shortdesc' 	=> db_clean($_POST['shortdesc']),
-            'longdesc' 		=> db_clean($_POST['longdesc'],5000),
-            'thumbnail'		=> db_clean($_POST['thumbnail']),
-            'image'		=> db_clean($_POST['image']),
-            'product_order'     => db_clean($_POST['product_order']),
-            'class' 		=> db_clean($_POST['class'],30),
-            'grouping' 		=> db_clean($_POST['grouping'],16),
-            'status' 		=> db_clean($_POST['status'],8),
-            'category_id' 	=> id_clean($_POST['category_id']),
-            'featured' 		=> db_clean($_POST['featured'],20),
-            'other_feature'     => db_clean($_POST['other_feature'],20),
-            'price' 		=> db_clean($_POST['price'],16),
-            'lang_id'           => db_clean($_POST['lang_id']),
-            'table_id'          => db_clean($_POST['table_id']),
-        );
         return $data;
     }
+
+
+    /*
+    * ajax functions
+    */
+    function Ajaxgetupdate()
+    {
+        $data = $this->common_home();
+        $this->load->view('admin/admin_home_cont',$data);
+    }
+
 
 
     function create()
@@ -246,6 +270,7 @@ class Admin extends Shop_Admin_Controller
     }
 
 
+
     function export()
     {
         $this->load->helper('download');
@@ -253,6 +278,7 @@ class Admin extends Shop_Admin_Controller
         $name = "product_export.csv";
         force_download($name,$csv);
     }
+
 
 
     function import()
@@ -300,7 +326,5 @@ class Admin extends Shop_Admin_Controller
     }
     */
 
-}
-
-
+}// end of class
 ?>

@@ -1,10 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+/*  modules/customer/controllers/admin.php */
 class Admin extends Shop_Admin_Controller 
 {
 
     private $moudle;
-
 
     function __construct()
     {
@@ -13,21 +12,23 @@ class Admin extends Shop_Admin_Controller
         check('Customers');
         // load MCustomers model
         $this->load->model('MCustomers');
+        $this->bep_assets->load_asset('unmaskpassword');
         $this->module=basename(dirname(dirname(__FILE__)));
         // Set breadcrumb
-        $this->bep_site->set_crumb($this->lang->line('backendpro_customers'),$this->module.'/admin');	
+        $this->bep_site->set_crumb($this->lang->line('backendpro_customers'),$this->module.'/admin');
     }
   
 
+
     function index()
     {
-        $data['title'] = "Manage customer";
-        $data['customers'] = $this->MKaimonokago->getAllSimple($this->module);
+    	$data['title'] = "Manage customer";
+    	$data['customers'] = $this->MKaimonokago->getAllSimple($this->module);
         //$data['customers'] = $this->MCustomers->getAllCustomers();
-        $data['header'] = $this->lang->line('backendpro_access_control');
-        $data['page'] = $this->config->item('backendpro_template_admin') . "admin_customers_home";
-        $data['module'] = $this->module;
-        $this->load->view($this->_container,$data);
+    	$data['header'] = $this->lang->line('backendpro_access_control');
+    	$data['page'] = $this->config->item('backendpro_template_admin') . "admin_customers_home";
+    	$data['module'] = $this->module;
+    	$this->load->view($this->_container,$data);
     }
   
 
@@ -35,14 +36,14 @@ class Admin extends Shop_Admin_Controller
     function _fields()
     {
         $data = array(
-            'customer_first_name'   => $this->input->post('customer_first_name'),
-            'customer_last_name'    => $this->input->post('customer_last_name'),
-            'phone_number'          => $this->input->post('phone_number'),
-            'email'                 => $this->input->post('email'),
-            'address'               => $this->input->post('address'),
-            'city'                  => $this->input->post('city'),
-            'post_code'             => $this->input->post('post_code'),
-            'password'              => do_hash($this->input->post('password'))
+            'customer_first_name'   => db_clean($_POST['customer_first_name'],25),
+            'customer_last_name'    => db_clean($_POST['customer_last_name'],25),
+            'phone_number'          => db_clean($_POST['phone_number'],15),
+            'email'                 => db_clean($_POST['email'],50),
+            'address'               => db_clean($_POST['address'],50),
+            'city'                  => db_clean($_POST['city'],25),
+            'post_code'             => db_clean($_POST['post_code'],10),
+            'password'              => db_clean(do_hash($_POST['password']),16)
             );
         return $data;
     }
@@ -53,25 +54,11 @@ class Admin extends Shop_Admin_Controller
     {
         if ($this->input->post('customer_first_name'))
         {
-            $config[] = array(
-                                    'field'=>'customer_first_name',
-                                    'label'=>$this->lang->line('webshop_first_name'),
-                                    'rules'=>"trim|required"
-                                    );
-                    $config[] = array(
-                                    'field'=>'email',
-                                    'label'=>$this->lang->line('userlib_email'),
-                                    'rules'=>"trim|required|valid_email|callback_spare_edit_email"
-                                    );
-                    $config[] = array(
-                                    'field'=>'password',
-                                    'label'=>$this->lang->line('userlib_password'),
-                                    'rules'=>"trim|required|min_length[".$this->preference->item('min_password_length')."]"
-                                    );
-            //$rules['customer_first_name'] = 'required';
-            //$rules['password'] = 'required';
-            //$rules['email'] = 'required|valid_email';
-            $this->form_validation->set_rules($config);
+            $rules['customer_first_name'] = 'required';
+            $rules['password'] = 'required';
+            $rules['email'] = 'required|valid_email';
+            $this->form_validation->set_rules($rules);
+
             if ($this->form_validation->run() == FALSE)
             {
                 $this->form_validation->output_errors();
@@ -87,13 +74,28 @@ class Admin extends Shop_Admin_Controller
             }
             else
             {
+                /*
+                $data = array(
+                'customer_first_name'   => db_clean($_POST['customer_first_name'],25),
+                'customer_last_name'    => db_clean($_POST['customer_last_name'],25),
+                'phone_number'          => db_clean($_POST['phone_number'],15),
+                'email'                 => db_clean($_POST['email'],50),
+                'address'               => db_clean($_POST['address'],50),
+                'city'                  => db_clean($_POST['city'],25),
+                'post_code'             => db_clean($_POST['post_code'],10),
+                'password'              => db_clean(do_hash($_POST['password']),16)
+                );
+                 *
+                 */
                 $data = $this->_fields();
                 $this->MKaimonokago->addItem($this->module, $data);
                 //$this->MCustomers->addCustomer();
                 flashMsg('success','Customer created');
                 redirect($this->module.'/admin/index','refresh');
             }
-        }else{
+        }
+        else
+        {
             $data['title'] = "Create Customer";
             // Set breadcrumb
             $this->bep_site->set_crumb($this->lang->line('kago_create')." ".$this->lang->line('kago_customer'),$this->module.'/admin/create');
@@ -175,6 +177,17 @@ class Admin extends Shop_Admin_Controller
             redirect($this->module.'/admin/index','refresh');
         }
     }
+
+
+    /*
+Not used
+    function changeUserStatus($id){
+        $this->MAdmins->changeCustomerStatus($id);
+        flashMsg('success','User status changed');
+        redirect('admins/admin/index','refresh');
+    }
+     * 
+     */
 }
 
 

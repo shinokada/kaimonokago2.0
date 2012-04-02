@@ -61,6 +61,12 @@ echo "<td id='nopad' >";
 echo form_textarea($data);
 echo "\n</td>\n</tr>\n";
 
+echo "<tr><td class='label'><label for='weblink'>".$this->lang->line('kago_weblink')."</label></td>\n";
+$data = array('name'=>'weblink','id'=>'weblink','value' => $product['weblink'],'class'=>'text');
+echo "<td>";
+echo form_input($data);
+echo "</td></tr>\n";
+
 echo "<tr>\n<td class='label'>\n<label for='status'>".$this->lang->line('kago_status')."</label>\n</td>\n";
 $options = array('active' => 'active', 'inactive' => 'inactive');
 echo "<td>\n";
@@ -126,6 +132,9 @@ echo form_hidden('id',$product['id']);
 //echo form_submit('submit',$this->lang->line('kago_update'));
 echo form_close();
 
+?>
+<?php 
+/*
 echo "<pre>module: ";
 print_r($module);
 echo "</pre>";
@@ -149,7 +158,7 @@ echo "</pre>";
 echo "<pre>categories";
 print_r($categories);
 echo "</pre>";
-
+*/
 ?>
 
    

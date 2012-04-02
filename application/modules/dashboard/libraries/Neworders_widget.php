@@ -39,7 +39,7 @@ class Neworders_widget
 		$data['total_new_orders'] = $Q->num_rows();
 		$data['orderdetails'] = $Q;
 		
-		return $this->CI->load->module_view('dashboard',$this->CI->config->item('backendpro_template_admin') . 'dashboard/neworders',$data,TRUE);
+		return $this->CI->load->view('dashboard',$this->CI->config->item('backendpro_template_admin') . 'dashboard/neworders',$data,TRUE);
 	}
 }
 

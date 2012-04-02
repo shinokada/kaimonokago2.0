@@ -13,6 +13,7 @@ Examples can be seen below for menu_bep_system
             <?php if(check('Members',NULL,FALSE)):?><li><?php print anchor('auth/admin/members',$this->lang->line('backendpro_members'),array('class'=>'icon_group'))?></li><?php endif;?>
             <?php if(check('Access Control',NULL,FALSE)):?><li><?php print anchor('auth/admin/access_control',$this->lang->line('backendpro_access_control'),array('class'=>'icon_shield'))?></li><?php endif;?>
             <?php if(check('Settings',NULL,FALSE)):?><li><?php print anchor('admin/settings',$this->lang->line('backendpro_settings'),array('class'=>'icon_cog'))?></li><?php endif;?>
+            <?php if(check('Phpinfo',NULL,FALSE)):?><li><?php print anchor('auth/admin/phpinfo',$this->lang->line('backendpro_phpinfo'),array('class'=>'icon_information'))?></li><?php endif;?>
         </ul>
     </li>
     <?php endif;?>

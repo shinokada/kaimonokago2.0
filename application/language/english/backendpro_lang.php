@@ -37,6 +37,7 @@ $lang['general_numeric'] = "Numeric";
 $lang['general_symbols'] = "Symbols";
 $lang['general_uppercase'] = "Uppercase";
 $lang['general_length'] = "Length";
+$lang['general_return'] = "Return";
 
 $lang['backendpro_control_panel'] = "Control Panel";
 $lang['backendpro_view_website'] = 'View Website';
@@ -52,6 +53,7 @@ $lang['backendpro_members'] = 'Members';
 $lang['backendpro_access_control'] = 'Access Control';
 $lang['backendpro_settings'] = 'Settings';
 $lang['backendpro_utilities'] = 'Utilities';
+$lang['backendpro_phpinfo'] = 'Phpinfo';
 
 /* Setup Preference Groups */
 $lang['preference_page_general_configuration'] = "General Configuration";

@@ -1,4 +1,3 @@
-
 <?php print displayStatus();?>
 <div id="homeright"  class="adminhome">
     <form method="post" id="form" action="admin/insertShoutBox" >
@@ -143,7 +142,6 @@ $(document).ready(function(){
         var href = $(this).attr("href");
         var id =href.substring(href.lastIndexOf("/") + 1);
         var msgContainer = $(this).closest('li');
-        
         $.ajax({
             type: "POST",
         //    url: "<?php echo site_url('messages/admin/changestatus'); ?>"+"/"+id,
@@ -171,7 +169,6 @@ $(document).ready(function(){
     var href = $(this).attr("href");
     var id =href.substring(href.lastIndexOf("/") + 1);
     var CompMsgContainer = $(this).closest('li');
-    
     $.ajax({
             type: "POST",
             url: "<?php echo site_url('messages/admin/changestatus'); ?>"+"/"+id,
@@ -186,7 +183,6 @@ $(document).ready(function(){
             loading.fadeOut();
           }
          });
-    
     });  
     
 

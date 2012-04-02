@@ -32,8 +32,9 @@ class Admin extends Shop_Admin_Controller
             // since the mkaimonokago/changestatus uses getInfo which add omc_, here I use module
             $this->MKaimonokago->changeStatus($this->module,$this->id);
         }
-        flashMsg('success',$this->lang->line('kago_status_changed'));
-        if(!empty($this->sub_controller)){// for cecilieokada.com products/manage/
+        //flashMsg('success',$this->lang->line('kago_status_changed')); // no need for ajax
+        if(!empty($this->sub_controller))
+        {// for cecilieokada.com products/manage/, redirect to category_id
             redirect($this->module."/".$this->sub_controller."/index/".$this->category_id,"refresh");
         }
         else

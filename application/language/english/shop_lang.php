@@ -108,16 +108,16 @@ $lang['preference_desc_frontend_multi_language'] = 'When you are ready to show m
 $lang['preference_label_website_language'] = 'Website Languages';
 $lang['preference_desc_website_language'] = 'The defaulte language is english. Write a language name which you added in Languages module.';
 $lang['preference_label_categories_parent_id'] = 'Category ID for website';
-$lang['preference_desc_categories_parent_id'] = 'Enter an ID for your website on the left column. Find it in the Categories';
+$lang['preference_desc_categories_parent_id'] = 'Enter an ID for your website on the left column. Find it in the Categories.';
 $lang['preference_label_playroom_parent_id'] = 'Playroom Parent ID';
-$lang['preference_desc_playroom_parent_id'] = 'Enter an ID for the playroom module. Find it in the Playroom';
+$lang['preference_desc_playroom_parent_id'] = 'Enter an ID for the playroom module. Find it in the Playroom.';
 $lang['preference_label_admin_email'] = 'Admin Email to receive email messages';
-$lang['preference_desc_admin_email'] = 'Enter admin email address to receive email messages from customers';
-$lang['preference_label_security_question'] = 'Type a security question.';
+$lang['preference_desc_admin_email'] = 'Enter admin email address to receive email messages from customers.';
+$lang['preference_label_security_question'] = 'Type a security question';
 $lang['preference_desc_security_question'] = 'If you selected Own question in the above, this will be used. e.g. 3+5= , What is the colour of snow?';
 $lang['preference_label_security_answer'] = 'Type a answer of security question';
 $lang['preference_desc_security_answer'] = 'e.g. 8, white';
-$lang['preference_label_security_method'] = 'Select a security method.';
+$lang['preference_label_security_method'] = 'Select a security method';
 $lang['preference_desc_security_method'] = 'This will be used for contact, registration, subscribe and unsubscribe.';
 
 

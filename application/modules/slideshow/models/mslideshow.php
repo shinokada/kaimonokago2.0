@@ -48,7 +48,7 @@ class MSlideshow extends CI_Model
             // getting info of single slideshow.
         $data = array();
         $options = array('id' => id_clean($id));
-        $Q = $this->db->getwhere('omc_slideshow',$options,1);
+        $Q = $this->db->get_where('omc_slideshow',$options,1);
         if ($Q->num_rows() > 0){
             $data = $Q->row_array();
         }

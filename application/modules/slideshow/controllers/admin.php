@@ -21,17 +21,8 @@ class Admin extends Shop_Admin_Controller
   	
     function index()
     {
-        // Setting variables
-        $data['title'] = "Manage Slideshow";
-        $data['slideshow'] = $this->MKaimonokago->getAllSimple($this->module);
-        //$data['slideshow'] = $this->MSlideshow->getAllslideshow();
-        $field = 'name';
-        $orderby = 'slide_order';
-        $images = $this->MKaimonokago->getAllbyField($this->module, $field,$orderby);
-        $data['test']= $images;    
-        $data['header'] = $this->lang->line('backendpro_access_control');
+        $data = $this->common_home();
         $data['page'] = $this->config->item('backendpro_template_admin') . "admin_slideshow_home";
-        $data['module'] = $this->module;
         $this->load->view($this->_container,$data);
     }
 
@@ -49,6 +40,32 @@ class Admin extends Shop_Admin_Controller
             'image'         => db_clean($_POST['image']),
         );
         return $data;
+    }
+
+
+    function common_home()
+    {
+        // Setting variables
+        $data['title'] = "Manage Slideshow";
+        $data['slideshow'] = $this->MKaimonokago->getAllSimple($this->module);
+        //$data['slideshow'] = $this->MSlideshow->getAllslideshow();
+        $field = 'name';
+        $orderby = 'slide_order';
+        $images = $this->MKaimonokago->getAllbyField($this->module, $field,$orderby);
+        $data['test']= $images;    
+        $data['header'] = $this->lang->line('backendpro_access_control');
+        $data['module'] = $this->module;
+        return $data;
+    }
+
+
+    /*
+    * ajax functions
+    */
+    function Ajaxgetupdate()
+    {
+        $data = $this->common_home();
+        $this->load->view('admin/admin_home_cont',$data);
     }
 
 

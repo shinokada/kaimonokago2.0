@@ -7,10 +7,14 @@
 class MMenus extends CI_Model
 {
 
+
+
     function __construct()
     {
         parent::__construct();
     }
+
+
 
     function generateTree(&$tree, $parentid = 0,$table=NULL) 
     {
@@ -18,14 +22,14 @@ class MMenus extends CI_Model
         $this->db->where ('parentid',$parentid);
         $this->db->where ('status','active');
         $this->db->order_by('order asc, parentid asc'); 
-        if(!empty($table)){
+        if(!empty($table))
+        {
             $res = $this->db->get($table);
         }
         else
         {
             $res = $this->db->get('omc_menus');
         }
-        
         if ($res->num_rows() > 0) 
         {
             foreach ($res->result_array() as $r) 
@@ -41,15 +45,17 @@ class MMenus extends CI_Model
     }
 
 
-     function generateTreewithLang(&$tree, $parentid = 0,$lang_id, $menu_table=NULL) 
-     {
-         $this->db->select('id,name,shortdesc,status,parentid,order,page_uri_id, lang_id');
+
+    function generateTreewithLang(&$tree, $parentid = 0,$lang_id, $menu_table=NULL) 
+    {
+        $this->db->select('id,name,shortdesc,status,parentid,order,page_uri_id, lang_id');
         // $lang_id = 1;
-         $this->db->where ('parentid',$parentid);
-         $this->db->where ('lang_id',$lang_id);
-		 $this->db->where ('status','active');
-         $this->db->order_by('order asc, parentid asc');
-         if(empty($menu_table)){
+        $this->db->where ('parentid',$parentid);
+        $this->db->where ('lang_id',$lang_id);
+        $this->db->where ('status','active');
+        $this->db->order_by('order asc, parentid asc');
+        if(empty($menu_table))
+        {
             $res = $this->db->get('omc_menus');
         }
         else
@@ -57,8 +63,8 @@ class MMenus extends CI_Model
             $res = $this->db->get($menu_table);
         }
          
-         if ($res->num_rows() > 0) 
-         {
+        if ($res->num_rows() > 0) 
+        {
             foreach ($res->result_array() as $r) 
             {
 				// push found result onto existing tree
@@ -70,6 +76,8 @@ class MMenus extends CI_Model
             }
         }
     }
+
+
 
     function generateTreewithLangUri(&$tree, $parentid = 0,$lang_id) 
     {
@@ -98,6 +106,8 @@ class MMenus extends CI_Model
         }
     }
 
+
+
     function generateallTree(&$tree, $parentid = 0,$table=NULL) 
     {
         //$this->db->select('id,name,shortdesc,status,parentid,page_uri,order');
@@ -110,7 +120,6 @@ class MMenus extends CI_Model
         {
             $res = $this->db->get('omc_menus');
         }
-
         if ($res->num_rows() > 0) 
         {
             foreach ($res->result_array() as $r) 
@@ -124,6 +133,7 @@ class MMenus extends CI_Model
             }
         }
     }
+
 
 
     function generateallTreebyLang(&$tree, $parentid = 0,$lang_id) 
@@ -199,6 +209,7 @@ class MMenus extends CI_Model
     }
 
 
+
     function getMenuwithPage($mid,$menu_table=NULL,$page_table = NULL)
     {
         $data = array();
@@ -263,6 +274,7 @@ class MMenus extends CI_Model
    }
 
 
+
     function getAllMenusDisplayByLang($lang_id,$table=NULL)
     {
         $data = array();
@@ -286,6 +298,7 @@ class MMenus extends CI_Model
       return $data;
    }
    
+
 
     function getMenusNav()
     {
@@ -333,7 +346,8 @@ class MMenus extends CI_Model
         return $data; 
     }
 
-      
+ 
+
     function getTopMenus()
     {
         $data[0] = 'root';
@@ -350,7 +364,8 @@ class MMenus extends CI_Model
         return $data; 
     }	
   
-	 
+	
+
     function getrootMenus()
     {
         $this->db->where('parentid',0);
@@ -365,6 +380,7 @@ class MMenus extends CI_Model
         $Q->free_result();  
         return $data; 
     }
+
 
 
     function getrootMenusByLang($lang_id,$menu_table)
@@ -386,19 +402,24 @@ class MMenus extends CI_Model
 
 
 
-    function getrootMenuNamesByLang($lang_id){
-       $data = array();
-       $this->db->where('parentid',0);
-       $this->db->where('lang_id',$lang_id);
-       $Q = $this->db->get('omc_menus');
-       if ($Q->num_rows() > 0){
-         foreach ($Q->result_array() as $row){
-            $data[] = $row;
-         }
-      }
-      $Q->free_result();
-      return $data;
+    function getrootMenuNamesByLang($lang_id)
+    {
+        $data = array();
+        $this->db->where('parentid',0);
+        $this->db->where('lang_id',$lang_id);
+        $Q = $this->db->get('omc_menus');
+        if ($Q->num_rows() > 0)
+        {
+            foreach ($Q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+        $Q->free_result();
+        return $data;
    }
+
+
 
    /*
     Not used
@@ -439,6 +460,8 @@ class MMenus extends CI_Model
     * 
     */
    
+
+
     function deleteMenu($id,$table=NULL)
     {
         // $data = array('status' => 'inactive');
@@ -452,6 +475,7 @@ class MMenus extends CI_Model
             $this->db->delete('omc_menus');
         }
     }
+
 
 
     function changeMenuStatus($id)
@@ -475,12 +499,14 @@ class MMenus extends CI_Model
     }
 
 
+
     function exportCsv()
     {
         $this->load->dbutil();
         $Q = $this->db->query("select * from omc_menus");
         return $this->dbutil->csv_from_result($Q,",","\n");
     }
+
 
 
     function checkMenuOrphans($id, $table=NULL)
@@ -508,6 +534,7 @@ class MMenus extends CI_Model
     }
 
 
+
     function reassignMenus()
     {
         $data = array('parentid' => $this->input->post('parentid'));
@@ -516,6 +543,4 @@ class MMenus extends CI_Model
         $this->db->where($where);
         $this->db->update('omc_menus',$data);
     }
-
-
 }

@@ -21,7 +21,34 @@ class Admin extends Shop_Admin_Controller
     }
 
 
+
     function index()
+    {
+        $data = $this->common_home();
+        $data['page'] = $this->config->item('backendpro_template_admin') . "admin_pages_home";
+        $this->load->view($this->_container,$data);
+    }
+
+
+
+    function _fields()
+    {
+        //$content=htmlentities($this->input->post('content'));
+        $data = array(
+            'name'             => db_clean($_POST['name']),
+            'metakeyword'      => db_clean($_POST['metakeyword']),
+            'metadesc'         => db_clean($_POST['metadesc']),
+            'path'             => db_clean($_POST['path']),
+            'content'          => $this->input->post('content'),
+            'status'           => db_clean($_POST['status'],8),
+            'lang_id'          => $this->input->post('lang_id'),
+        );
+        return $data;
+    }
+
+
+
+    function common_home()
     {
         // we use the following variables in the view
         $data['title'] = $this->lang->line('kago_manage_page');
@@ -43,25 +70,20 @@ class Admin extends Shop_Admin_Controller
         $data['languages'] =$this->MLangs->getLangDropDownWithId();
         $data['header'] = $this->lang->line('backendpro_access_control');
         // This how Bep load views
-        $data['page'] = $this->config->item('backendpro_template_admin') . "admin_pages_home";
         $data['module'] = $this->module;
-        $this->load->view($this->_container,$data);
-    }
-
-
-    function _fields()
-    {
-        $data = array(
-            'name'          => db_clean($_POST['name']),
-            'metakeyword'      => db_clean($_POST['metakeyword']),
-            'metadesc'   => db_clean($_POST['metadesc']),
-            'path'          => db_clean($_POST['path']),
-            'content'       => $_POST['content'],
-            'status'        => db_clean($_POST['status'],8),
-            'lang_id'       =>$this->input->post('lang_id'),
-        );
         return $data;
     }
+
+    /*
+    * this is used for ajax function
+    */
+
+    function Ajaxgetupdate()
+    {
+        $data = $this->common_home();
+        $this->load->view('admin/admin_home_cont',$data);
+    }
+
 
 
     function create()
@@ -101,7 +123,6 @@ class Admin extends Shop_Admin_Controller
     }
 
 
-    
 
     function edit($id=0)
     {
@@ -141,6 +162,12 @@ class Admin extends Shop_Admin_Controller
                 // if page is not specified redirect to index
                 flashMsg('success',$this->lang->line('kago_no_exist'));
                 redirect('pages/admin/index','refresh');
+            }
+            if(!$pagecontent['lang_id']==0)
+            {
+                // it is not english so get the original content and send it to display
+                // for translation
+                $data['original']=$this->MPages->getPagePath($path);
             }
             //$data['menus'] = $this->MMenus->getAllMenusDisplay();
             // Set breadcrumb

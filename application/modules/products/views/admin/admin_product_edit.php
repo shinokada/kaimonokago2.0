@@ -46,6 +46,12 @@ echo "<td id='nopad' >";
 echo form_textarea($data);
 echo "</td></tr>\n";
 
+echo "<tr><td class='label'><label for='weblink'>".$this->lang->line('kago_weblink')."</label></td>\n";
+$data = array('name'=>'weblink','id'=>'weblink', 'value' => $product['weblink'],'class'=>'text');
+echo "<td>";
+echo form_input($data);
+echo "</td></tr>\n";
+
 echo "<tr><td class='label'><label for='status'>".$this->lang->line('kago_status')."</label></td>\n";
 $options = array('active' => 'active', 'inactive' => 'inactive');
 echo "<td>";

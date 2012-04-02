@@ -1,6 +1,6 @@
 <h2><?php echo $title;?></h2>
 <div class="buttons">
-    <a href="<?php print  site_url('category/admin/create')?>">
+	<a href="<?php print  site_url('category/admin/create')?>">
     <?php print $this->bep_assets->icon('add');?>
     <?php print $this->lang->line('kago_create')." ".$this->lang->line('kago_category'); ?>
     </a>
@@ -21,7 +21,7 @@ $(document).ready(function(){
     {    
         $.ajax({
             type: "POST", 
-            url: "<?php echo site_url('category/admin/Ajaxgetupdate'); ?>", 
+            url: "<?php echo site_url($module.'/admin/Ajaxgetupdate'); ?>", 
             complete: function(data)
             {
                 tablecont.html(data.responseText);

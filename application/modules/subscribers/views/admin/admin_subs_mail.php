@@ -61,7 +61,7 @@ echo "</table>\n";
 
 if (count($subscribers))
 {
-	echo "<table id='subtable' class='tablesorter' border='1' cellspacing='0' cellpadding='3' width='800'>\n";
+	echo "<table id='subtable' class='tablesorter' border='1' cellspacing='0' cellpadding='3' width='100%'>\n";
 	echo "<thead>\n<tr valign='top'>\n";
 	echo "<th>".$this->lang->line('kago_id')."</th>\n<th>".$this->lang->line('kago_name').
             "</th><th>".$this->lang->line('kago_email')."</th><th>".$this->lang->line('kago_actions')."</th><th>Select</th>\n";

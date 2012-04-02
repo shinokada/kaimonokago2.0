@@ -23,6 +23,7 @@ class Admin extends Shop_Admin_Controller
     }
 
 
+
     function index()
     {
         if ($this->input->post('langname'))
@@ -45,16 +46,8 @@ class Admin extends Shop_Admin_Controller
                 $returned_id=$this->MKaimonokago->addItem($this->module,$data, $return_id);
 
                 // also add to menu and lilly_fairies_menus
-                $menufields=array(
-                            'name'          => $this->input->post('langname'),
-                            //'shortdesc'     => $this->input->post('shortdesc'),
-                            'status'        => 'active',
-                            'parentid'      => '0',
-                            //'order'         => $this->input->post('order'),
-                            'page_uri_id'   => '0',
-                            'lang_id'       => $returned_id,
-                            'menu_id'       => '1'// this case id of English is 1
-                    );
+                $menufields = $this->_menufields();
+                
                 // add to menu db
                 $this->MKaimonokago->addItem('menus', $menufields);
                 // add to lilly_fairies_menus
@@ -67,7 +60,28 @@ class Admin extends Shop_Admin_Controller
         }
         else
         {
-           // there is no input, so let's display
+            $data = $this->common_home();
+            $data['page'] = $this->config->item('backendpro_template_admin') . "admin_lang_home";
+            $this->load->view($this->_container,$data);
+        }
+    }
+
+
+
+    function _fields()
+    {
+        $data = array (
+            'langname'      =>  strtolower(db_clean($_POST['langname'])),
+            'status'        =>  db_clean($_POST['status']),
+        );
+        return $data;
+    }
+
+
+
+    function common_home()
+    {
+        // there is no input, so let's display
             $data['title'] = "Manage Languages";
             // lagnage in session
             $session_lang = $this->session->userdata('lang');
@@ -96,25 +110,28 @@ class Admin extends Shop_Admin_Controller
             * 
             */
             $data['header'] = $this->lang->line('backendpro_access_control');
-            $data['page'] = $this->config->item('backendpro_template_admin') . "admin_lang_home";
             $data['module'] = $this->module;
-            $this->load->view($this->_container,$data);
-        }
-  }
-
-    function _fields()
-    {
-        $data = array (
-            'langname'      => strtolower(db_clean($_POST['langname'])),
-            'status'    =>  db_clean($_POST['status']),
-        );
-        return $data;
+            return $data;
     }
+
+
 
     function _menufields()
     {
-
+        $menufields=array(
+                            'name'          => $this->input->post('langname'),
+                            //'shortdesc'     => $this->input->post('shortdesc'),
+                            'status'        => 'active',
+                            'parentid'      => '0',
+                            //'order'         => $this->input->post('order'),
+                            'page_uri_id'   => '0',
+                            'lang_id'       => $returned_id,
+                            'menu_id'       => '1'// this case id of English is 1
+                    );
+        return $menufields;
     }
+
+
 
     function edit()
     {
@@ -137,6 +154,17 @@ class Admin extends Shop_Admin_Controller
         }
     }
 
+
+
+    /*
+    * this is used for ajax function
+    */
+
+    function Ajaxgetupdate()
+    {
+        $data = $this->common_home();
+        $this->load->view('admin/admin_home_cont',$data);
+    }
 
 
 

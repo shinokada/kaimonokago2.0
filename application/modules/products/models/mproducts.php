@@ -692,7 +692,7 @@ class MProducts extends CI_Model
         // getting info of single product.
         $data = array();
         $options = array('id' => id_clean($id));
-        $Q = $this->db->getwhere('omc_products',$options,1);
+        $Q = $this->db->get_where('omc_products',$options,1);
         if ($Q->num_rows() > 0)
         {
             $data = $Q->row_array();
