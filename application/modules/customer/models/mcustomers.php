@@ -40,7 +40,7 @@ class MCustomers extends CI_Model{
 	
     function verifyCustomer($e,$pw){
         $this->db->where('email',db_clean($e,50));
-        $this->db->where('password', db_clean(dohash($pw),16));
+        $this->db->where('password', db_clean(do_hash($pw),16));
         $this->db->limit(1);
         $Q = $this->db->get('omc_customer');
         if ($Q->num_rows() > 0){
@@ -106,7 +106,7 @@ class MCustomers extends CI_Model{
 					'address' => db_clean($_POST['address'],50),
 					'city' => db_clean($_POST['city'],25),
 					'post_code' => db_clean($_POST['post_code'],10),
-                    'password' => db_clean(dohash($_POST['password']),16)
+                    'password' => db_clean(do_hash($_POST['password']),16)
                     );
 	  $this->db->where('customer_id',id_clean($_POST['customer_id']));
 	  $this->db->update('omc_customer',$data);	
@@ -166,7 +166,7 @@ class MCustomers extends CI_Model{
             'address' => db_clean($_POST['address'],50),
             'city' => db_clean($_POST['city'],25),
             'post_code' => db_clean($_POST['post_code'],10),
-            'password' => db_clean(dohash($_POST['password']),16)
+            'password' => db_clean(do_hash($_POST['password']),16)
          );
               $this->db->insert('omc_customer',$data);
     }

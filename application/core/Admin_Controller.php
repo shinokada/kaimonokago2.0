@@ -47,8 +47,6 @@ class Admin_Controller extends MY_Controller
 			flashMsg('warning',$this->lang->line('backendpro_remove_install'));
 		}
                  
-                 
-
 		// Set private meta tags
 		//$this->bep_site->set_metatag('name','content',TRUE/FALSE);
 		$this->bep_site->set_metatag('robots','nofollow, noindex');

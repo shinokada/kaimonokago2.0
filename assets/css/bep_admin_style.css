@@ -73,7 +73,7 @@ h2 { margin-top: 0.5em; border-bottom: 1px solid #777; }
 /* PREFERENCE FORM */
 #preference_form { width: 100%; }
 #preference_form td, #content #preference_form td { line-height: 1.5em; vertical-align: middle; padding: 6px 10px 6px 6px; }
-#content #preference_form #nopad td {padding:0; }
+#content #preference_form #nopad td, #content #preference_form .nopad td  {padding:0; }
 #preference_form td.label{ width: 45%; vertical-align: top; }
 #content #preference_form td.label {
     width: 25%;
@@ -133,4 +133,11 @@ goolge analytics widget
 **********/
 #tooltip{
     z-index: 100;
+}
+
+/******
+phpinfo page
+***************/
+#phpinfo {
+	clear: both;
 }

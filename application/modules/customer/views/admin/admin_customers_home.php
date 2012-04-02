@@ -1,7 +1,7 @@
 <h2><?php echo $title;?></h2>
 
 <div class="buttons">
-	<a href="<?php print  site_url('customer/admin/create')?>">
+	<a href="<?php print  site_url($module.'/admin/create')?>">
     <?php print $this->bep_assets->icon('add');?>
     <?php print $this->lang->line('kago_create')." ".$this->lang->line('kago_customer'); ?>
     </a>

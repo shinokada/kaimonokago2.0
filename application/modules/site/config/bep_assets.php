@@ -80,34 +80,37 @@ $config['asset'][] = array('file'=>'bep_select_all.js', 'needs'=>'jquery');
 $config['asset'][] = array('file'=>'admin.css');
 
 // Back-end Calendar CSS
-$config['asset'][] = array('file'=>'master.css');
-$config['asset'][] = array('file'=>'jquery.datepick.css');
+$config['asset'][] = array('file'=>'calendar.css');
 
 // Back-end Calendar JS
+$config['asset'][] = array('file'=>'calendar_init.js', 'needs'=>'jquery');
+
+// datepicker 
+$config['asset'][] = array('file'=>'jquery.datepick.css');
 $config['asset'][] = array('file'=>'jquery.datepick.pack.js', 'needs'=>'jquery');
-$config['asset'][] = array('file'=>'coda.js', 'needs'=>'jquery');
-$config['asset'][] = array('file'=>'site.js', 'needs'=>'jquery');
+$config['asset'][] = array('file'=>'datepicker_init.js', 'needs'=>'jquery.datepick.pack');// date picker init and delete warning
 
 // Back-end dataTables js
 $config['asset'][] = array('file'=>'jquery.dataTables.min.js', 'needs'=>'jquery');
 $config['asset'][] = array('file'=>'demo_table.css');
 
 // Back-end jqaccordion
-$config['asset'][] = array('file'=>'jquery.accordion.js', 'needs'=>'jquery_ui');
 $config['asset'][] = array('file'=>'jqaccordion.css');
+$config['asset'][] = array('file'=>'jquery.accordion.js', 'needs'=>'jquery_ui');
+$config['asset'][] = array('file'=>'accordion_init.js', 'needs'=>'jquery.accordion');
 
 // CI shopping cart front-end
 $config['asset'][] = array('file'=>'default.css');
 
 // webshop
 $config['asset'][] = array('file'=>'webshop.css');
-	// dropdown menu
-$config['asset'][] = array('file'=>'menu.init.js', 'needs'=>'jquery');	
-		// delete item or recalculate
+// dropdown menu
+$config['asset'][] = array('file'=>'cecilie.init.js', 'needs'=>'quicksand');// need to be at the end	
+// delete item or recalculate
 $config['asset'][] = array('file'=>'shopcustomtools.js', 'needs'=>'jquery');
-	// menu, slideshow for the front page
+// menu, slideshow for the front page
 $config['asset'][] = array('file'=>'jquery.innerfade.js', 'needs'=>'jquery');	
-	// browser detect js
+// browser detect js
 // $config['asset'][] = array('file'=>'browserDetect-min.js', 'needs'=>'jquery');
 
 // lightbox
@@ -135,13 +138,26 @@ $config['asset'][] = array('file'=>'flot.js', 'position'=>'header');
 // analytics
 //$config['asset'][] = array('file'=>'analytics.js', 'needs'=>'flot');
 
+// cecilieokada.com
+$config['asset'][] = array('file'=>'cecilie.css');
+
 // quicksand 
 $config['asset'][] = array('file'=>'quicksand.js', 'needs'=>'jquery.colorbox-min');
+
+// zoomer for lilly_fairies pages
+$config['asset'][] = array('file'=>'zoomer.js', 'needs'=>'jquery');
 
 //twitter
 $config['asset'][] = array('file'=>'jquery.tweetcss.css');
 $config['asset'][] = array('file'=>'jquery.tweet.js', 'needs'=>'jquery');
 
+// datepicker
+$config['asset'][] = array('file'=>'jquery.datepick.css');
+$config['asset'][] = array('file'=>'jquery.datepick.pack.js', 'needs'=>'jquery');
+$config['asset'][] = array('file'=>'datepicker_init.js', 'needs'=>'jquery.datepick|jquery.datepick.pack');
+
+// unmaskpassword
+$config['asset'][] = array('file'=>'unmaskpassword.js');
 
 /**
  * Asset Groups
@@ -156,14 +172,22 @@ $config['asset'][] = array('file'=>'jquery.tweet.js', 'needs'=>'jquery');
  */
 $config['asset_group']['SITE'] = 'reset|typography';
 $config['asset_group']['PUBLIC'] = 'bep_front_layout|FlashStatus';
-$config['asset_group']['ADMIN'] = 'bep_admin_layout|bep_admin_style|FlashStatus|forms|buttons|bep_navigation|treeview|bep_icons|bep_select_all|flot';
+$config['asset_group']['ADMIN'] = 'bep_admin_layout|bep_admin_style|FlashStatus|forms|buttons|bep_navigation|treeview|bep_icons|bep_select_all';
 
 // Added from here 
 $config['asset_group']['SHOP'] = 'shopcustomtools|FlashStatus|webshop|menu.init';
-$config['asset_group']['SHOPADMIN'] = 'jquery_ui|admin|master|jquery.datepick|jquery.datepick.pack|coda|site|jquery.dataTables.min|jquery.accordion|demo_table|jqaccordion';
+$config['asset_group']['SHOPADMIN'] = 'admin|site';
 
 // TinyMCE group
 $config['asset_group']['TINYMCE'] = "tinymce.init";
+
+// assets by module
+$config['asset_group']['calendar'] = "datepicker_init|calendar_init|jquery.datepick|jquery.datepick|calendar"; 
+$config['asset_group']['flot'] = "flot"; 
+$config['asset_group']['accordion'] = "jquery.accordion|jqaccordion";
+$config['asset_group']['dataTables'] = "jquery.dataTables.min|demo_table";
+$config['asset_group']['datepick'] = "jquery.datepick|datepicker_init";
+$config['asset_group']['unmaskpassword'] = "unmaskpassword";
 
 // Slideshow groups. There are two kinds of slideshows are implemented
 // cu3er group

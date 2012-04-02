@@ -13,6 +13,8 @@ class Admin extends Shop_Admin_Controller
 {
     private $module;
 
+
+
     function __construct()
     {
         parent::__construct();
@@ -27,7 +29,21 @@ class Admin extends Shop_Admin_Controller
     }
 
 
+
     function index()
+    {
+        $data = $this->_common_home();
+        $data['page'] = $this->config->item('backendpro_template_admin') . "admin_cat_home";
+        //$data['test'] = $this->MKaimonokago->getinfo('category', '36');
+        $this->load->view($this->_container,$data);
+  
+    }
+
+    /*
+    * This is used in index() and function Ajaxgetupdatecat()
+    */ 
+
+    function _common_home()
     {
         $data['title'] = $this->lang->line('kago_category');
         $fields = array('id','order','name','parentid','status','table_id','lang_id');
@@ -35,30 +51,31 @@ class Admin extends Shop_Admin_Controller
         //$data['categories'] = $this->MCats->getAllCategories();
         $data['categories'] = $this->MKaimonokago->getAll($this->module,$fields, $orderby);
         $data['header'] = $this->lang->line('backendpro_access_control');
-        $data['page'] = $this->config->item('backendpro_template_admin') . "admin_cat_home";
         $data['module'] = $this->module;
-        $data['test'] = $this->MKaimonokago->getinfo('category', '36');
-        $this->load->view($this->_container,$data);
-  
+        return $data;
     }
+
+
 
     function _fields()
     {
         $data = array(
-        'name'      => db_clean($_POST['name']),
-        'metadesc' =>  db_clean($_POST['metadesc']),
-        'metakeyword' =>  db_clean($_POST['metakeyword']),
-        'shortdesc' =>  db_clean($_POST['shortdesc']),
-        'longdesc'  =>  db_clean($_POST['longdesc'],5000),
-        'status'    =>  db_clean($_POST['status'],8),
-        'parentid'  => id_clean($_POST['parentid']),
-        'lang_id'   => id_clean($_POST['lang_id']),
-        'order'     => id_clean($_POST['order'],10),
-        'table_id'  => id_clean($_POST['table_id'])
+        'name'        => db_clean($_POST['name']),
+        'metadesc'    => db_clean($_POST['metadesc']),
+        'metakeyword' => db_clean($_POST['metakeyword']),
+        'shortdesc'   => db_clean($_POST['shortdesc']),
+        'longdesc'    => $this->input->post('longdesc'),
+        'status'      => db_clean($_POST['status'],8),
+        'parentid'    => id_clean($_POST['parentid']),
+        'lang_id'     => id_clean($_POST['lang_id']),
+        'order'       => id_clean($_POST['order'],10),
+        'table_id'    => id_clean($_POST['table_id'])
         );
         // $this->MKaimonokago->addItem($this->module, $data);
         return $data;
     }
+
+
 
     function create()
     {
@@ -94,6 +111,8 @@ class Admin extends Shop_Admin_Controller
             $this->load->view($this->_container,$data);
         }
     }
+
+
 
     function edit($id=0)
     {
@@ -150,6 +169,8 @@ class Admin extends Shop_Admin_Controller
         }
     }
 
+
+
     function delete($id)
     {
         // delete button is hidden in the page, but
@@ -185,6 +206,7 @@ class Admin extends Shop_Admin_Controller
     }
 
 
+
     function export()
     {
         $this->load->helper('download');
@@ -192,6 +214,7 @@ class Admin extends Shop_Admin_Controller
         $name = "category_export.csv";
         force_download($name,$csv);
      }
+
 
 
     function reassign($id=0)
@@ -202,7 +225,6 @@ class Admin extends Shop_Admin_Controller
             $this->MProducts->reassignProducts();
             $id = $this->input->post('id');
             $this->MCats->deleteCategory($id); // this is not working at the moment.
-
             flashMsg('success',$this->lang->line('userlib_category_reassigned'));
             redirect('category/admin/index','refresh');
         }
@@ -221,13 +243,14 @@ class Admin extends Shop_Admin_Controller
         }
     }
 
+    /*
+    * this is used for ajax function
+    */
 
-    function changeCatStatus($id)
+    function Ajaxgetupdate()
     {
-        $id = $this->uri->segment(4);
-        $this->MCats->changeCatStatus($id);
-        flashMsg('success',$this->lang->line('userlib_category_status'));
-        redirect('category/admin/index','refresh');
+        $data = $this->_common_home();
+        $this->load->view('admin/admin_home_cont',$data);
     }
 
 
@@ -248,6 +271,7 @@ class Admin extends Shop_Admin_Controller
         }
         rmdir( $folder );
     }
+
 
 
     function langcreate()
@@ -317,9 +341,9 @@ class Admin extends Shop_Admin_Controller
             // send the parent(English) field data to use it for other languages
             //$data['menu'] = $this->MMenus->getMenu($id);
             //if (!count($data['menu'])){
-                // if page is not specified redirect to index
-              //  flashMsg('warning',$this->lang->line('kago_no_exists'));
-              //  redirect('menus/admin/index','refresh');
+            // if page is not specified redirect to index
+            //  flashMsg('warning',$this->lang->line('kago_no_exists'));
+            //  redirect('menus/admin/index','refresh');
             //}
             $selected_lang=ucfirst($selected_lang['langname']);// using this in bread crumb
             //$data['menus'] = $this->MMenus->getAllMenusDisplay();
