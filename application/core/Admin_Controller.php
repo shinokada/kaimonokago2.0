@@ -51,7 +51,7 @@ class Admin_Controller extends MY_Controller
 		$this->load->model('category/MCats');
 		$this->lang->load('shop');
 		$this->load->language('kaimonokago/kaimonokagoadmin');
-        $this->load->language('welcome/webshop');
+		$this->load->language('welcome/webshop');
 		log_message('debug','BackendPro : Admin_Controller class loaded');
 	}
 }
