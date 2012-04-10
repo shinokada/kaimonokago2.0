@@ -25,8 +25,9 @@ $(function () {
 				beingShown = true;
 				// reset position of popup box
 				popup.css({
-					top: 20,
+					//top: 20,
 					left: -76,
+					//min-height: 40,
 					display: 'block' // brings the popup back in to view
 				})
 				// (we're using chaining on the popup) now animate it's opacity and position

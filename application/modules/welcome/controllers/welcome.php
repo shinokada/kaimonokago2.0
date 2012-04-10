@@ -497,17 +497,17 @@ class Welcome extends Shop_Controller
 
             // set fields. This will be used for error messages
             // for example instead of customer_first_name, First Name will be used in errors
-            $fields['email']	= lang('webshop_email');
-            $fields['emailconf']	= lang('webshop_email_confirm');
-            $fields['password']	= lang('webshop_pass_word');
-            $fields['customer_first_name']	= lang('webshop_first_name');
-            $fields['customer_last_name']	= lang('webshop_last_name');
-            $fields['phone_number']	= lang('webshop_mobile_tel');
-            $fields['address']	= lang('webshop_shipping_address');
-            $fields['city']	= lang('webshop_city');
-            $fields['post_code']	= lang('webshop_post_code');
+            $fields['email']	                = lang('webshop_email');
+            $fields['emailconf']	            = lang('webshop_email_confirm');
+            $fields['password']	                = lang('webshop_pass_word');
+            $fields['customer_first_name']	    = lang('webshop_first_name');
+            $fields['customer_last_name']	    = lang('webshop_last_name');
+            $fields['phone_number']	            = lang('webshop_mobile_tel');
+            $fields['address']	                = lang('webshop_shipping_address');
+            $fields['city']	                    = lang('webshop_city');
+            $fields['post_code']	            = lang('webshop_post_code');
             $fields['recaptcha_response_field']	= $this->lang->line('kago_recaptcha_response_field');
-            $fields['write_ans']        = $this->lang->line('kago_write_ans');
+            $fields['write_ans']                = $this->lang->line('webshop_write_ans');
             $this->form_validation->set_fields($fields);
 
             // run validation
@@ -531,13 +531,13 @@ class Welcome extends Shop_Controller
                 // a customer is new, so create the new customer, set message and redirect to login page.
                 $data = array(
                     'customer_first_name' => db_clean($_POST['customer_first_name'],25),
-                    'customer_last_name' => db_clean($_POST['customer_last_name'],25),
-                    'phone_number' => db_clean($_POST['phone_number'],15),
-                    'email' => db_clean($_POST['email'],50),
-                    'address' => db_clean($_POST['address'],50),
-                    'city' => db_clean($_POST['city'],25),
-                    'post_code' => db_clean($_POST['post_code'],10),
-                    'password' => db_clean(do_hash($_POST['password']),16)
+                    'customer_last_name'  => db_clean($_POST['customer_last_name'],25),
+                    'phone_number'        => db_clean($_POST['phone_number'],15),
+                    'email'               => db_clean($_POST['email'],50),
+                    'address'             => db_clean($_POST['address'],50),
+                    'city'                => db_clean($_POST['city'],25),
+                    'post_code'           => db_clean($_POST['post_code'],10),
+                    'password'            => db_clean(do_hash($_POST['password']),16)
                 );
                 $module = 'customer';
                 $this->MKaimonokago->addItem($module, $data);
@@ -603,32 +603,42 @@ class Welcome extends Shop_Controller
         {
             $config[] = array(
                             'field'=>'name',
-                            'label'=>$this->lang->line('kago_recaptcha_response_field'),
+                            'label'=>$this->lang->line('kago_name'),
                             'rules'=>"trim|required"
                             );
             $config[] = array(
                             'field'=>'email',
-                            'label'=>$this->lang->line('kago_recaptcha_response_field'),
+                            'label'=>$this->lang->line('kago_email'),
                             'rules'=>"trim|required|valid_captcha"
                             );
 
 
-            $rules['name'] = 'required';
-            $rules['email'] = 'required|valid_email';
+            //$rules['name'] = 'required';
+            //$rules['email'] = 'required|valid_email';
             //$rules['recaptcha_response_field'] = 'trim|required|valid_captcha';
             if($this->security_method=='recaptcha')
             {
-                $rules['recaptcha_response_field'] = 'trim|required|valid_captcha';
+                //$rules['recaptcha_response_field'] = 'trim|required|valid_captcha';
+                $config[] = array(
+                            'field'=>'recaptcha_response_field',
+                            'label'=>$this->lang->line('kago_recaptcha_response_field'),
+                            'rules'=>"trim|required|valid_captcha"
+                            );
             }
             elseif($this->security_method=='question')
             {
-                $rules['write_ans']= 'trim|required|callback_security_check';
+                //$rules['write_ans']= 'trim|required|callback_security_check';
+                $config[] = array(
+                            'field'=>'write_ans',
+                            'label'=>$this->lang->line('kago_write_ans'),
+                            'rules'=>"trim|required|callback_security_check"
+                            );
             }
-            $this->form_validation->set_rules($rules);
+            $this->form_validation->set_rules($config);
             $fields['email']	= lang('webshop_email');
             $fields['name']	= lang('subscribe_name');
             $fields['recaptcha_response_field']	= 'Recaptcha';
-            $fields['write_ans']        = lang('webshop_security_question');
+            $fields['write_ans']        = "Security answer ";
             $this->form_validation->set_fields($fields);
             if ($this->form_validation->run() == FALSE)
             {
@@ -673,20 +683,36 @@ class Welcome extends Shop_Controller
         }
         else
         {
-            $rules['email'] = 'trim|required|max_length[254]|valid_email';
+            $config[] = array(
+                            'field'=>'email',
+                            'label'=>$this->lang->line('webshop_email'),
+                            'rules'=>"trim|required|max_length[254]|valid_email"
+                            );
+
+            //$rules['email'] = 'trim|required|max_length[254]|valid_email';
             //$rules['recaptcha_response_field'] = 'trim|required|valid_captcha';
             if($this->security_method=='recaptcha')
             {
-                $rules['recaptcha_response_field'] = 'trim|required|valid_captcha';
+                $config[] = array(
+                            'field'=>'recaptcha_response_field',
+                            'label'=>$this->lang->line('kago_recaptcha_response_field'),
+                            'rules'=>"trim|required|valid_captcha"
+                            );
+                //$rules['recaptcha_response_field'] = 'trim|required|valid_captcha';
             }
             elseif($this->security_method=='question')
             {
-                $rules['write_ans']= 'trim|required|callback_security_check';
+                $config[] = array(
+                            'field'=>'write_ans',
+                            'label'=>$this->lang->line('webshop_write_ans'),
+                            'rules'=>"trim|required|callback_security_check"
+                            );
+                //$rules['write_ans']= 'trim|required|callback_security_check';
             }
-            $this->form_validation->set_rules($rules);
-            $fields['email']	= lang('webshop_email');
+            $this->form_validation->set_rules($config);
+            $fields['email']	                = lang('webshop_email');
             $fields['recaptcha_response_field']	= 'Recaptcha';
-            $fields['write_ans']        = lang('webshop_security_question');
+            $fields['write_ans']                = lang('webshop_security_question');
             $this->form_validation->set_fields($fields);
             if ($this->form_validation->run() == FALSE)
             {
@@ -764,31 +790,32 @@ class Welcome extends Shop_Controller
         // You need to modify this. This is for Norwegian system. At the moment, if a max of individual product is more
         // than 268 kr, then shipping price will be 65 kr otherwise 0 kr or 25 kr.
         $maxprice = 0;
-        if(isset($_SESSION['cart'])){
-        foreach ($_SESSION['cart'] as $item) 
+        if(isset($_SESSION['cart']))
         {
-            if ($item['price'] > $maxprice) 
+            foreach ($_SESSION['cart'] as $item) 
             {
-                $maxprice = $item['price'];
+                if ($item['price'] > $maxprice) 
+                {
+                    $maxprice = $item['price'];
+                }
             }
-        }
-        $data['maxprice']=$maxprice;
-        $shippingprice = 0;
-        if ($maxprice > 268 )
-        {
-            $shippingprice = 65.0;
-        }
-        elseif($maxprice == 0)
-        {
+            $data['maxprice']=$maxprice;
             $shippingprice = 0;
-        }
-        else
-        {
-            $shippingprice = 25.0;
-        }
-        $_SESSION['shippingprice'] = $shippingprice;
-        $data['shippingprice']=$shippingprice;
-        return $data;
+            if ($maxprice > 268 )
+            {
+                $shippingprice = 65.0;
+            }
+            elseif($maxprice == 0)
+            {
+                $shippingprice = 0;
+            }
+            else
+            {
+                $shippingprice = 25.0;
+            }
+            $_SESSION['shippingprice'] = $shippingprice;
+            $data['shippingprice']=$shippingprice;
+            return $data;
         }
     }
   
@@ -881,15 +908,62 @@ class Welcome extends Shop_Controller
 		$fields['city'] = lang('orders_post_code');
 		$fields['post_code'] = lang('orders_city');
 		$this->form_validation->set_fields($fields);	
-		$rules['customer_first_name'] = 'trim|required|min_length[3]|max_length[20]';
-		$rules['customer_last_name'] = 'trim|required|min_length[3]|max_length[20]';
-		$rules['telephone'] = 'trim|required|min_length[8]|max_length[12]|numeric';
-		$rules['email'] = 'trim|required|matches[emailconf]|valid_email';
-		$rules['emailconf'] = 'trim|required|valid_email';
-		$rules['shippingaddress'] = 'required';
-		$rules['city'] = 'trim|required';
-		$rules['post_code'] = 'trim|required';
-		$this->form_validation->set_rules($rules);
+
+        $config[] = array(
+                            'field'=>'customer_first_name',
+                            'label'=>$this->lang->line('webshop_first_name'),
+                            'rules'=>"trim|required|min_length[3]|max_length[20]"
+                            );
+
+        $config[] = array(
+                            'field'=>'customer_last_name',
+                            'label'=>$this->lang->line('webshop_last_name'),
+                            'rules'=>"trim|required|min_length[3]|max_length[20]"
+                            );
+
+        $config[] = array(
+                            'field'=>'telephone',
+                            'label'=>$this->lang->line('webshop_mobile_tel'),
+                            'rules'=>"trim|required|min_length[8]|max_length[12]|numeric"
+                            );
+
+        $config[] = array(
+                            'field'=>'email',
+                            'label'=>$this->lang->line('webshop_email'),
+                            'rules'=>"trim|required|matches[emailconf]|valid_email"
+                            );
+
+        $config[] = array(
+                            'field'=>'emailconf',
+                            'label'=>$this->lang->line('webshop_email_confirm'),
+                            'rules'=>"trim|required|valid_email"
+                            );
+
+        $config[] = array(
+                            'field'=>'shippingaddress',
+                            'label'=>$this->lang->line('webshop_shipping_address'),
+                            'rules'=>"required"
+                            );
+
+        $config[] = array(
+                            'field'=>'city',
+                            'label'=>$this->lang->line('webshop_city'),
+                            'rules'=>"trim|required"
+                            );
+        $config[] = array(
+                            'field'=>'post_code',
+                            'label'=>$this->lang->line('webshop_post_code'),
+                            'rules'=>"trim|required"
+                            );
+		//$rules['customer_first_name'] = 'trim|required|min_length[3]|max_length[20]';
+		//$rules['customer_last_name'] = 'trim|required|min_length[3]|max_length[20]';
+		//$rules['telephone'] = 'trim|required|min_length[8]|max_length[12]|numeric';
+		//$rules['email'] = 'trim|required|matches[emailconf]|valid_email';
+		//$rules['emailconf'] = 'trim|required|valid_email';
+		//$rules['shippingaddress'] = 'required';
+		//$rules['city'] = 'trim|required';
+		//$rules['post_code'] = 'trim|required';
+		$this->form_validation->set_rules($config);
 		$shippingprice = $this-> shippingprice();
 		$data['shippingprice']=$shippingprice['shippingprice'];
 		
@@ -903,9 +977,9 @@ class Welcome extends Shop_Controller
 			$data['page'] = $this->config->item('backendpro_template_shop') . 'confirmorder';
 			$data['module'] = $this->module;
 			$this->load->view($this->_container,$data);
-			}
-			else
-			{
+		}
+		else
+		{
 			/*
 			 * If validation is ok, then
 			 * 1. enter customer info to db through $this->MOrders->entercustomerinfo();
@@ -930,10 +1004,11 @@ class Welcome extends Shop_Controller
 			// $shipping= 65;
 			$shipping = $_SESSION['shippingprice'];
 			$body .= "<table border='1' cellspacing='0' cellpadding='5' width='80%'><tr><td><b>".lang('email_number_of_order')."</b></td><td><b>".lang('email_product_name')."</b></td><td><b>".lang('email_product_price')."</b></td></tr>";
-			if (count($_SESSION['cart'])){
+			if (count($_SESSION['cart']))
+            {
 				$count = 1;
-				foreach ($_SESSION['cart'] as $PID => $row){
-				  
+				foreach ($_SESSION['cart'] as $PID => $row)
+                {  
 					$body .= "<tr><td><b>". $row['count'] . "</b></td><td><b>" . $row['name'] . "</b></td><td><b>" . $row['price']."</b></td></tr>";
 				}
 			}
@@ -942,7 +1017,6 @@ class Welcome extends Shop_Controller
 			$body .= "<tr><td colspan='2'><b>".lang('orders_shipping_nor')." </b></td><td colspan='1'><b>". number_format($shipping ,2,'.',',') . "</b></td></tr>";
 			$body .= "<tr><td colspan='2'><b>".lang('orders_total_with_shipping')." </b></td><td colspan='1'><b>".number_format($grandtotal,2,'.',','). "</b></td></tr>";
 			$body .= "</table><br />";
-			
 			$body .= "<table border=\"1\" cellspacing='0' cellpadding='5' width='80%'>";
 			$body .= "<tr><td><b>".lang('orders_name').": </b></td><td><b>". $_POST['customer_first_name']." ". $_POST['customer_last_name']."</b></td></tr>";
 			$body .= "<tr><td><b>".lang('orders_email').": </b></td><td><b>". $_POST['email']. "</b></td></tr>";
@@ -954,23 +1028,18 @@ class Welcome extends Shop_Controller
 			$body .= "<p><b>".lang('email_we_will_call')."</b></p>";
 			extract($_POST);
 			//removes newlines and returns from $email and $name so they can't smuggle extra email addresses for spammers
-			
 			$headers = "Content-Type: text/html; charset=UTF-8\n";
 			$headers .= "Content-Transfer-Encoding: 8bit\n\n";
-			
 			//Create header that puts email in From box along with name in parentheses and sends bcc to alternate address
 			$from='From: '. $email . "(" . $name . ")" . "\r\n" . 'Bcc: admin@gmail.com' . "\r\n";
-			
 			//Creates intelligible subject line that also shows me where it came from
-			$subject = 'webshop.com Order confirmation';
-
-                        $admin_email = $this->preference->item('admin_email');
+			$subject = $this->preference->item('site_name').' Order confirmation';
+            $admin_email = $this->preference->item('admin_email');
 			//Sends mail to me, with elements created above
-			 mail ($admin_email, $subject, $body, $headers, $from);
-                         $site_name = $this->preference->item('site_name');
-			// Send confirmation email to the customer
-			 mail ($email, $subject, $body, $headers,$site_name);
-	
+            mail ($admin_email, $subject, $body, $headers, $from);
+            $site_name = $this->preference->item('site_name');
+            // Send confirmation email to the customer
+            mail ($email, $subject, $body, $headers,$site_name);
 			// $this->session->set_flashdata('msg', 'Thank you for your order! We will get in touch as soon as possible.');
 			redirect($this->module.'/ordersuccess');
 		}
@@ -987,6 +1056,38 @@ class Welcome extends Shop_Controller
     	$data['page'] = $this->config->item('backendpro_template_shop') . 'ordersuccess';
     	$data['module'] = $this->module;
     	$this->load->view($this->_container,$data);
+    }
+
+
+    function user_availability()
+    {
+        //$where = $this->uri->segment(3);
+        //this varible contains the array of existing users
+        $module = "subscribers";
+        //$where = "name";
+        /*
+        if($where =="name")
+        {
+            $what = $this->input->post('user_name');   
+        }
+        else
+        {
+            $what = $this->input->post('user_name');  
+        }
+        */
+        $where = $this->input->post('where');
+        $what = $this->input->post('what');
+        $customers = $this->MKaimonokago->getAllSimple($module, $where , $what );
+        if (!empty($customers))
+        {
+         //user name is not available
+         echo "no";
+        }
+        else
+        {
+          //username available i.e. user name doesn't exists in array
+          echo "yes";
+        }    
     }
 }//end controller class
 

@@ -124,6 +124,12 @@ $lang['kago_temp_added'] = "Template added";
 $lang['kago_add_temp'] = "Add Template";
 $lang['kago_temp_default_changed'] = "Default Template Changed";
 
+$lang['kago_recaptcha_response_field'] = "Recaptcha response";
+$lang['kago_write_ans'] = "Security answer";
+
+/*dashboard  */
+
+$lang['dashboard_kaimonokago_version'] = "Kaimonokago Version";
 
 /* End of file kago_lang.php */
 /* Location: ./modules/kago/language/english/kago_lang.php */

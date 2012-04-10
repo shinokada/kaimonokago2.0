@@ -28,7 +28,7 @@
 	<div class="inside">
 	  <div id="main">
 <?php 
-    print displayStatus();
+ //   print displayStatus();
     print (isset($content)) ? $content : NULL; 
     if( isset($page))
     {

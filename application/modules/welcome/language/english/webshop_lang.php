@@ -90,7 +90,7 @@ $lang['general_register'] = "Register";
 
 
 /* orders */
-$lang['orders_added_cart'] = "We have added this product to the shopping cart.";
+$lang['orders_added_cart'] = "We have added this product to the shoppfiring cart.";
 $lang['orders_product_removed'] = "Product removed.";
 $lang['orders_not_in_cart'] = "Product not in shopping cart!";
 $lang['orders_no_records'] = "No records";

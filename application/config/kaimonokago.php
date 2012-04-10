@@ -27,4 +27,4 @@ $config['backendpro_template_dir'] = ""; // you need this line
 $config['backendpro_template_shop'] = $config['backendpro_template_dir'] . "shop/";
 
 /* End of file kaimnonokago.php */
-/* Location: system/application/config/kaimonokago.php */
+/* Location: /application/config/kaimonokago.php */

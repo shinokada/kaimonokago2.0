@@ -23,7 +23,7 @@ if($security_method=='recaptcha'){
     echo "<p>$cap_img</p>" ;
 
     }elseif($security_method=='question'){
-    echo "<label for=\"write_ans\">*". $this->lang->line('webshop_write_ans')."</label><br />";
+    echo "<br /><label for=\"write_ans\">*". $this->lang->line('webshop_write_ans')."</label><br />";
     echo $question;
     echo "<input type=\"text\" name=\"write_ans\" id=\"write_ans\" maxlength=\"30\" size=\"30\"  />";
     }

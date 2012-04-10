@@ -24,17 +24,17 @@
                 <a href="<?php echo base_url();?>index.php/<?php echo $this->data['mainmodule'];?>/cart"><?php echo lang('general_shopping_cart'); ?>
                 </a></span><br />
             <?php
-            /*
-            $this->data['handlekurv'] = number_format($this->data['handlekurv'] ,2,'.',',');
-            if(isset($this->data['handlekurv']))
+            
+            $handlekurv = number_format($this->data['handlekurv'] ,2,'.',',');
+            if(isset($handlekurv))
             {
-                    echo lang('webshop_currency_symbol').$this->data['handlekurv'];
+                    echo lang('webshop_currency_symbol').$handlekurv;
             }
             else
             {
                 echo lang('webshop_shoppingcart_empty');
             }
-            */
+            
             ?>
             </p>
         </div>
