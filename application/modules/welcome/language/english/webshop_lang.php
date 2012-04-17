@@ -54,6 +54,7 @@ $lang['webshop_shipping_address'] = 'Shipping Address';
 $lang['webshop_address'] = 'Address';
 $lang['webshop_post_code'] = 'Postal Code';
 $lang['webshop_city'] = 'City';
+$lang['webshop_country'] = 'Country';
 $lang['webshop_register'] = 'Register';
 $lang['webshop_regist_plz_here'] = 'Please register here. ';
 $lang['webshop_price'] = 'Price';

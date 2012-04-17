@@ -1,3 +1,5 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/*  modules/customer/views/admin/admin_customers_home.php */?>
 <h2><?php echo $title;?></h2>
 
 <div class="buttons">
@@ -13,7 +15,7 @@
 if (count($customers)){
     echo "<table id='tablesorter' class='tablesorter' border='1' cellspacing='0' cellpadding='3' width='100%'>\n";
     echo "<thead>\n<tr valign='top'>\n";
-    echo "<th>Customer ID</th>\n<th>First name</th><th>Last name</th><th>Phone Number</th><th>Email</th><th>Address</th><th>City</th><th>Actions</th>\n";
+    echo "<th>Customer ID</th>\n<th>First name</th><th>Last name</th><th>Phone Number</th><th>Email</th><th>Address</th><th>City</th><th>Country</th><th>Actions</th>\n";
     echo "</tr>\n</thead>\n<tbody>\n";
     foreach ($customers as $key => $list){
         echo "<tr valign='top'>\n";
@@ -24,6 +26,7 @@ if (count($customers)){
         echo "<td align='center'>".$list['email']."</td>\n";
         echo "<td align='center'>".$list['address']."</td>\n";
         echo "<td align='center'>".$list['city']."</td>\n";
+        echo "<td align='center'>".$list['country']."</td>\n";
         echo "<td align='center'>";
         echo anchor('customer/admin/edit/'.$list['customer_id'],$this->bep_assets->icon('pencil'));
         //echo " | ";

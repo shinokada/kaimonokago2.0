@@ -1,4 +1,9 @@
 <?php
+	if(!defined('AJAX_INIT_DONE'))
+	{
+		die('Permission denied');
+	}
+?><?php
 	/**
 	 * sysem base config setting
 	 * @author Logan Cai (cailongqun [at] yahoo [dot] com [dot] cn)
@@ -122,7 +127,7 @@ error_reporting(E_ALL);
 	define('CONFIG_EDITOR_NAME', (CONFIG_QUERY_STRING_ENABLE && !empty($_GET['editor'])?secureFileName($_GET['editor']):'tinymce')); 
 	define('CONFIG_THEME_NAME', (CONFIG_QUERY_STRING_ENABLE && !empty($_GET['theme'])?secureFileName($_GET['theme']):'default'));  //change the theme to your custom theme rather than default
 	define('CONFIG_DEFAULT_VIEW', (CONFIG_SYS_THUMBNAIL_VIEW_ENABLE?'detail':'detail')); //thumnail or detail
-	define('CONFIG_DEFAULT_PAGINATION_LIMIT', 999);
+	define('CONFIG_DEFAULT_PAGINATION_LIMIT', 10);
 	define('CONFIG_LOAD_DOC_LATTER', false); //all documents will be loaded up after the template has been loaded to the client 
 	
 	//General Option Declarations

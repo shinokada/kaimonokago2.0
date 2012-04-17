@@ -6,12 +6,14 @@
 		<br />
 		
 		<?php
+		/*
 		if ($this->session->flashdata('msg')|| $this->session->flashdata('error')){ 
 			echo "<div class='status_box'>";
 			echo $this->session->flashdata('msg');
 			echo $this->session->flashdata('error');
 			echo "</div>";
 		}
+		*/
 		?>
 		<?php echo validation_errors('<div class="message error">','</div>'); ?>
 		
@@ -55,7 +57,6 @@
                     echo $question;
                     echo "<input type=\"text\" name=\"write_ans\" id=\"write_ans\" maxlength=\"30\" size=\"30\"  />";
                 }
-		
 		?>
 		
 		<br />

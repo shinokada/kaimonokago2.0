@@ -1,12 +1,15 @@
 <?php print displayStatus();?>
 <?php
-if ($this->session->flashdata('subscribe_msg')){
+/*
+if ($this->session->flashdata('subscribe_msg'))
+{
 	echo "<div class='status_box'>";
 	echo $this->session->flashdata('subscribe_msg');
 	echo "</div>";
 }
+*/
 ?>
-
+<?php // echo validation_errors('<div class="message error">','</div>'); ?>
 <?php echo form_open($module."/subscribe"); ?>
 <h1>
 <?php echo form_fieldset('Subscribe To Our Newsletter'); ?>
@@ -40,8 +43,8 @@ elseif($security_method=='question')
 <?php echo form_close(); ?>
 
 <script type="text/javascript">
-$(document).ready(function(){
 
+$(document).ready(function(){
 
     $("#name").blur(function()
     {
@@ -53,7 +56,7 @@ $(document).ready(function(){
             //check the username exists or not from ajax
             $.post("<?php echo site_url('welcome/user_availability'); ?>",{ what:$(this).val(), where:"name" } ,function(data)
             {
-                if(data=='no') //if username not avaiable
+                if(data=='false') //if username not avaiable
                 {
                     $("#msgbox").fadeTo(200,0.1,function() //start fading the messagebox
                     {
@@ -112,7 +115,7 @@ $(document).ready(function(){
             {
                 $.post("<?php echo site_url('welcome/user_availability'); ?>",{ what:$(this).val(), where:"email" } ,function(data)
                 {
-                    if(data=='no') //if username not avaiable
+                    if(data=='false') //if username not avaiable
                     {
                         $("#emailmsg").fadeTo(200,0.1,function() //start fading the messagebox
                         {
@@ -145,5 +148,6 @@ $(document).ready(function(){
         }  
     });
 });
+
 </script>
 

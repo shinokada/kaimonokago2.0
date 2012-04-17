@@ -43,6 +43,7 @@ class Admin extends Shop_Admin_Controller
             'address'               => db_clean($_POST['address'],50),
             'city'                  => db_clean($_POST['city'],25),
             'post_code'             => db_clean($_POST['post_code'],10),
+            'country'               => $this->input->post('country'),
             'password'              => db_clean(do_hash($_POST['password']),16)
             );
         return $data;

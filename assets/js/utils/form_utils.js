@@ -1,19 +1,24 @@
 /**
- * $Id: form_utils.js 1184 2009-08-11 11:47:27Z spocke $
+ * form_utils.js
  *
- * Various form utilitiy functions.
+ * Copyright 2009, Moxiecode Systems AB
+ * Released under LGPL License.
  *
- * @author Moxiecode
- * @copyright Copyright © 2004-2008, Moxiecode Systems AB, All rights reserved.
+ * License: http://tinymce.moxiecode.com/license
+ * Contributing: http://tinymce.moxiecode.com/contributing
  */
 
 var themeBaseURL = tinyMCEPopup.editor.baseURI.toAbsolute('themes/' + tinyMCEPopup.getParam("theme"));
 
 function getColorPickerHTML(id, target_form_element) {
-	var h = "";
+	var h = "", dom = tinyMCEPopup.dom;
 
-	h += '<a id="' + id + '_link" href="javascript:;" onclick="tinyMCEPopup.pickColor(event,\'' + target_form_element +'\');" onmousedown="return false;" class="pickcolor">';
-	h += '<span id="' + id + '" title="' + tinyMCEPopup.getLang('browse') + '">&nbsp;</span></a>';
+	if (label = dom.select('label[for=' + target_form_element + ']')[0]) {
+		label.id = label.id || dom.uniqueId();
+	}
+
+	h += '<a role="button" aria-labelledby="' + id + '_label" id="' + id + '_link" href="javascript:;" onclick="tinyMCEPopup.pickColor(event,\'' + target_form_element +'\');" onmousedown="return false;" class="pickcolor">';
+	h += '<span id="' + id + '" title="' + tinyMCEPopup.getLang('browse') + '">&nbsp;<span id="' + id + '_label" class="mceVoiceLabel mceIconOnly" style="display:none;">' + tinyMCEPopup.getLang('browse') + '</span></span></a>';
 
 	return h;
 }
@@ -65,6 +70,9 @@ function openBrowser(img_id, target_form_element, type, option) {
 function selectByValue(form_obj, field_name, value, add_custom, ignore_case) {
 	if (!form_obj || !form_obj.elements[field_name])
 		return;
+
+	if (!value)
+		value = "";
 
 	var sel = form_obj.elements[field_name];
 

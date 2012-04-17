@@ -109,6 +109,7 @@ $lang['kago_update_menu'] = "Update Menu";
 $lang['kago_reassign'] = "Reassign";
 $lang['kago_parent'] = "Parent";
 $lang['kago_cat_id'] = "cat_id";
+$lang['kago_readmorelink'] = "Read More URL";
 
 $lang['kago_playroom'] = "Playroom";
 $lang['kago_activity'] = "Activity";

@@ -40,16 +40,16 @@ class MSubscribers extends CI_Model
  
  
 
-    function createSubscriber()
+    function createSubscriber($name,$email)
     {
-    	$this->db->where('email', $_POST['email']);
+    	$this->db->where('email', $email);
     	$this->db->from('omc_subscribers');
     	$ct = $this->db->count_all_results();
     	if ($ct == 0)
         {
     		$data = array( 
-    			'name' => db_clean($_POST['name']),
-    			'email' => db_clean($_POST['email'])	
+    			'name' => $name,
+    			'email' => $email,	
     		);
             $this->db->insert('omc_subscribers', $data);	 
      	}
@@ -83,19 +83,18 @@ class MSubscribers extends CI_Model
     {
         $numrow = 0;
         $this->db->select('id');
-        $this->db->where('email',db_clean($email));
+        $this->db->where('email',$email);
         $this->db->limit(1);
         $Q = $this->db->get('omc_subscribers');
         if ($Q->num_rows() > 0)
         {
             $numrow = TRUE; 
-            return $numrow;
         }
         else
         {
             $numrow = FALSE;
-            return $numrow;
         }		
+        return $numrow;
     }
 
 

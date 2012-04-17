@@ -1,3 +1,9 @@
+<?php
+	if(!defined('AJAX_INIT_DONE'))
+	{
+		die('Permission denied');
+	}
+?>
 <div id="content">
 <table class="tableList" id="tableList" cellpadding="0" cellspacing="0" border="0">
 					<thead>

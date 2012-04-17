@@ -1,3 +1,5 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/*  modules/customer/views/admin/admin_customers_edit.php */?>
 <h2><?php echo $title;?></h2>
 
 <?php
@@ -56,6 +58,12 @@ echo "<tr><td class='label'><label for='post_code'>".$this->lang->line('webshop_
 $data = array('name' => 'post_code', 'id' => 'post_code','class'=>'text', 'value'=>$customer['post_code']);
 echo "<td>";
 echo form_input($data);
+echo "</td></tr>\n";
+
+echo "<tr><td class='label'><label for='country'>".$this->lang->line('webshop_country')."</label></td>\n";
+$data = array('name' => 'country', 'id' => 'country','class'=>'text','value'=>$customer['country']);
+echo "<td>";
+echo form_input($data);
 echo "</td></tr>\n</table>\n";
 
 echo form_hidden('customer_id',$customer['customer_id']);
@@ -75,6 +83,9 @@ echo form_hidden('customer_id',$customer['customer_id']);
 <?php
 //echo form_submit('submit','update customer');
 echo form_close();
-
-
+/*
+echo "<pre>";
+print_r ($customer);
+echo "</pre>";
+*/
 ?>

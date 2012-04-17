@@ -19,6 +19,12 @@ echo "<td>";
 echo form_input($data);
 echo "</td></tr>\n";
 
+echo "<tr><td class='label'><label for='readmorelink'>".$this->lang->line('kago_readmorelink')."</label></td>\n";
+$data = array('name'=>'readmorelink','id'=>'readmorelink','class'=>'text', 'value' => $slide['readmorelink']);
+echo "<td>";
+echo form_input($data);
+echo "</td></tr>\n";
+
 echo "<tr><td class='label'><label for='long'>".$this->lang->line('kago_long_desc')."</label></td>\n";
 $data = array('name'=>'longdesc','id'=>'long','rows'=>'10', 'cols'=>'80', 'value' => $slide['longdesc']);
 echo "<td id='nopad' >";
@@ -30,13 +36,13 @@ echo form_textarea($data) ;
 echo "</td></tr>\n";
 
 echo "<tr><td class='label'><label for='uimage'>".$this->lang->line('kago_select_img')."</label></td>\n";
-$data = array('name'=>'image','id'=>'uimage','rows'=>'10', 'cols'=>'80', 'value' => $slide['image']);
+$data = array('name'=>'image','id'=>'uimage','class'=>'mceimage','rows'=>'10', 'cols'=>'80', 'value' => $slide['image']);
 echo "<td id='nopad' >";
 echo form_textarea($data);
 echo "</td></tr>\n";
 
 echo "<tr><td class='label'><label for='uthumb'>".$this->lang->line('kago_select_thumb')."</label></td>\n";
-$data = array('name'=>'thumbnail','id'=>'uthumb','rows'=>'10', 'cols'=>'80', 'value' => $slide['thumbnail']);
+$data = array('name'=>'thumbnail','id'=>'uthumb','class'=>'mcethumb','rows'=>'10', 'cols'=>'80', 'value' => $slide['thumbnail']);
 echo "<td id='nopad' >";
 echo form_textarea($data);
 echo "</td></tr>\n";
@@ -71,11 +77,11 @@ echo form_hidden('id',$slide['id']);
 <?php
 //echo form_submit('submit',$this->lang->line('kago_update_slide'));
 echo form_close();
-/*
+
 echo "<pre>slide";
 print_r($slide);
 echo "</pre>";
-*/
+
 
 ?>
 

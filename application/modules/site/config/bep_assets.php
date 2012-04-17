@@ -64,7 +64,7 @@ $config['asset'][] = array('file'=>'FlashStatus.css');
 $config['asset'][] = array('file'=>'bep_icons.php','type'=>'css');
 
 // BackendPro JS
-$config['asset'][] = array('file'=>'jquery-1.6.2.min.js', 'name'=>'jquery','position'=>'header');
+$config['asset'][] = array('file'=>'jquery-1.7.2.min.js', 'name'=>'jquery','position'=>'header');
 $config['asset'][] = array('file'=>'jquery-ui-1.8.16.custom.min.js', 'name' => 'jquery_ui', 'needs'=>'jquery');
 $config['asset'][] = array('file'=>'jquery.cookie.js', 'needs'=>'jquery');
 $config['asset'][] = array('file'=>'jquery.treeview.js', 'needs'=>'jquery.cookie');
@@ -76,6 +76,9 @@ $config['asset'][] = array('file'=>'bep_select_all.js', 'needs'=>'jquery');
 
 
 // Added from here
+// modernizer
+$config['asset'][] = array('file'=>'modernizr.js');
+
 // Back-end Admin CSS
 $config['asset'][] = array('file'=>'admin.css');
 
@@ -84,6 +87,7 @@ $config['asset'][] = array('file'=>'calendar.css');
 
 // Back-end Calendar JS
 $config['asset'][] = array('file'=>'calendar_init.js', 'needs'=>'jquery');
+$config['asset'][] = array('file'=>'site.js', 'needs'=>'jquery');
 
 // datepicker 
 $config['asset'][] = array('file'=>'jquery.datepick.css');
@@ -105,7 +109,7 @@ $config['asset'][] = array('file'=>'default.css');
 // webshop
 $config['asset'][] = array('file'=>'webshop.css');
 // dropdown menu
-$config['asset'][] = array('file'=>'cecilie.init.js', 'needs'=>'quicksand');// need to be at the end	
+$config['asset'][] = array('file'=>'shop.init.js');// need to be at the end	
 // delete item or recalculate
 $config['asset'][] = array('file'=>'shopcustomtools.js', 'needs'=>'jquery');
 // menu, slideshow for the front page
@@ -132,17 +136,21 @@ $config['asset'][] = array('file'=>'coin-slider.min.js', 'needs'=>'jquery');
 $config['asset'][] = array('file'=>'nivo-slider.css');
 $config['asset'][] = array('file'=>'jquery.nivo.slider.pack.js', 'needs'=>'jquery');
 
+// jmpress
+$config['asset'][] = array('file'=>'jmpress.min.js', 'needs'=>'jquery');
+$config['asset'][] = array('file'=>'jquery.jmslideshow.js', 'needs'=>'jmpress.min');
+$config['asset'][] = array('file'=>'jmpress_style.css');
+//$config['asset'][] = array('file'=>'normalize.css');
+
 // flot.js
 $config['asset'][] = array('file'=>'flot.js', 'position'=>'header');
 
 // analytics
 //$config['asset'][] = array('file'=>'analytics.js', 'needs'=>'flot');
 
-// cecilieokada.com
-$config['asset'][] = array('file'=>'cecilie.css');
 
 // quicksand 
-$config['asset'][] = array('file'=>'quicksand.js', 'needs'=>'jquery.colorbox-min');
+$config['asset'][] = array('file'=>'quicksand.js');
 
 // zoomer for lilly_fairies pages
 $config['asset'][] = array('file'=>'zoomer.js', 'needs'=>'jquery');
@@ -175,7 +183,7 @@ $config['asset_group']['PUBLIC'] = 'bep_front_layout|FlashStatus';
 $config['asset_group']['ADMIN'] = 'bep_admin_layout|bep_admin_style|FlashStatus|forms|buttons|bep_navigation|treeview|bep_icons|bep_select_all';
 
 // Added from here 
-$config['asset_group']['SHOP'] = 'shopcustomtools|FlashStatus|webshop|menu.init';
+$config['asset_group']['SHOP'] = 'shopcustomtools|FlashStatus|webshop|shop.init|modernizr';
 $config['asset_group']['SHOPADMIN'] = 'admin|site';
 
 // TinyMCE group
@@ -195,6 +203,7 @@ $config['asset_group']['cu3er'] = "cu3er";
 $config['asset_group']['interfade'] = "jquery.innerfade";
 $config['asset_group']['coinslider'] = "coin-slider.min|coin-slider-styles";
 $config['asset_group']['nivoslider'] = "jquery.nivo.slider.pack|nivo-slider";
+$config['asset_group']['jmpress'] = "jmpress.min|jquery.jmslideshow|jmpress_style";
 // Added upto here
 
 $config['asset_group']['FORMS'] = "buttons|forms";

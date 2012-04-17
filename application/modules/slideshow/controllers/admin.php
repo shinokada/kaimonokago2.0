@@ -38,6 +38,7 @@ class Admin extends Shop_Admin_Controller
             'slide_order'   => db_clean($_POST['slide_order']),
             'thumbnail'     => db_clean($_POST['thumbnail']),
             'image'         => db_clean($_POST['image']),
+            'readmorelink'      => $this->input->post('readmorelink'),
         );
         return $data;
     }

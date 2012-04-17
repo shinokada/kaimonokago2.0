@@ -25,6 +25,8 @@ class Shop_Controller extends MY_Controller
     public $lang_id='';
     public $language='';
     public $mainmodule='';
+    public $short_lang ='';
+    public $site_lang = '';
 
 
     function __construct()
@@ -120,18 +122,24 @@ class Shop_Controller extends MY_Controller
  
         $this->data['language']=$this->language;
             // find lang id
-        $this->lang_id = $this->MLangs->getId($this->language);
-        $this->data['mylanguage1']=$this->lang_id;
-        if(!$this->lang_id ==0)
+        $this->site_lang = $this->MLangs->getId($this->language);
+        $this->data['mylanguage1']=$this->site_lang;
+             
+        if(!$this->site_lang ==0)
         {
-            $this->lang_id = $this->lang_id['id'];
+            $this->lang_id = $this->site_lang['id'];
+            // find short_lang which is used in html lang="en" etc  
+            $this->data['short_lang'] = $this->site_lang['short_lang'];
         }
         else
         {
             $this->lang_id = 0;
+            // find short_lang which is used in html lang="en" etc  
+            $this->data['short_lang'] = "en";
         }
         // load language depends on lang
         $this->load->language('welcome/webshop',$this->language);
+
         // This part is used in all the pages so load it here
         // For customer login status
         if(isset($_SESSION['customer_first_name']))
@@ -196,10 +204,8 @@ class Shop_Controller extends MY_Controller
         $this->data['newproduct']= $newproduct;
 
         $order='order';
-         
         $item="table_id";
         $this->data['navlist'] = $this->MCats->getCatItembyLang($cat_parentid,$order,$this->lang_id,$item);
-
 
         // load modules/languages/model/mlangs
         $this->load->model('languages/MLangs');

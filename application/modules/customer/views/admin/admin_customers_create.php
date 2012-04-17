@@ -1,3 +1,5 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/*  modules/customer/views/admin/admin_customers_create.php */?>
 <h2><?php echo $title;?></h2>
 
 <?php
@@ -54,6 +56,12 @@ echo "</td></tr>\n";
 
 echo "<tr><td class='label'><label for='post_code'>".$this->lang->line('webshop_post_code')."</label></td>\n";
 $data = array('name' => 'post_code', 'id' => 'post_code','class'=>'text','value'=>set_value('post_code'));
+echo "<td>";
+echo form_input($data);
+echo "</td></tr>\n";
+
+echo "<tr><td class='label'><label for='country'>".$this->lang->line('webshop_country')."</label></td>\n";
+$data = array('name' => 'country', 'id' => 'country','class'=>'text','value'=>set_value('country'));
 echo "<td>";
 echo form_input($data);
 echo "</td></tr>\n</table>\n";

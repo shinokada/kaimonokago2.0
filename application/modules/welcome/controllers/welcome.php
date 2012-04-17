@@ -594,22 +594,18 @@ class Welcome extends Shop_Controller
 
     function subscribe()
     {
-        $data['title']=$this->preference->item('site_name')." | ".'Subscribe to our News letter';
-        $data['question']= $this->security_question;
-        $data['security_method']= $this->security_method;
-        $captcha_result = '';
-        $data['cap_img'] = $this->_generate_captcha();
+        
         if ($this->input->post('name'))
         {
             $config[] = array(
                             'field'=>'name',
-                            'label'=>$this->lang->line('kago_name'),
+                            'label'=>$this->lang->line('webshop_name'),
                             'rules'=>"trim|required"
                             );
             $config[] = array(
                             'field'=>'email',
-                            'label'=>$this->lang->line('kago_email'),
-                            'rules'=>"trim|required|valid_captcha"
+                            'label'=>$this->lang->line('webshop_email'),
+                            'rules'=>"trim|required|valid_email"
                             );
 
 
@@ -630,16 +626,18 @@ class Welcome extends Shop_Controller
                 //$rules['write_ans']= 'trim|required|callback_security_check';
                 $config[] = array(
                             'field'=>'write_ans',
-                            'label'=>$this->lang->line('kago_write_ans'),
+                            'label'=>$this->lang->line('webshop_write_ans'),
                             'rules'=>"trim|required|callback_security_check"
                             );
             }
             $this->form_validation->set_rules($config);
-            $fields['email']	= lang('webshop_email');
-            $fields['name']	= lang('subscribe_name');
+            /*
+            $fields['email']	                = lang('webshop_email');
+            $fields['name']	                    = lang('webshop_name');
             $fields['recaptcha_response_field']	= 'Recaptcha';
-            $fields['write_ans']        = "Security answer ";
+            $fields['write_ans']                = "Security answer ";
             $this->form_validation->set_fields($fields);
+            */
             if ($this->form_validation->run() == FALSE)
             {
                 // if false outputs errors
@@ -647,19 +645,27 @@ class Welcome extends Shop_Controller
             }
             else
             {
+                
+                $name = $this->input->post('name');
                 $email = $this->input->post('email');
                 // otherwise check if the customer's email is in the database
                 $numrow = $this->MSubscribers->checkSubscriber($email);
-                if ($numrow == TRUE){
-                // you have registered before, set the message and redirect to login page.
-                flashMsg('info',lang('subscribe_registed_before'));
-                redirect( $this->module.'/subscribe','refresh');
+                if ($numrow == TRUE)
+                {
+                    // you have registered before, set the message and redirect to login page.
+                    flashMsg('info',lang('subscribe_registed_before'));
+                    redirect( $this->module.'/subscribe','refresh');
                 }
-                $this->MSubscribers->createSubscriber();
+                $this->MSubscribers->createSubscriber($name,$email);
                 flashMsg('success',lang('subscribe_thank_for_subscription'));
-                redirect( $this->module.'/subscribe','refresh');
-            }
+                redirect( 'welcome/subscribe','refresh');
+            } 
         }
+        $data['title']=$this->preference->item('site_name')." | ".'Subscribe to our News letter';
+        $data['question']= $this->security_question;
+        $data['security_method']= $this->security_method;
+        $captcha_result = '';
+        $data['cap_img'] = $this->_generate_captcha();
         $data['page'] = $this->config->item('backendpro_template_shop') . 'subscribe';
         $data['module'] = $this->module;
         $this->load->view($this->_container,$data);
@@ -672,13 +678,13 @@ class Welcome extends Shop_Controller
     {
         if (!$this->input->post('email'))
         {
-            $data['title']=$this->preference->item('site_name')." | ".'Unsubscribe our Newsletter';
-            $captcha_result = '';
-            $data['cap_img'] = $this->_generate_captcha();
-            $data['question']= $this->security_question;
+            $data['title']          =$this->preference->item('site_name')." | ".'Unsubscribe our Newsletter';
+            $captcha_result         = '';
+            $data['cap_img']        = $this->_generate_captcha();
+            $data['question']       = $this->security_question;
             $data['security_method']= $this->security_method;
-            $data['page'] = $this->config->item('backendpro_template_shop') . 'unsubscribe';
-            $data['module'] = $this->module;
+            $data['page']           = $this->config->item('backendpro_template_shop') . 'unsubscribe';
+            $data['module']         = $this->module;
             $this->load->view($this->_container,$data);
         }
         else
@@ -710,10 +716,12 @@ class Welcome extends Shop_Controller
                 //$rules['write_ans']= 'trim|required|callback_security_check';
             }
             $this->form_validation->set_rules($config);
+            /*
             $fields['email']	                = lang('webshop_email');
             $fields['recaptcha_response_field']	= 'Recaptcha';
             $fields['write_ans']                = lang('webshop_security_question');
             $this->form_validation->set_fields($fields);
+            */
             if ($this->form_validation->run() == FALSE)
             {
                 // if false outputs errors
@@ -1061,34 +1069,19 @@ class Welcome extends Shop_Controller
 
     function user_availability()
     {
-        //$where = $this->uri->segment(3);
-        //this varible contains the array of existing users
         $module = "subscribers";
-        //$where = "name";
-        /*
-        if($where =="name")
-        {
-            $what = $this->input->post('user_name');   
-        }
-        else
-        {
-            $what = $this->input->post('user_name');  
-        }
-        */
         $where = $this->input->post('where');
         $what = $this->input->post('what');
         $customers = $this->MKaimonokago->getAllSimple($module, $where , $what );
         if (!empty($customers))
         {
-         //user name is not available
-         echo "no";
+            $data['reply'] = "false";
         }
         else
         {
-          //username available i.e. user name doesn't exists in array
-          echo "yes";
+            $data['reply'] = "true";
         }    
+        $this->load->view("shop/ajaxsubscribe",$data);
+        //return $result;
     }
 }//end controller class
-
-?>

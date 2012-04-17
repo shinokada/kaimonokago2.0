@@ -1,3 +1,4 @@
+<?php /*  application/modules/slideshow/view/admin/admin_slideshow_create.php */ ?>
 <h2><?php echo $title;?></h2>
 <?php
 echo form_open_multipart('slideshow/admin/create')."\n";
@@ -14,6 +15,12 @@ echo "<td>";
 echo form_input($data);
 echo "</td></tr>\n";
 
+echo "<tr><td class='label'><label for='readmorelink'>".$this->lang->line('kago_readmorelink')."</label></td>\n";
+$data = array('name'=>'readmorelink','id'=>'readmorelink','class'=>'text');
+echo "<td>";
+echo form_input($data);
+echo "</td></tr>\n";
+
 echo "<tr><td class='label'><label for='long'>".$this->lang->line('kago_long_desc')."</label></td>\n";
 $data = array('name'=>'longdesc','id'=>'long','rows'=>'10', 'cols'=>'80');
 echo "<td id='nopad' >";
@@ -25,13 +32,13 @@ echo form_textarea($data) ;
 echo "</td></tr>\n";
 
 echo "<tr><td class='label'><label for='uimage'>".$this->lang->line('kago_select_img')."</label></td>\n";
-$data = array('name'=>'image','id'=>'uimage','rows'=>'10', 'cols'=>'80');
+$data = array('name'=>'image','id'=>'uimage','class'=>'mceimage','rows'=>'10', 'cols'=>'80');
 echo "<td id='nopad' >";
 echo form_textarea($data);
 echo "</td></tr>\n";
 
 echo "<tr><td class='label'><label for='uthumb'>".$this->lang->line('kago_select_thumb')."</label></td>\n";
-$data = array('name'=>'thumbnail','id'=>'uthumb','rows'=>'10', 'cols'=>'80');
+$data = array('name'=>'thumbnail','id'=>'uthumb','class'=>'mcethumb','rows'=>'10', 'cols'=>'80');
 echo "<td id='nopad' >";
 echo form_textarea($data);
 echo "</td></tr>\n";

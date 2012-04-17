@@ -1,4 +1,9 @@
-<div id="content">
+<?php
+	if(!defined('AJAX_INIT_DONE'))
+	{
+		die('Permission denied');
+	}
+?><div id="content">
 <?php 
 
 		$count = 1;

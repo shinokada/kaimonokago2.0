@@ -106,8 +106,8 @@ class Settings extends Admin_Controller
 		$config['field']['security_answer'] = array('rules'=>'trim');
 		
 		// for slideshows 
-		$config['field']['webshop_slideshow'] = array('type'=>'dropdown','params'=>array('options'=>array('none'=>$this->lang->line('userlib_none'),'interfade'=>$this->lang->line('userlib_interfade'),'cu3er'=>$this->lang->line('userlib_cu3er'),'coinslider'=>$this->lang->line('userlib_coin_slider'),'nivoslider'=>$this->lang->line('userlib_nivo_slider'))));
-		$config['field']['slideshow_two'] = array('type'=>'dropdown','params'=>array('options'=>array('none'=>$this->lang->line('userlib_none'),'interfade'=>$this->lang->line('userlib_interfade'),'cu3er'=>$this->lang->line('userlib_cu3er'),'coinslider'=>$this->lang->line('userlib_coin_slider'),'nivoslider'=>$this->lang->line('userlib_nivo_slider'))));
+		$config['field']['webshop_slideshow'] = array('type'=>'dropdown','params'=>array('options'=>array('none'=>$this->lang->line('userlib_none'),'jmpress'=>"jmpress",'interfade'=>$this->lang->line('userlib_interfade'),'cu3er'=>$this->lang->line('userlib_cu3er'),'coinslider'=>$this->lang->line('userlib_coin_slider'),'nivoslider'=>$this->lang->line('userlib_nivo_slider'))));
+		$config['field']['slideshow_two'] = array('type'=>'dropdown','params'=>array('options'=>array('none'=>$this->lang->line('userlib_none'),'jmpress'=>"jmpress",'interfade'=>$this->lang->line('userlib_interfade'),'cu3er'=>$this->lang->line('userlib_cu3er'),'coinslider'=>$this->lang->line('userlib_coin_slider'),'nivoslider'=>$this->lang->line('userlib_nivo_slider'))));
 
 		// module management
 		$config['field']['calendar'] = array('type'=>'boolean');

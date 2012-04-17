@@ -1,4 +1,9 @@
 <?php
+	if(!defined('AJAX_INIT_DONE'))
+	{
+		die('Permission denied');
+	}
+?><?php
 	include_once(CLASS_FILE);
 	require_once(CLASS_SESSION_ACTION);
 	require_once(CLASS_MANAGER);

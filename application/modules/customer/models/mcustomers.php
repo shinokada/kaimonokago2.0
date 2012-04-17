@@ -65,6 +65,7 @@ class MCustomers extends CI_Model
             $_SESSION['address'] = $row['address'];
             $_SESSION['city'] = $row['city'];
             $_SESSION['post_code'] = $row['post_code'];
+            $_SESSION['country'] = $row['country'];
         }
         else
         {
@@ -157,7 +158,7 @@ class MCustomers extends CI_Model
      *
      */
 
-    /**
+    /*
     *
     *
 	function getCustomers(){

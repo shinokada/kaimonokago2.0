@@ -1,12 +1,14 @@
-<?php print displayStatus();?>
+<?php  print displayStatus();?>
 <?php
+/*
 if ($this->session->flashdata('subscribe_msg')){
 	echo "<div class='status_box'>";
 	echo $this->session->flashdata('subscribe_msg');
 	echo "</div>";
 }
+*/
 ?>
-
+<?php //echo validation_errors('<div class="message error">','</div>'); ?>
 <?php echo form_open($module."/unsubscribe"); ?>
 <h1>
 <?php echo form_fieldset('Unsubscribe from Our Newsletter'); ?>

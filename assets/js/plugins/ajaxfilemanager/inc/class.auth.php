@@ -1,4 +1,9 @@
-<?php 
+<?php
+	if(!defined('AJAX_INIT_DONE'))
+	{
+		die('Permission denied');
+	}
+?><?php 
 /**
  * the purpose I added this class is to make the file system much flexible 
  * for customization.

@@ -7,6 +7,7 @@ frame.css
 */
 
 /* menustyle.css */
+/*
 #nav{
 list-style-type:none;
 list-style-position:outside;
@@ -19,7 +20,6 @@ display:block;
 padding:0px 6px;
 color:#fff;
 text-decoration:none;
-/*background-color:#808080;*/
 font-size: 12px;
 margin-bottom: 5px;
 }
@@ -30,7 +30,6 @@ margin-left:21px;
 }
 
 #nav li a:hover{
-	/*color:#333333;*/
 	text-decoration: none;
 }
 
@@ -115,6 +114,7 @@ line-height:2.2em;
 	color:#ffffff;
 	text-decoration: none;
 }
+*/
 
 /* shop.css */
 
@@ -126,7 +126,7 @@ Code licensed under the BSD License:
 http://developer.yahoo.net/yui/license.txt
 version: 2.5.2
 */
-html{color:#000;background:#FFF;}
+html{color:#000;}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
 table{border-collapse:collapse;border-spacing:0;border:1px solid;}
 fieldset,img{border:0;}
@@ -215,13 +215,12 @@ hr { background:none; height:0px; border:0px; border-top:0px solid #ffffff; }
 /*  Header navigation   */ 
 
 #headnav {
-	
-	background-color:#146EB4;
-	position: relative;
+	/*background-color:#146EB4;
 	height: 39px;
 	width: 100%;
 	left: 0px;
 	top: 143px;
+	position: relative;*/
 }
 
 #logotop {
@@ -262,13 +261,14 @@ hr { background:none; height:0px; border:0px; border-top:0px solid #ffffff; }
 	font-size:90%;
 	padding-right:10px;
 }
+/*
 #header a {
 	text-decoration:none;
 	color:#1981b7;
 	font-weight:500;
 }
 #header a:hover { text-decoration:underline; }
-
+*/
 /*formats the mini cart subtotal  in the right menu*/
 .cartsubtotalminicart{
 	color: #000000;
@@ -845,8 +845,9 @@ text-align:center;
 /* Styles to be use in 6.50 */
 /* Main content area */
 #main {
+   margin: 0 0 0 182px;
+   width: 516px;
 	line-height:14px;
-	width:516px;
 	padding:6px 25px 14px;
 	text-align: left;
 }
@@ -2422,10 +2423,7 @@ body{
     position:relative;
 	min-height:1400px;
 }
-#main {
-   margin: 0 0 0 182px;
-   width: 566px;
-}
+
 .browserSafari #main{ width: 516px;} 
 .browserChrome #main{ width: 516px;} 
 #left {
@@ -2653,4 +2651,69 @@ subscribe
  padding:3px;
  font-weight:bold;
  color:#CC0000;
+}
+
+
+
+/* JS disabled styles */
+.no-js nav li:hover ul { display:block; }
+
+/* base nav styles */
+nav { display:block; margin:0 auto 0; /*border:1px solid #222;*/ position:relative;  font:16px Tahoma, Sans-serif; top: 143px;}
+nav ul { padding:0; margin:0; }
+nav li { position:relative; float:left; list-style-type:none; }
+nav ul:after { content:"."; display:block; height:0; clear:both; visibility:hidden; }
+nav li a { display:block; padding:10px 20px; border-left:1px solid #146EB4; border-right:1px solid #fff; color:#eee; text-decoration:none; }
+nav li a:focus { outline:none; text-decoration:underline; }
+nav li:first-child a { border-left:none; }
+nav li.last a { border-right:none; }
+nav a span { display:block; float:right; margin-left:5px; }
+nav ul ul { display:none; width:100%; position:absolute; left:0; background:#146EB4; }
+nav ul ul li { float:none; }
+nav ul ul a { padding:5px 10px; border-left:none; border-right:none; font-size:14px; }
+nav ul ul a:hover { background-color:#146EB4; }
+nav li a:hover {color:#fff; text-decoration:none;}
+/*
+Save this file in the css directory as nav.css. The first rule is purely for when JavaScript is disabled, 
+and allows the hidden submenu to be displayed on hover purely with CSS. 
+The rest of the code defines a set of base styles that format the <nav> menu in the way 
+that we want without adding anything too decorative. Note that we’re using the :after 
+pseudo-selector to clear the floated list items; normally this would be 
+added using a class name to that it could be applied to the containers of 
+any floated elements on the page. At this point our page should look like 
+this:
+*/
+
+/* CSS3 */
+.borderradius nav { -moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px; }
+.cssgradients nav { background-image:-moz-linear-gradient(0% 22px 90deg, #222, #999); background-image:-webkit-gradient(linear, 0% 0%, 0% 70%, from(#999), to(#222)); }
+.boxshadow.rgba nav { -moz-box-shadow:2px 2px 2px rgba(0,0,0,.75); -webkit-box-shadow:2px 2px 2px rgba(0,0,0,.75); box-shadow:2px 2px 2px rgba(0,0,0,.75); }
+.cssgradients nav li:hover { background-image:-moz-linear-gradient(0% 100px 90deg, #999, #222); background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#222), to(#555)); }
+.borderradius nav ul ul { -moz-border-radius-bottomleft:4px; -moz-border-radius-bottomright:4px; -webkit-border-bottom-left-radius:4px; -webkit-border-bottom-right-radius:4px; border-bottom-left-radius:4px; border-bottom-right-radius:4px; }
+.boxshadow.rgba nav ul ul { background-color:rgba(0,0,0,0.8); -moz-box-shadow:2px 2px 2px rgba(0,0,0,.8); -webkit-box-shadow:2px 2px 2px rgba(0,0,0,.8); box-shadow:2px 2px 2px rgba(0,0,0,.8); }
+.rgba nav ul ul li { border-left:1px solid rgba(0,0,0,0.1); border-right:1px solid rgba(0,0,0,0.1); }
+.rgba nav ul ul a:hover { background-color:rgba(85,85,85,.9); }
+.borderradius.rgba nav ul ul li.last { border-left:1px solid rgba(0,0,0,0.1); border-bottom:1px solid rgba(0,0,0,0.1); -moz-border-radius-bottomleft:4px; -moz-border-radius-bottomright:4px; -webkit-border-bottom-left-radius:4px; -webkit-border-bottom-right-radius:4px; border-bottom-left-radius:4px; border-bottom-right-radius:4px; }
+.csstransforms ul a span { -moz-transform:rotate(-180deg);-webkit-transform:rotate(-180deg); }
+
+
+/* html5 menu fallbacks */
+.no-cssgradients nav, .no-js nav { padding-bottom:4px; border:none; background:url(../fallback/navBG.gif) repeat-x 0 0; }
+.no-borderradius nav ul, .no-js nav ul { background:url(../fallback/navRight.gif) no-repeat 100% 0; }
+.no-borderradius nav ul ul, .no-js nav ul ul { background:none; }
+.no-borderradius nav li, .no-js nav li { height:44px; }
+.no-cssgradients nav li:hover, .no-js nav li:hover { background:url(../fallback/navOverBG.gif) repeat-x 0 0; }
+.no-borderradius nav li li, .no-js nav li li { height:auto; width:98%; left:-2px; }
+.no-borderradius nav li:first-child, .no-js nav li:first-child { background:url(../fallback/navLeft.gif) no-repeat 0 0; }
+.no-borderradius nav li:first-child:hover, .no-js nav li:first-child:hover { background:url(../fallback/navOverLeft.gif) no-repeat 0 0; }
+.no-borderradius nav li li:first-child, .no-js nav li li:first-child { background:none; }
+.no-rgba nav ul ul, .no-js nav ul ul { left:1px; padding-left:2px; background:url(../fallback/subnavBG.png) no-repeat 100% 100%; }
+.no-rgba nav ul ul a, .no-js nav ul ul a { left:3px; }
+.no-rgba nav ul ul a:hover { background:url(../fallback/subOverBG.png) repeat 0 0; }
+.no-csstransforms ul a span { height:7px; width:12px; margin-top:8px; text-indent:-5000px; overflow:hidden; background:url(../fallback/indicator.png) no-repeat 0 0; }
+.no-borderradius ul ul li.last { margin-bottom:10px; }
+.no-cssgradients.boxshadow nav { box-shadow:none; }
+
+#pagecont{
+
 }
