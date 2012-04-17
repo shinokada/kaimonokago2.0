@@ -3,17 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 17, 2012 at 09:43 PM
+-- Generation Time: Apr 17, 2012 at 09:56 PM
 -- Server version: 5.5.9
 -- PHP Version: 5.2.17
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `kaimonokago20`
@@ -134,23 +128,23 @@ CREATE TABLE `be_acl_resources` (
   UNIQUE KEY `name` (`name`),
   KEY `lft` (`lft`),
   KEY `rgt` (`rgt`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
 
 --
 -- Dumping data for table `be_acl_resources`
 --
 
-INSERT INTO `be_acl_resources` VALUES(1, 1, 76, 'Site', NULL);
-INSERT INTO `be_acl_resources` VALUES(2, 56, 75, 'Control Panel', NULL);
-INSERT INTO `be_acl_resources` VALUES(3, 57, 74, 'System', NULL);
-INSERT INTO `be_acl_resources` VALUES(4, 68, 69, 'Members', NULL);
-INSERT INTO `be_acl_resources` VALUES(5, 58, 67, 'Access Control', NULL);
-INSERT INTO `be_acl_resources` VALUES(6, 70, 71, 'Settings', NULL);
-INSERT INTO `be_acl_resources` VALUES(7, 72, 73, 'Utilities', NULL);
-INSERT INTO `be_acl_resources` VALUES(8, 65, 66, 'Permissions', NULL);
-INSERT INTO `be_acl_resources` VALUES(9, 63, 64, 'Groups', NULL);
-INSERT INTO `be_acl_resources` VALUES(10, 61, 62, 'Resources', NULL);
-INSERT INTO `be_acl_resources` VALUES(11, 59, 60, 'Actions', NULL);
+INSERT INTO `be_acl_resources` VALUES(1, 1, 78, 'Site', NULL);
+INSERT INTO `be_acl_resources` VALUES(2, 56, 77, 'Control Panel', NULL);
+INSERT INTO `be_acl_resources` VALUES(3, 57, 76, 'System', NULL);
+INSERT INTO `be_acl_resources` VALUES(4, 70, 71, 'Members', NULL);
+INSERT INTO `be_acl_resources` VALUES(5, 60, 69, 'Access Control', NULL);
+INSERT INTO `be_acl_resources` VALUES(6, 72, 73, 'Settings', NULL);
+INSERT INTO `be_acl_resources` VALUES(7, 74, 75, 'Utilities', NULL);
+INSERT INTO `be_acl_resources` VALUES(8, 67, 68, 'Permissions', NULL);
+INSERT INTO `be_acl_resources` VALUES(9, 65, 66, 'Groups', NULL);
+INSERT INTO `be_acl_resources` VALUES(10, 63, 64, 'Resources', NULL);
+INSERT INTO `be_acl_resources` VALUES(11, 61, 62, 'Actions', NULL);
 INSERT INTO `be_acl_resources` VALUES(12, 26, 55, 'General', 0);
 INSERT INTO `be_acl_resources` VALUES(13, 53, 54, 'Calendar', 0);
 INSERT INTO `be_acl_resources` VALUES(14, 51, 52, 'Category', 0);
@@ -178,6 +172,7 @@ INSERT INTO `be_acl_resources` VALUES(36, 2, 11, 'Fitness', 0);
 INSERT INTO `be_acl_resources` VALUES(37, 31, 32, 'Multi languages', 0);
 INSERT INTO `be_acl_resources` VALUES(38, 29, 30, 'Slideshow', 0);
 INSERT INTO `be_acl_resources` VALUES(39, 27, 28, 'Playroom', 0);
+INSERT INTO `be_acl_resources` VALUES(40, 58, 59, 'Phpinfo', 0);
 
 -- --------------------------------------------------------
 
@@ -246,8 +241,8 @@ INSERT INTO `be_preferences` VALUES('bcc_batch_size', '200');
 INSERT INTO `be_preferences` VALUES('login_field', 'email');
 INSERT INTO `be_preferences` VALUES('main_module_name', 'welcome');
 INSERT INTO `be_preferences` VALUES('categories_parent_id', '1');
-INSERT INTO `be_preferences` VALUES('admin_email', 'admin@gmail.com');
-INSERT INTO `be_preferences` VALUES('webshop_slideshow', 'coinslider');
+INSERT INTO `be_preferences` VALUES('admin_email', '');
+INSERT INTO `be_preferences` VALUES('webshop_slideshow', 'jmpress');
 INSERT INTO `be_preferences` VALUES('slideshow_two', 'none');
 INSERT INTO `be_preferences` VALUES('playroom_parent_id', '10');
 INSERT INTO `be_preferences` VALUES('calendar', '1');
@@ -271,8 +266,8 @@ INSERT INTO `be_preferences` VALUES('ga_tracking', '');
 INSERT INTO `be_preferences` VALUES('ga_profile', '');
 INSERT INTO `be_preferences` VALUES('ga_email', '');
 INSERT INTO `be_preferences` VALUES('ga_password', '');
-INSERT INTO `be_preferences` VALUES('dashboard_rss', 'http://www.digg.com/rss/indexdig.xml');
-INSERT INTO `be_preferences` VALUES('dashboard_rss_count', '10');
+INSERT INTO `be_preferences` VALUES('dashboard_rss', 'http://feeds.feedburner.com/nettuts-summary');
+INSERT INTO `be_preferences` VALUES('dashboard_rss_count', '5');
 INSERT INTO `be_preferences` VALUES('company_name', '');
 INSERT INTO `be_preferences` VALUES('company_address', '');
 INSERT INTO `be_preferences` VALUES('frontend_multi_language', '1');
@@ -282,7 +277,7 @@ INSERT INTO `be_preferences` VALUES('company_country', 'Japan');
 INSERT INTO `be_preferences` VALUES('company_organization_number', '992591412');
 INSERT INTO `be_preferences` VALUES('company_telephone', '+ 81 1122 3344');
 INSERT INTO `be_preferences` VALUES('company_mobile', '');
-INSERT INTO `be_preferences` VALUES('company_other_one', 'The contents of website are the copyright of Kaimonokago © 2012. All rights reserved.  Web: Okada Design AS');
+INSERT INTO `be_preferences` VALUES('company_other_one', 'The contents of website are the copyright of Kaimonokago � 2012. All rights reserved.  Web: Okada Design AS');
 INSERT INTO `be_preferences` VALUES('company_other_two', '');
 INSERT INTO `be_preferences` VALUES('category_menu_id', '16, 22');
 INSERT INTO `be_preferences` VALUES('lilly_fairies_submenu_id', '1');
@@ -290,12 +285,12 @@ INSERT INTO `be_preferences` VALUES('parentid_other_illust', '27');
 INSERT INTO `be_preferences` VALUES('quicksand_colorbox_cat_id', '11');
 INSERT INTO `be_preferences` VALUES('sharethis_pub_key', '');
 INSERT INTO `be_preferences` VALUES('sharethis_direction', 'vertical');
-INSERT INTO `be_preferences` VALUES('sharethis_services', 'facebook, twitter, yahoo, email, sharethis, plusone');
+INSERT INTO `be_preferences` VALUES('sharethis_services', 'googleplus, facebook, twitter, yahoo, email, sharethis');
 INSERT INTO `be_preferences` VALUES('sharethis_size', 'large');
 INSERT INTO `be_preferences` VALUES('other_work_main', '');
 INSERT INTO `be_preferences` VALUES('customer_registration', '0');
 INSERT INTO `be_preferences` VALUES('twittername', '');
-INSERT INTO `be_preferences` VALUES('twittercount', '10');
+INSERT INTO `be_preferences` VALUES('twittercount', '20');
 
 -- --------------------------------------------------------
 
@@ -307,7 +302,7 @@ CREATE TABLE `be_resources` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `locked` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
 
 --
 -- Dumping data for table `be_resources`
@@ -351,6 +346,7 @@ INSERT INTO `be_resources` VALUES(36, 0);
 INSERT INTO `be_resources` VALUES(37, 0);
 INSERT INTO `be_resources` VALUES(38, 0);
 INSERT INTO `be_resources` VALUES(39, 0);
+INSERT INTO `be_resources` VALUES(40, 0);
 
 -- --------------------------------------------------------
 
@@ -380,7 +376,7 @@ CREATE TABLE `be_users` (
 -- Dumping data for table `be_users`
 --
 
-INSERT INTO `be_users` VALUES(1, 'admin', '0993abd18b04dce02cafde93878540f109592da5', 'admin@gmail.com', 1, 2, NULL, '2012-03-17 20:33:13', '2012-02-22 13:46:09', '2012-03-17 21:56:17');
+INSERT INTO `be_users` VALUES(1, 'admin', '0993abd18b04dce02cafde93878540f109592da5', 'admin@gmail.com', 1, 2, NULL, '2012-04-17 21:29:21', '2012-02-22 13:46:09', '2012-03-17 21:56:17');
 
 -- --------------------------------------------------------
 
@@ -427,6 +423,11 @@ CREATE TABLE `ci_sessions` (
 -- Dumping data for table `ci_sessions`
 --
 
+INSERT INTO `ci_sessions` VALUES('1548215a3dd89fd4bc008c650bee3d29', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.142 Safari/535.19', 1334637790, 'a:1:{s:9:"user_data";s:0:"";}');
+INSERT INTO `ci_sessions` VALUES('a01fe22dea805234432640787cc2b486', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.142 Safari/535.19', 1334665529, 'a:1:{s:9:"user_data";s:0:"";}');
+INSERT INTO `ci_sessions` VALUES('b1675238650626fee1cc81864ca33353', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:11.0) Gecko/20100101 Firefox/11.0', 1334642694, 'a:12:{s:9:"user_data";s:0:"";s:2:"id";s:1:"1";s:8:"username";s:5:"admin";s:5:"email";s:15:"admin@gmail.com";s:8:"password";s:40:"0993abd18b04dce02cafde93878540f109592da5";s:6:"active";s:1:"1";s:10:"last_visit";s:19:"2012-04-17 07:54:56";s:7:"created";s:19:"2012-02-22 13:46:09";s:8:"modified";s:19:"2012-03-17 21:56:17";s:5:"group";s:13:"Administrator";s:8:"group_id";s:1:"2";s:9:"post_code";s:1:"0";}');
+INSERT INTO `ci_sessions` VALUES('d02c712618a95923dc5f62aa24818c0b', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:11.0) Gecko/20100101 Firefox/11.0', 1334666518, 'a:12:{s:9:"user_data";s:0:"";s:2:"id";s:1:"1";s:8:"username";s:5:"admin";s:5:"email";s:15:"admin@gmail.com";s:8:"password";s:40:"0993abd18b04dce02cafde93878540f109592da5";s:6:"active";s:1:"1";s:10:"last_visit";s:19:"2012-04-17 12:33:31";s:7:"created";s:19:"2012-02-22 13:46:09";s:8:"modified";s:19:"2012-03-17 21:56:17";s:5:"group";s:13:"Administrator";s:8:"group_id";s:1:"2";s:9:"post_code";s:1:"0";}');
+INSERT INTO `ci_sessions` VALUES('f362384301a3fc226180295d2c656c44', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.142 Safari/535.19', 1334657069, 'a:1:{s:9:"user_data";s:0:"";}');
 
 -- --------------------------------------------------------
 
@@ -483,15 +484,15 @@ INSERT INTO `omc_category` VALUES(5, 'Japanese category', '', '', '', '', 'activ
 INSERT INTO `omc_category` VALUES(7, 'Meditation', 'Meditation in English', '', '', '', 'active', 30, 1, 0, 7);
 INSERT INTO `omc_category` VALUES(9, 'Mountain', '', '', '', '', 'active', 10, 1, 0, 9);
 INSERT INTO `omc_category` VALUES(11, 'River', '', '', '', '', 'active', 25, 1, 0, 11);
-INSERT INTO `omc_category` VALUES(13, '山', 'Fjell p&aring; Norsk', '', '', '', 'active', 10, 5, 1, 9);
+INSERT INTO `omc_category` VALUES(13, '?', 'Fjell p&aring; Norsk', '', '', '', 'active', 10, 5, 1, 9);
 INSERT INTO `omc_category` VALUES(14, 'Elv', 'elv', '', '', '', 'active', 25, 5, 1, 11);
-INSERT INTO `omc_category` VALUES(15, '瞑想', '瞑想', '', '', '', 'active', 30, 5, 1, 7);
+INSERT INTO `omc_category` VALUES(15, '??', '??', '', '', '', 'active', 30, 5, 1, 7);
 INSERT INTO `omc_category` VALUES(16, 'Alver', 'Alver', '', '', '', 'active', 40, 5, 1, 2);
 INSERT INTO `omc_category` VALUES(17, 'Angels', 'Angels in english', '', '', '', 'active', 35, 1, 0, 17);
-INSERT INTO `omc_category` VALUES(19, '天使', 'Engler', '', '', '', 'active', 35, 5, 1, 17);
+INSERT INTO `omc_category` VALUES(19, '??', 'Engler', '', '', '', 'active', 35, 5, 1, 17);
 INSERT INTO `omc_category` VALUES(20, 'Magic', 'Magic desc.', '', '', '', 'active', 55, 1, 0, 20);
 INSERT INTO `omc_category` VALUES(23, 'Ocean', 'Ocean desc', '', '', '', 'active', 70, 1, 0, 23);
-INSERT INTO `omc_category` VALUES(24, 'マジック', '', '<p>Content</p>', '', '', 'active', NULL, 5, 1, 20);
+INSERT INTO `omc_category` VALUES(24, '????', '', '<p>Content</p>', '', '', 'active', NULL, 5, 1, 20);
 
 -- --------------------------------------------------------
 
@@ -527,13 +528,15 @@ CREATE TABLE `omc_customer` (
   `address` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `city` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `post_code` int(10) unsigned NOT NULL,
+  `country` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `omc_customer`
 --
 
+INSERT INTO `omc_customer` VALUES(1, 'da39a3ee5e6b4b0d', 'test123', '', 0, 'test@gmail.com', '', '', 0, 'Japan');
 
 -- --------------------------------------------------------
 
@@ -551,16 +554,11 @@ CREATE TABLE `omc_email` (
   `sendto` text COLLATE utf8_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ;
 
 --
 -- Dumping data for table `omc_email`
 --
-
-INSERT INTO `omc_email` VALUES(7, 'testing email', '<p>testing email here.</p>', '', '', '', '1_admin@gmail.com', '2012-03-09 22:08:56');
-INSERT INTO `omc_email` VALUES(9, 'sending blue', '<p>hahah</p>', '', '', '', '1_admin@gmail.com', '2012-03-10 08:43:21');
-INSERT INTO `omc_email` VALUES(10, 'sendig agagi ', '<p>haha djh asdjfh</p>', '', '', '', '1_admin@gmail.com', '2012-03-10 08:44:19');
-INSERT INTO `omc_email` VALUES(11, 'test', '<p>test</p>', '', '', '', '1_admin@gmail.com,3_test@gmail.com', '2012-03-16 21:21:29');
 
 -- --------------------------------------------------------
 
@@ -594,6 +592,7 @@ INSERT INTO `omc_emailtemplate` VALUES(9, 'redrose', 0);
 CREATE TABLE `omc_languages` (
   `id` int(25) NOT NULL AUTO_INCREMENT,
   `langname` text COLLATE utf8_unicode_ci NOT NULL,
+  `short_lang` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
   `status` enum('active','inactive') COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
@@ -602,7 +601,7 @@ CREATE TABLE `omc_languages` (
 -- Dumping data for table `omc_languages`
 --
 
-INSERT INTO `omc_languages` VALUES(1, 'japanese', 'active');
+INSERT INTO `omc_languages` VALUES(1, 'japanese', 'jp', 'active');
 
 -- --------------------------------------------------------
 
@@ -630,13 +629,13 @@ CREATE TABLE `omc_menus` (
 INSERT INTO `omc_menus` VALUES(1, 'English menu', '', 'active', 0, 0, 0, 0, 0);
 INSERT INTO `omc_menus` VALUES(2, 'Home', '', 'active', 1, 10, 0, 1, 0);
 INSERT INTO `omc_menus` VALUES(5, 'Japanese menu', '', 'active', 0, 0, 1, 0, 1);
-INSERT INTO `omc_menus` VALUES(6, 'ネットショップ', '', 'active', 5, 10, 1, 6, 2);
+INSERT INTO `omc_menus` VALUES(6, '???????', '', 'active', 5, 10, 1, 6, 2);
 INSERT INTO `omc_menus` VALUES(8, 'Contact', '', 'active', 1, 30, 0, 7, 0);
-INSERT INTO `omc_menus` VALUES(9, 'お問い合わせ', '', 'active', 5, 30, 1, 8, 8);
+INSERT INTO `omc_menus` VALUES(9, '??????', '', 'active', 5, 30, 1, 8, 8);
 INSERT INTO `omc_menus` VALUES(10, 'About Us', '', 'active', 1, 40, 0, 3, 0);
-INSERT INTO `omc_menus` VALUES(11, 'セシリアについて', '', 'active', 5, 40, 1, 4, 10);
+INSERT INTO `omc_menus` VALUES(11, '????????', '', 'active', 5, 40, 1, 4, 10);
 INSERT INTO `omc_menus` VALUES(12, 'Service', '', 'active', 1, 60, 0, 17, 0);
-INSERT INTO `omc_menus` VALUES(14, 'サービス', '', 'active', 5, 60, 1, 18, 12);
+INSERT INTO `omc_menus` VALUES(14, '????', '', 'active', 5, 60, 1, 18, 12);
 INSERT INTO `omc_menus` VALUES(15, 'About shop', '', 'active', 10, 10, 0, 22, 0);
 
 -- --------------------------------------------------------
@@ -670,12 +669,14 @@ CREATE TABLE `omc_order` (
   `delivery_date` datetime NOT NULL,
   `payment_date` datetime NOT NULL,
   PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `omc_order`
 --
 
+INSERT INTO `omc_order` VALUES(1, 1, 800.00, '2012-04-10 13:30:57', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `omc_order` VALUES(2, 3, 300.00, '2012-04-10 21:01:28', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -690,12 +691,14 @@ CREATE TABLE `omc_order_item` (
   `quantity` int(10) unsigned NOT NULL,
   `price` decimal(10,2) NOT NULL,
   PRIMARY KEY (`order_item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `omc_order_item`
 --
 
+INSERT INTO `omc_order_item` VALUES(1, 1, 3, 2, 400.00);
+INSERT INTO `omc_order_item` VALUES(2, 2, 5, 10, 30.00);
 
 -- --------------------------------------------------------
 
@@ -723,14 +726,14 @@ CREATE TABLE `omc_pages` (
 
 INSERT INTO `omc_pages` VALUES(1, 'Home', '', '', '', '', 'welcome', '<p>Content for home page. Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing? Natoque? Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim. Dis odio enim nec. Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.<br /><br /></p>', 'active', 0);
 INSERT INTO `omc_pages` VALUES(3, 'About', '', '', '', '', 'about', '<p>About us.</p>\n<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing? Natoque?</p>\n<p>Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim. Dis odio enim nec. Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.<br /><br /></p>', 'active', 0);
-INSERT INTO `omc_pages` VALUES(4, 'セシリアについて', '', '', '', '', 'about', '<p>セシリアは</p>\n<p>Tempor! <a href="http://bbc.com">Parturient ac</a> sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing? Natoque?</p>\n<p>Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim. Dis odio enim nec. Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.<br /><br /></p>', 'active', 1);
-INSERT INTO `omc_pages` VALUES(6, 'ホーム', '', '', '', '', 'welcome', '<p>Forsiden p&aring; norsk</p>', 'active', 1);
+INSERT INTO `omc_pages` VALUES(4, '????????', '', '', '', '', 'about', '<p>?????</p>\n<p>Tempor! <a href="http://bbc.com">Parturient ac</a> sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing? Natoque?</p>\n<p>Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim. Dis odio enim nec. Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.<br /><br /></p>', 'active', 1);
+INSERT INTO `omc_pages` VALUES(6, '???', '', '', '', '', 'welcome', '<p>Forsiden p&aring; norsk</p>', 'active', 1);
 INSERT INTO `omc_pages` VALUES(7, 'Contact', '', '', '', '', 'contact_us', '', 'active', 0);
-INSERT INTO `omc_pages` VALUES(8, 'お問い合わせ', '', '', '', '', 'contact_us', '<p>Kontakt oss</p>', 'active', 1);
+INSERT INTO `omc_pages` VALUES(8, '??????', '', '', '', '', 'contact_us', '<p>Kontakt oss</p>', 'active', 1);
 INSERT INTO `omc_pages` VALUES(17, 'Service', '', '', '', '', 'service', '<p>service content</p>\n<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing? Natoque?</p>\n<p>Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim. Dis odio enim nec. Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.<br /><br /></p>', 'active', 0);
-INSERT INTO `omc_pages` VALUES(18, 'サービス', '', '', '', '', 'service', '<p>サービス</p>\n<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing? Natoque?</p>\n<p>Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim. Dis odio enim nec. Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.<br /><br /></p>', 'active', 1);
+INSERT INTO `omc_pages` VALUES(18, '????', '', '', '', '', 'service', '<p>????</p>\n<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing? Natoque?</p>\n<p>Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim. Dis odio enim nec. Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.<br /><br /></p>', 'active', 1);
 INSERT INTO `omc_pages` VALUES(20, 'Shopping guide', '', '', '', '', 'guide', '<p>Shopping guide content.</p>\n<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing?</p>\n<p>Natoque? Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim. Dis odio enim nec. Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.<br /><br /></p>', 'active', 0);
-INSERT INTO `omc_pages` VALUES(21, 'ショッピングガイド', '', '', '', '', 'guide', '<p>ショッピングガイド</p>\n<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing? Natoque?</p>\n<p>Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim. Dis odio enim nec. Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.</p>', 'active', 1);
+INSERT INTO `omc_pages` VALUES(21, '?????????', '', '', '', '', 'guide', '<p>?????????</p>\n<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing? Natoque?</p>\n<p>Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim. Dis odio enim nec. Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.</p>', 'active', 1);
 INSERT INTO `omc_pages` VALUES(22, 'About shop', '', '', '', '', 'about_shop', '<p>Content for About shop.</p>', 'active', 0);
 
 -- --------------------------------------------------------
@@ -757,6 +760,7 @@ CREATE TABLE `omc_products` (
   `price` float(7,2) NOT NULL,
   `lang_id` int(2) unsigned NOT NULL,
   `table_id` int(11) unsigned NOT NULL,
+  `weblink` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
@@ -764,21 +768,21 @@ CREATE TABLE `omc_products` (
 -- Dumping data for table `omc_products`
 --
 
-INSERT INTO `omc_products` VALUES(1, 'Fairy', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing?</p>\n<p>Natoque? Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim.</p>\n<p>Dis odio enim nec. Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.</p>', '<p><img src="../../../../assets/images/cd/thumbnails/114x207_11.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/cd/242x440_11.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 2, 'webshop', 'most sold', 200.00, 0, 1);
-INSERT INTO `omc_products` VALUES(2, '妖精', 1, '', '<p>妖精</p>\n<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing? Natoque?</p>\n<p>Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim. Dis odio enim nec.</p>\n<p>Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.</p>', '<p><img src="../../../../assets/images/cd/thumbnails/114x207_11.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/cd/242x440_11.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 16, 'webshop', 'most sold', 40.00, 1, 1);
-INSERT INTO `omc_products` VALUES(3, 'Meditation', 1, 'meditation ', '', '<p><img src="../../../../assets/images/books/thumbnails/114x207_6.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/books/242x440_6.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 7, 'webshop', 'most sold', 400.00, 0, 3);
-INSERT INTO `omc_products` VALUES(4, '瞑想', 1, '<p>medtation en</p>', '', '<p><img src="../../../../assets/images/books/thumbnails/114x207_6.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/books/242x440_6.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 15, 'webshop', 'most sold', 700.00, 1, 3);
-INSERT INTO `omc_products` VALUES(5, 'Kawa', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing?</p>\n<p>Natoque? Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim.</p>\n<p>Dis odio enim nec. Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.</p>', '<p><img src="../../../../assets/images/cd/thumbnails/114x207_12.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/cd/242x440_12.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 11, 'webshop', 'new product', 30.00, 0, 5);
-INSERT INTO `omc_products` VALUES(8, '川', 1, '', '', '<p><img src="../../../../assets/images/cd/thumbnails/114x207_12.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/cd/242x440_12.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 14, 'webshop', 'most sold', 340.00, 1, 5);
-INSERT INTO `omc_products` VALUES(9, 'Blue angels', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing?</p>', '<p><img src="../../../assets/images/books/thumbnails/114x207_6.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../assets/images/books/242x440_6.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 17, 'webshop', 'most sold', 0.00, 0, 9);
-INSERT INTO `omc_products` VALUES(10, '青い妖精', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing?</p>', '<p><img src="../../../assets/images/books/thumbnails/114x207_6.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../assets/images/books/242x440_6.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 19, 'webshop', 'most sold', 340.00, 1, 9);
-INSERT INTO `omc_products` VALUES(11, 'Hello everyone', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing?</p>', '<p><img src="../../../assets/images/books/thumbnails/114x207_13.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../assets/images/books/242x440_13.jpg" alt="" width="242" height="440" /></p>', 50, '', '', 'active', 7, 'webshop', 'most sold', 40.00, 0, 11);
-INSERT INTO `omc_products` VALUES(12, 'Hi på deg', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing?</p>', '<p><img src="../../../assets/images/books/thumbnails/114x207_13.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../assets/images/books/242x440_13.jpg" alt="" width="242" height="440" /></p>', 50, '', '', 'active', 15, 'webshop', 'most sold', 340.00, 1, 11);
-INSERT INTO `omc_products` VALUES(13, 'Mt Fuji', 1, '', '', '<p><img src="../../../../assets/images/books/thumbnails/114x207_14.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/books/242x440_14.jpg" alt="" width="242" height="440" /></p>', 60, '', '', 'active', 9, 'webshop', 'none', 50.00, 0, 13);
-INSERT INTO `omc_products` VALUES(14, 'Mt Fuji', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing.</p>', '<p><img src="../../../../assets/images/books/thumbnails/114x207_14.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/books/242x440_14.jpg" alt="" width="242" height="440" /></p>', 60, '', '', 'active', 13, 'webshop', 'none', 230.00, 1, 13);
-INSERT INTO `omc_products` VALUES(15, 'Go Harry', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet,</p>', '<p><img src="../../../assets/images/cd/thumbnails/114x207_11.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../assets/images/cd/242x440_11.jpg" alt="" width="242" height="440" /></p>', 80, '', '', 'active', 20, 'webshop', 'most sold', 50.00, 0, 15);
-INSERT INTO `omc_products` VALUES(16, 'Gå Harry', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet,</p>', '<p><img src="../../../assets/images/cd/thumbnails/114x207_11.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../assets/images/cd/242x440_11.jpg" alt="" width="242" height="440" /></p>', 80, '', '', 'active', 7, 'webshop', 'most sold', 220.00, 1, 15);
-INSERT INTO `omc_products` VALUES(17, 'Amazon river', 1, '', '<p>Long desc</p>', '', '', 70, '', '', 'active', 11, 'none', 'none', 0.00, 0, 17);
+INSERT INTO `omc_products` VALUES(1, 'Fairy', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing?</p>\n<p>Natoque? Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim.</p>\n<p>Dis odio enim nec. Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.</p>', '<p><img src="../../../../assets/images/cd/thumbnails/114x207_11.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/cd/242x440_11.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 2, 'webshop', 'most sold', 200.00, 0, 1, NULL);
+INSERT INTO `omc_products` VALUES(2, '??', 1, '', '<p>??</p>\n<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing? Natoque?</p>\n<p>Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim. Dis odio enim nec.</p>\n<p>Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.</p>', '<p><img src="../../../../assets/images/cd/thumbnails/114x207_11.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/cd/242x440_11.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 16, 'webshop', 'most sold', 40.00, 1, 1, NULL);
+INSERT INTO `omc_products` VALUES(3, 'Meditation', 1, 'meditation ', '', '<p><img src="../../../../assets/images/books/thumbnails/114x207_6.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/books/242x440_6.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 7, 'webshop', 'most sold', 400.00, 0, 3, NULL);
+INSERT INTO `omc_products` VALUES(4, '??', 1, '<p>medtation en</p>', '', '<p><img src="../../../../assets/images/books/thumbnails/114x207_6.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/books/242x440_6.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 15, 'webshop', 'most sold', 700.00, 1, 3, NULL);
+INSERT INTO `omc_products` VALUES(5, 'Kawa', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing?</p>\n<p>Natoque? Aliquet ut, platea lacus in! Tempor hac placerat magna massa dignissim egestas turpis nec sed! Elementum in. Etiam magnis dictumst? Pulvinar mid facilisis mid enim.</p>\n<p>Dis odio enim nec. Odio in vel? Parturient vel eros! In, etiam etiam vel, pulvinar tortor, diam etiam tristique urna, porttitor habitasse, tincidunt aliquet tristique in tristique nunc mid in, rhoncus ac lacus placerat, nec urna in dis, urna et rhoncus lectus? Rhoncus nisi auctor arcu scelerisque, nec ut scelerisque.</p>', '<p><img src="../../../../assets/images/cd/thumbnails/114x207_12.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/cd/242x440_12.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 11, 'webshop', 'new product', 30.00, 0, 5, NULL);
+INSERT INTO `omc_products` VALUES(8, '?', 1, '', '', '<p><img src="../../../../assets/images/cd/thumbnails/114x207_12.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/cd/242x440_12.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 14, 'webshop', 'most sold', 340.00, 1, 5, NULL);
+INSERT INTO `omc_products` VALUES(9, 'Blue angels', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing?</p>', '<p><img src="../../../assets/images/books/thumbnails/114x207_6.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../assets/images/books/242x440_6.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 17, 'webshop', 'most sold', 0.00, 0, 9, NULL);
+INSERT INTO `omc_products` VALUES(10, '????', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing?</p>', '<p><img src="../../../assets/images/books/thumbnails/114x207_6.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../assets/images/books/242x440_6.jpg" alt="" width="242" height="440" /></p>', 0, '', '', 'active', 19, 'webshop', 'most sold', 340.00, 1, 9, NULL);
+INSERT INTO `omc_products` VALUES(11, 'Hello everyone', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing?</p>', '<p><img src="../../../assets/images/books/thumbnails/114x207_13.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../assets/images/books/242x440_13.jpg" alt="" width="242" height="440" /></p>', 50, '', '', 'active', 7, 'webshop', 'most sold', 40.00, 0, 11, NULL);
+INSERT INTO `omc_products` VALUES(12, 'Hi p� deg', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet, adipiscing?</p>', '<p><img src="../../../assets/images/books/thumbnails/114x207_13.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../assets/images/books/242x440_13.jpg" alt="" width="242" height="440" /></p>', 50, '', '', 'active', 15, 'webshop', 'most sold', 340.00, 1, 11, NULL);
+INSERT INTO `omc_products` VALUES(13, 'Mt Fuji', 1, '', '', '<p><img src="../../../../assets/images/books/thumbnails/114x207_14.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/books/242x440_14.jpg" alt="" width="242" height="440" /></p>', 60, '', '', 'active', 9, 'webshop', 'none', 50.00, 0, 13, NULL);
+INSERT INTO `omc_products` VALUES(14, 'Mt Fuji', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing.</p>', '<p><img src="../../../../assets/images/books/thumbnails/114x207_14.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../../assets/images/books/242x440_14.jpg" alt="" width="242" height="440" /></p>', 60, '', '', 'active', 13, 'webshop', 'none', 230.00, 1, 13, NULL);
+INSERT INTO `omc_products` VALUES(15, 'Go Harry', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet,</p>', '<p><img src="../../../assets/images/cd/thumbnails/114x207_11.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../assets/images/cd/242x440_11.jpg" alt="" width="242" height="440" /></p>', 80, '', '', 'active', 20, 'webshop', 'most sold', 50.00, 0, 15, NULL);
+INSERT INTO `omc_products` VALUES(16, 'G� Harry', 1, '', '<p>Tempor! Parturient ac sit! Aliquam dapibus, ut eros sit ac augue eu pulvinar adipiscing vel scelerisque, magnis aliquet dis diam sociis! Proin sit facilisis et et, integer, in, diam integer sit ridiculus dapibus rhoncus odio ultricies platea magnis tincidunt nec urna adipiscing, aliquet,</p>', '<p><img src="../../../assets/images/cd/thumbnails/114x207_11.jpg" alt="" width="114" height="207" /></p>', '<p><img src="../../../assets/images/cd/242x440_11.jpg" alt="" width="242" height="440" /></p>', 80, '', '', 'active', 7, 'webshop', 'most sold', 220.00, 1, 15, NULL);
+INSERT INTO `omc_products` VALUES(17, 'Amazon river', 1, '', '<p>Long desc</p>', '', '', 70, '', '', 'active', 11, 'none', 'none', 0.00, 0, 17, NULL);
 
 -- --------------------------------------------------------
 
@@ -848,16 +852,22 @@ CREATE TABLE `omc_slideshow` (
   `slide_order` int(11) unsigned DEFAULT NULL,
   `status` enum('active','inactive') COLLATE utf8_unicode_ci NOT NULL,
   `featured` enum('none','front','webshop') COLLATE utf8_unicode_ci NOT NULL,
+  `readmorelink` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `omc_slideshow`
 --
 
-INSERT INTO `omc_slideshow` VALUES(1, 'big_tree.jpg', '<p>slide 1</p>', '', '', '<p><img src="../../../../assets/images/frontpage/big_tree.jpg" alt="" width="516" height="200" /></p>', 10, 'active', 'none');
-INSERT INTO `omc_slideshow` VALUES(2, 'build.jpg', '<p>slide2 desc</p>', '', '', '<p><img src="../../../../assets/images/frontpage/build.jpg" alt="" width="516" height="200" /></p>', 20, 'active', 'none');
-INSERT INTO `omc_slideshow` VALUES(6, 'station.jpg', '', '', '', '<p><img src="../../../../assets/images/frontpage/station.jpg" alt="" width="516" height="200" /></p>', 30, 'active', 'none');
+INSERT INTO `omc_slideshow` VALUES(1, 'big_tree.jpg', 'slide 1', '', '', '<p><img src="../../../../assets/images/frontpage/big_tree.jpg" alt="" width="516" height="200" /></p>', 1, 'inactive', 'none', '');
+INSERT INTO `omc_slideshow` VALUES(2, 'build.jpg', 'slide2 desc', '', '', '<p><img src="../../../../assets/images/frontpage/build.jpg" alt="" width="516" height="200" /></p>', 2, 'inactive', 'none', '');
+INSERT INTO `omc_slideshow` VALUES(6, 'station.jpg', '', '', '', '<p><img src="../../../../assets/images/frontpage/station.jpg" alt="" width="516" height="200" /></p>', 3, 'inactive', 'none', '');
+INSERT INTO `omc_slideshow` VALUES(7, 'jmpress1', 'Just when I thought', 'From fairest creatures we desire increase, tha\n', '', '<p><img src="../../../assets/images/frontpage/1.png" alt="" width="360" height="360" /></p>', 1, 'active', 'none', 'index.php/welcome/product/5');
+INSERT INTO `omc_slideshow` VALUES(8, 'jmpress2', 'Holy cannoli!', 'But as the riper should by time decease, ', '', '<p><img src="../../../assets/images/frontpage/2.png" alt="" width="360" height="360" /></p>', 2, 'active', 'none', 'index.php/welcome/product/3');
+INSERT INTO `omc_slideshow` VALUES(9, 'jmpress3', 'No time to waste', 'But as the riper should by time decease, his tender heir might bear his memory', '', '<p><img src="../../../assets/images/frontpage/3.png" alt="" width="360" height="360" /></p>', 3, 'active', 'none', 'index.php/welcome/product/15');
+INSERT INTO `omc_slideshow` VALUES(10, 'jmpress4', 'Supercool!', 'Making a famine where abundance lies, thyself thy foe, to thy sweet self too cruel', '', '<p><img src="../../../assets/images/frontpage/4.png" alt="" width="360" height="360" /></p>', 4, 'active', 'none', 'index.php/welcome/product/5');
+INSERT INTO `omc_slideshow` VALUES(11, 'jmpress5', 'Did you know that...', 'Thou that art now the world''s fresh ornament and only herald to the gaudy spring', '', '<p><img src="../../../assets/images/frontpage/5.png" alt="" width="360" height="360" /></p>', 5, 'active', 'none', 'index.php/welcome/product/3');
 
 -- --------------------------------------------------------
 
@@ -870,14 +880,14 @@ CREATE TABLE `omc_subscribers` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `omc_subscribers`
 --
 
-INSERT INTO `omc_subscribers` VALUES(1, 'shin', 'admin@gmail.com');
-INSERT INTO `omc_subscribers` VALUES(3, 'sokada', 'test1@gmail.com');
+INSERT INTO `omc_subscribers` VALUES(5, 'John', 'john@gmail.com');
+INSERT INTO `omc_subscribers` VALUES(6, 'test1234', 'test1234@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -894,12 +904,11 @@ CREATE TABLE `shoutbox` (
   `status` enum('to do','completed') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'to do',
   `privacy` enum('public','private') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'public',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `shoutbox`
 --
-
 
 --
 -- Constraints for dumped tables
