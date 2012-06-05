@@ -3,12 +3,14 @@
 <?php
 echo form_open_multipart('slideshow/admin/create')."\n";
 
-echo "\n<table id='preference_form'><tr><td class='label'><label for='pname'>".$this->lang->line('kago_name')."</label></td>\n";
+echo "\n<table id='preference_form'>";
+/*
+echo "<tr><td class='label'><label for='pname'>".$this->lang->line('kago_name')."</label></td>\n";
 $data = array('name'=>'name','id'=>'pname','class'=>'text');
 echo "<td>";
 echo form_input($data);
 echo "</td></tr>\n";
-
+*/
 echo "<tr><td class='label'><label for='short'>".$this->lang->line('kago_short_desc')."</label></td>\n";
 $data = array('name'=>'shortdesc','id'=>'short','class'=>'text');
 echo "<td>";

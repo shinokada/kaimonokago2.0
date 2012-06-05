@@ -150,6 +150,12 @@ $lang['preference_desc_twittername'] = 'Input twitter name';
 $lang['preference_label_twittercount'] = "Number of tweets";
 $lang['preference_desc_twittercount'] = 'Number of tweets you want to display';
 
+// google
+$lang['preference_label_client_id'] = "Google API Access Client ID";
+$lang['preference_desc_client_id'] = 'Get your client id from Goolge API console';
+$lang['preference_label_client_secret'] = "Google API Access Client Secret";
+$lang['preference_desc_client_secret'] = 'Get your client secret from Google API console';
+
 // adding here for error log
 
 $lang["preference_label_allow_user_registration"]="Allow User Registration";

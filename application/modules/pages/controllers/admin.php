@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+/*    application/modules/pages/controllers/admin.php    */
 class Admin extends Shop_Admin_Controller 
 {
 
@@ -303,4 +303,5 @@ class Admin extends Shop_Admin_Controller
         }
     }	
 }//end class
+/*    application/modules/pages/controllers/admin.php    */
 ?>

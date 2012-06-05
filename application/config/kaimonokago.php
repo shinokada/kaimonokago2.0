@@ -4,9 +4,9 @@
  *
  * An open source shopping cart
  *
- * @package		Kaimono Kago
+ * @package		Kaimonokago
  * @author		Shin Okada
- * @copyright	Copyright (c) 2010, Shin Okada
+ * @copyright	Copyright (c) 2012, Shin Okada
  * @license		http://www.gnu.org/licenses/lgpl.html
  * @link		http://www.okadadesign.no/kaimonokago/
  * @filesource
@@ -14,7 +14,7 @@
 
 // ------------------------------------------------------------------------
 
-define('Kaimonokago_VERSION','2.0.0');
+define('Kaimonokago_VERSION','2.0.1');
 
 /*
  |--------------------------------------------------------------------------

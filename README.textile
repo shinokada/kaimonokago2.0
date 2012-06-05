@@ -1,4 +1,4 @@
-h1. Kaimonokago 2.0
+h1. Kaimonokago 2.0.1
 
 Multi-Languages Shopping Cart on CodeIgniter 2.1.0 and BackendPro 0.6.7
 PHP 5.3 compatible
@@ -24,6 +24,8 @@ h2. Features
 * Dashboard/Google Analytics
 * Sharethis
 * Email template system
+* Ajax status change
+* Ajax user name and email check for subscriber module
 
 h2. Demo frontend only
 * Old version of Kaimonokago 1.1.4: "http://websitelab.skagerak.org/kaimonokago/":http://websitelab.skagerak.org/kaimonokago/

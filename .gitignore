@@ -5,6 +5,7 @@
 application/logs/
 application/cache/
 application/modules/recaptcha/config/recaptcha.php
+sublime/
 system/cache/
 # Vim leave-behinds
 *.swp

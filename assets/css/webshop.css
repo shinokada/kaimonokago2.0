@@ -2238,15 +2238,8 @@ clear: left;
 	clear: left;
 	padding:20px 0;
 }
-#sharethis {
-margin-left:15px;
-float:left;
-}
-#sharethis-b {
-margin:15px 0;
-float:left;
-clear:left
-}
+
+
 
 /* calendar */
 
@@ -2612,11 +2605,22 @@ sharethis
 #sthoverbuttons {
     cursor: pointer;
     font: 11px Helvetica,Tahoma,Arial;
-    margin-left: -7px;
+    margin-left: -2px;
     position: fixed;
     top: 25%;
     width: 50px;
     z-index: 980000 !important;
+    background-color:#fff;
+}
+
+#sharethis {
+margin-left:15px;
+float:left;
+}
+#sharethis-b {
+margin:15px 0;
+float:left;
+clear:left
 }
 /*******
 subscribe

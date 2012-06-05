@@ -32,11 +32,8 @@ function sharethis()
     }  else {
         $size ='';
     }
-    $sharethis ='<div id="sthoverbuttons-background" class="sthoverbuttons-background-l">
-<div id="sthoverbuttons-top" class="sthoverbuttons-top-l">&nbsp;</div>
-<div id="sthoverbuttons-shade" class="sthoverbuttons-shade-l">&nbsp;</div>
-<div id="sthoverbuttons-bottom" class="sthoverbuttons-bottom-l">&nbsp;</div>
-</div><div id="sthoverbuttonsMain" class="sthoverbuttonsMain-l">
+    
+    $sharethis ='<div id="sthoverbuttonsMain" class="sthoverbuttonsMain-l">
 <div class="sthoverbuttons-label">
 <span>Share</span>
 </div><div class="sthoverbuttons-chicklets">';
@@ -49,9 +46,22 @@ function sharethis()
 <script type="text/javascript">stLight.options({publisher:\''.$sharethis_pub_key.'\'});</script></div></div>';
 	
 
+
+
+// new version not working at the moment
+/*
+$sharethis = '
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript" src="http://s.sharethis.com/loader.js"></script>
+<script>
+var options={ "publisher": "'.$sharethis_pub_key.'", "position": "left", "ad": { "visible": false, "openDelay": 5, "closeDelay": 0}, "chicklets": { "items": ["facebook", "googleplus", "twitter", "linkedin", "email", "sharethis"]}};
+var st_hover_widget = new sharethis.widgets.hoverbuttons(options);
+</script>';
+*/
+
 	return $sharethis;
 }
-
 
 
 ?>

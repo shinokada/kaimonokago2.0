@@ -27,7 +27,7 @@ echo form_input($data);
 echo "</td></tr>\n";
 
 echo "<tr><td class='label'><label for='long'>".$this->lang->line('kago_content')."</label></td>\n";
-$data = array('name'=>'content','id'=>'long','rows'=>'30', 'cols'=>'80');
+$data = array('name'=>'content','id'=>'long','class'=>'mceimage','rows'=>'30', 'cols'=>'80');
 echo "<td id='nopad' >";
 echo form_textarea($data);
 ?>

@@ -62,8 +62,6 @@ class Admin extends Shop_Admin_Controller
     {
         // Setting variables
         $data['title'] = "Manage Products";
-        //$data['products'] = $this->MProducts->getAllProducts();
-        // hard to use $this->MKaimonokago->getAll($this->module,$fields, $orderby); for products
         $order= 'lang_id,order';
         $data['products'] = $this->MProducts->getAllProductswithLang($order);
         $data['categories'] = $this->MCats->getCategoriesDropDown();

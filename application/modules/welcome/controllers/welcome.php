@@ -69,7 +69,7 @@ class Welcome extends Shop_Controller
         }
         else 
         {
-          // $language = $this->session->userdata('lang');
+            // $language = $this->session->userdata('lang');
             // find lang id
             //$lang_id = $this->MLangs->getId($language);
             //$lang_id = $lang_id['id'];
@@ -464,17 +464,7 @@ class Welcome extends Shop_Controller
                             'label'=>$this->lang->line('webshop_post_code'),
                             'rules'=>"trim|required|numeric"
                             );
-            //$rules['email'] = 'trim|required|matches[emailconf]|valid_email';
-            //$rules['emailconf'] = 'trim|required|valid_email';
-            //$rules['password'] = 'trim|required';
-            //$rules['customer_first_name'] = 'trim|required|min_length[3]|max_length[20]';
-            //$rules['customer_last_name'] = 'trim|required|min_length[3]|max_length[20]';
-            //$rules['phone_number'] = 'trim|required|min_length[8]|max_length[12]|numeric';
-            //$rules['address'] = 'trim|required';
-            //$rules['city'] = 'trim|required|alpha_dash';
-            //$rules['post_code'] = 'trim|required|numeric';
             // if you want to use recaptcha, set modules/recaptcha/config and uncomment the following
-            //$rules['recaptcha_response_field'] = 'trim|required|valid_captcha';
             if($this->security_method=='recaptcha')
             {
                 $config[] = array(
@@ -482,7 +472,6 @@ class Welcome extends Shop_Controller
                             'label'=>$this->lang->line('kago_recaptcha_response_field'),
                             'rules'=>"trim|required|valid_captcha"
                             );
-                //$rules['recaptcha_response_field'] = 'trim|required|valid_captcha';
             }
             elseif($this->security_method=='question')
             {
@@ -491,7 +480,6 @@ class Welcome extends Shop_Controller
                             'label'=>$this->lang->line('kago_write_ans'),
                             'rules'=>"trim|required|callback_security_check"
                             );
-                //$rules['write_ans']= 'trim|required|callback_security_check';
             }
             $this->form_validation->set_rules($config);
 
@@ -587,8 +575,129 @@ class Welcome extends Shop_Controller
         //destroy the session
         session_destroy();
         redirect( $this->module.'/index','refresh');
-     }
+    }
 
+
+    function google_connect_login()
+    {
+        $data['title'] = $this->preference->item('site_name')." | "."Google Connect Login";
+        $data['page'] = $this->config->item('backendpro_template_shop') . 'google_connect_login';
+        $data['module'] = $this->module;
+        $this->load->view($this->_container,$data);
+    }
+
+    function google_connect_index()
+    {
+        $data['title'] = $this->preference->item('site_name')." | "."Google Connect";
+        $data['page'] = $this->config->item('backendpro_template_shop') . 'google_connect_index';
+        $data['module'] = $this->module;
+        $this->load->view($this->_container,$data);
+    }
+
+    function google_connect_redirect()
+    {
+        $client_id = $this->preference->item('client_id');
+        $client_secret = $this->preference->item('client_secret');
+        //$code = $this->input->get('code');
+        if (empty($_GET['code'])) 
+        {
+            // 認証前の処理
+
+            // CSRF対策
+            $_SESSION['state'] = sha1(uniqid(mt_rand(), true));
+            
+            // 認証ダイアログの作成
+            $params = array(
+                'client_id' => '873753192098.apps.googleusercontent.com',
+                'redirect_uri' => site_url('welcome/google_connect_redirect'), 
+                'state' => $_SESSION['state'] ,
+                'approval_prompt' => 'force',
+                'scope' => 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
+                'response_type' => 'code'
+            );
+            $url = "https://accounts.google.com/o/oauth2/auth?".http_build_query($params);
+            // send to google
+            redirect($url, 'refresh');
+/*
+https://accounts.google.com/o/oauth2/auth?client_id=873753192098.apps.googleusercontent.com&
+redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fkaimonokago2.0%2Findex.php%2Fwelcome%2Fgoogle_connect_redirect&
+state=0&approval_prompt=force&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&response_type=code
+https://accounts.google.com/o/oauth2/auth?client_id=873753192098.apps.googleusercontent.com&redirect_uri=http://localhost:8888/kaimonokago2.0/index.php/welcome/google_connect_redirect&state=0&approval_prompt=force&scope=https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/userinfo.email&response_type=code
+
+new
+localhost:8888/kaimonokago2.0/index.php/welcome/google_connect_redirect?
+state=6483c502022a1191a09fd86f31d775ea11d07065&
+code=4/8GFVZHgCT6U9RFsjFMPaP1iP-oyO
+
+from google_connect_php
+https://accounts.google.com/o/oauth2/auth?client_id=873753192098-6db2bd1to5aoqumv3tar9jprfptstd0u.apps.googleusercontent.com&
+redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fgoogle_connect_php%2Fredirect.php&
+state=15ee7ea45d7e5a028ba9fcdbf1bc9eee8e43a951&
+approval_prompt=force&
+scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&
+response_type=code
+*/
+            //header('Location: '.$url);
+            //exit;
+        }
+        else 
+        {
+            // 認証後の処理
+
+            // CSRF対策
+            if ($_SESSION['state'] != $_GET['state']) 
+            {
+                flashMsg('error',"Something went wrong!");
+                redirect( $this->module.'/login','refresh');
+                //echo "何がおかしい！";
+                //exit;
+            }
+            
+            $params = array(
+            'client_id' => $client_id,
+            'client_secret' => $client_secret,
+            'code' => $_GET['code'],
+            'redirect_uri' => site_url('welcome/google_connect_redirect'),
+            'grant_type' => 'authorization_code'
+            );
+            $url = 'https://accounts.google.com/o/oauth2/token';
+            
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, $url);
+            curl_setopt($curl, CURLOPT_POST, 1);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+            
+            $rs = curl_exec($curl);
+            curl_close($curl);
+            
+            $json = json_decode($rs);
+            
+            //var_dump($json);
+
+
+            $url = 'https://www.googleapis.com/oauth2/v1/userinfo?access_token='.$json->access_token;
+            $data['me']=$me = json_decode(file_get_contents($url));
+            
+            // DBに突っ込む
+            $this->load->model('MWelcome');
+            $table = "users";
+            $user = $this->MWelcome->google_connect($me,$table);
+            
+            
+            // ログイン処理
+            if (!empty($user)) 
+            {
+                session_regenerate_id(true);
+                $_SESSION['user'] = $user;
+                $data['user']=$user;
+            }
+            // index.phpに飛ばす
+            flashMsg('success',"You are successfully loged in.");
+            redirect( $this->module.'/google_connect_index','refresh');
+            
+        }
+    }
 
 
 
@@ -607,12 +716,7 @@ class Welcome extends Shop_Controller
                             'label'=>$this->lang->line('webshop_email'),
                             'rules'=>"trim|required|valid_email"
                             );
-
-
-            //$rules['name'] = 'required';
-            //$rules['email'] = 'required|valid_email';
-            //$rules['recaptcha_response_field'] = 'trim|required|valid_captcha';
-            if($this->security_method=='recaptcha')
+       if($this->security_method=='recaptcha')
             {
                 //$rules['recaptcha_response_field'] = 'trim|required|valid_captcha';
                 $config[] = array(
@@ -694,9 +798,6 @@ class Welcome extends Shop_Controller
                             'label'=>$this->lang->line('webshop_email'),
                             'rules'=>"trim|required|max_length[254]|valid_email"
                             );
-
-            //$rules['email'] = 'trim|required|max_length[254]|valid_email';
-            //$rules['recaptcha_response_field'] = 'trim|required|valid_captcha';
             if($this->security_method=='recaptcha')
             {
                 $config[] = array(
@@ -704,7 +805,6 @@ class Welcome extends Shop_Controller
                             'label'=>$this->lang->line('kago_recaptcha_response_field'),
                             'rules'=>"trim|required|valid_captcha"
                             );
-                //$rules['recaptcha_response_field'] = 'trim|required|valid_captcha';
             }
             elseif($this->security_method=='question')
             {
@@ -713,7 +813,6 @@ class Welcome extends Shop_Controller
                             'label'=>$this->lang->line('webshop_write_ans'),
                             'rules'=>"trim|required|callback_security_check"
                             );
-                //$rules['write_ans']= 'trim|required|callback_security_check';
             }
             $this->form_validation->set_rules($config);
             /*

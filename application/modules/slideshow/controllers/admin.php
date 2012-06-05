@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+/*  application/modules/slideshow/controllers/admin.php  */
 class Admin extends Shop_Admin_Controller 
 {
 
@@ -30,15 +30,24 @@ class Admin extends Shop_Admin_Controller
 
     function _feild()
     {
+        $str =$this->input->post('image');
+        $m = array();
+        
+        if(preg_match('#"(.*?)"#',$str,$matches)) 
+        {
+            $path = $matches[1]; // extract the entire path.
+            $name =  basename ($path); // extract file name from path.
+        }
+
         $data = array(
-            'name'          => db_clean($_POST['name']),
+            'name'          => $name,
             'shortdesc'     => db_clean($_POST['shortdesc']),
             'longdesc'      => db_clean($_POST['longdesc'],5000),
             'status'        => db_clean($_POST['status'],8),
             'slide_order'   => db_clean($_POST['slide_order']),
             'thumbnail'     => db_clean($_POST['thumbnail']),
             'image'         => db_clean($_POST['image']),
-            'readmorelink'      => $this->input->post('readmorelink'),
+            'readmorelink'  => $this->input->post('readmorelink'),
         );
         return $data;
     }
@@ -75,7 +84,7 @@ class Admin extends Shop_Admin_Controller
     {
         // we are using TinyMCE in this page, so load it
         $this->bep_assets->load_asset_group('TINYMCE');
-        if ($this->input->post('name'))
+        if ($this->input->post('image'))
         {
             // fields are filled up so do the followings
             $data = $this->_feild();
@@ -103,7 +112,7 @@ class Admin extends Shop_Admin_Controller
     {
         // we are using TinyMCE in edit as well
         $this->bep_assets->load_asset_group('TINYMCE');
-        if ($this->input->post('name'))
+        if ($this->input->post('image'))
         {
             // fields filled up so,
             $data = $this->_feild();
@@ -159,7 +168,10 @@ class Admin extends Shop_Admin_Controller
     {
         $fields = 'name';
         $orderby = 'slide_order';
-        $images = $this->MKaimonokago->getAll($this->module,$fields,$orderby);
+        $where = "status";
+        $what = "active";
+        //getAll($module,$fields,$orderby,$lang_id=NULL,$where=NULL,$what=NULL)
+        $images = $this->MKaimonokago->getAll($this->module,$fields,$orderby,'',$where,$what);
         //$images = $images['name'];
         //sort($images);// sort alphabetically
         $str = <<<EOD

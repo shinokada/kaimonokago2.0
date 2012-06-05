@@ -1,0 +1,1 @@
+<p><a href="index.php/welcome/google_connect_redirect">Googleアカウントでログイン</a></p>

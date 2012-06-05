@@ -61,7 +61,7 @@ if(!$pagecontent['lang_id']==0)
     echo $this->lang->line('kago_original').$original['content'];
 }
 echo "</td>";
-$data = array('name'=>'content','id'=>'long','rows'=>'30', 'cols'=>'80', 'value' => $pagecontent['content']);
+$data = array('name'=>'content','id'=>'long','class'=>'mceimage','rows'=>'30', 'cols'=>'80', 'value' => $pagecontent['content']);
 echo "<td id='nopad' >";
 echo form_textarea($data);
 ?>

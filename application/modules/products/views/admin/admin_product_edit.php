@@ -35,13 +35,13 @@ echo form_textarea($data);
 echo "</td></tr>\n";
 
 echo "<tr><td class='label'><label for='uimage'>".$this->lang->line('kago_select_img')."</label></td>\n";
-$data = array('name'=>'image','id'=>'uimage','rows'=>'10', 'cols'=>'80', 'value' => $product['image']);
+$data = array('name'=>'image','id'=>'uimage','class'=>'mceimage','rows'=>'10', 'cols'=>'80', 'value' => $product['image']);
 echo "<td id='nopad' >";
 echo form_textarea($data);
 echo "</td></tr>\n";
 
 echo "<tr><td class='label'><label for='uthumb'>".$this->lang->line('kago_select_thumb')."</label></td>\n";
-$data = array('name'=>'thumbnail','id'=>'uthumb','rows'=>'10', 'cols'=>'80', 'value' => $product['thumbnail']);
+$data = array('name'=>'thumbnail','id'=>'uthumb','class'=>'mcethumb','rows'=>'10', 'cols'=>'80', 'value' => $product['thumbnail']);
 echo "<td id='nopad' >";
 echo form_textarea($data);
 echo "</td></tr>\n";

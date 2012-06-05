@@ -53,7 +53,8 @@ class Settings extends Admin_Controller
 				'analytics'     => array('name'=> $this->lang->line('preference_google_analytics_settings'), 'fields'=>'ga_tracking,ga_profile,ga_email,ga_password'),
                 'rss_feed'     => array('name'=> $this->lang->line('preference_rss_feeds_settings'), 'fields'=>'dashboard_rss,dashboard_rss_count'),
                 'sharethis'     => array('name'=> 'Sharethis Settings', 'fields'=>'sharethis_pub_key,sharethis_direction,sharethis_size,sharethis_services'),     
-				'twitter'     => array('name'=> 'Twitter Settings', 'fields'=>'twittername,twittercount'),     
+				'twitter'     => array('name'=> 'Twitter Settings', 'fields'=>'twittername,twittercount'),   
+				'google'     => array('name'=> 'Google API Access', 'fields'=>'client_id,client_secret'),     
 		);
 
 		// Setup custom field options
@@ -143,6 +144,10 @@ class Settings extends Admin_Controller
 		// twitter
 		$config['field']['twittername'] = array('rules'=>'trim');
 		$config['field']['twittercount'] = array('rules'=>'trim|numeric');
+
+		// google
+		$config['field']['client_id'] = array('rules'=>'trim');
+		$config['field']['client_secret'] = array('rules'=>'trim');
 		
 
 		// Display the form

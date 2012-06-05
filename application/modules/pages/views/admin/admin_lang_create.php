@@ -37,7 +37,7 @@ echo "<td>".$pagecontent['path']."</td></tr>\n";
 echo "<tr><td class='label'><label for='long'>".$this->lang->line('kago_content')."</label><br />\n";
 echo $this->lang->line('kago_original').$pagecontent['content']."</td>";
 echo "<td id='nopad' >";
-$data = array('name'=>'content','id'=>'long','rows'=>'30', 'cols'=>'80');
+$data = array('name'=>'content','id'=>'long','class'=>'mceimage','rows'=>'30', 'cols'=>'80');
 echo form_textarea($data);
 
 ?>

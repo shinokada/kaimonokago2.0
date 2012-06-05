@@ -70,7 +70,7 @@ class MKaimonokago extends Base_model
  * @param array $orderby
  * @return array
  */
-    function getAll($module,$fields,$orderby,$lang_id=NULL)
+    function getAll($module,$fields,$orderby,$lang_id=NULL,$where=NULL,$what=NULL)
     {
         /* 
         if ($lang_id ===NULL){
@@ -87,10 +87,13 @@ class MKaimonokago extends Base_model
                 $field = $module_table.".".$field;
                 $string .= ",$field";
             }
-        } else{
-
+            $string =substr($string,1); // remove leading ","
+        } 
+        else
+        {
+            $string = $fields;
         }    
-        $string =substr($string,1); // remove leading ","
+        
         /*
         $this->db->select("$module_table.id, $module_table.name,$module_table.parentid,$module_table.status,$module_table.table_id,$module_table.lang_id
          ,omc_languages.langname");
@@ -112,6 +115,10 @@ class MKaimonokago extends Base_model
             $this->db->select("$string,omc_languages.langname");
             $this->db->where('lang_id',$lang_id);
             $this->db->join('omc_languages', $module_table.'.lang_id = omc_languages.id','left');
+        }
+        if($where AND $what)
+        {
+            $this->db->where($where,$what);   
         }
         $Q = $this->db->get($module_table);
         if ($Q->num_rows() > 0)
