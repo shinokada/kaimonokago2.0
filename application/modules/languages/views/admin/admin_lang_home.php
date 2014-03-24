@@ -15,7 +15,7 @@ echo "<h3>Language List</h3>";
 $this->load->view('admin/admin_home_cont');
 
 // Add language 
- // form to create new
+// form to create new
 echo "<h3>Add Language</h3>";
 echo form_open('languages/admin/index/');
 
@@ -25,6 +25,12 @@ echo "<td>";
 echo form_input($data);
 echo "</td></tr>\n";
 
+echo "<tr><td class='label'><label for='shortlang'>Short language</label></td>\n";
+$shortlang= array('name'=>'short_lang','id'=>'short_lang','class'=>'text');
+echo "<td>";
+echo form_input($shortlang);
+echo "</td></tr>\n";
+
 echo "<tr><td class='label'><label for='status'>".$this->lang->line('kago_status')."</label></td>\n";
 $options = array('active' => 'active', 'inactive' => 'inactive');
 echo "<td>";
@@ -32,7 +38,7 @@ echo form_dropdown('status',$options);
 echo "</td></tr></table>\n";
 ?>
 <div class="buttons">
-	<button type="submit" class="positive" name="submit" value="submit">
+        <button type="submit" class="positive" name="submit" value="submit">
     <?php print $this->bep_assets->icon('disk');?>
     <?php print $this->lang->line('general_save');?>
     </button>
@@ -45,34 +51,50 @@ echo form_close();
 <script type="text/javascript">
 $(document).ready(function(){
 
-    var tablecont = $("#tablesorter1");
-    var module = "<?php echo $module ; ?>";
+  var tablecont = $("#tablesorter1");
+  var module = "<?php echo $module ; ?>";
 
-    function updateitem()
-    {    
-        $.ajax({
-            type: "POST", 
-            url: "<?php echo site_url($module.'/admin/Ajaxgetupdate'); ?>", 
-            complete: function(data)
-            {
-                tablecont.html(data.responseText);
-            }
-        });
-    }
-
-        //on submit event
-    $(".changestatus").live('click', function(event){
-        event.preventDefault();
-        var href = $(this).attr("href");
-        var id =href.substring(href.lastIndexOf("/") + 1);
-        $.ajax({
-            type: "POST", 
-            url: "<?php echo site_url('kaimonokago/admin/changeStatus'); ?>"+"/"+module+"/"+id,
-            complete: function()
-            {
-                updateitem();
-            }
-        });  
+  function updateitem()
+  {    
+    $.ajax({
+      type: "POST", 
+        url: "<?php echo site_url($module.'/admin/Ajaxgetupdate'); ?>", 
+        complete: function(data)
+  {
+    tablecont.html(data.responseText);
+  }
     });
+  }
+
+  //on submit event
+  $(".changestatus").live('click', function(event){
+    event.preventDefault();
+    var href = $(this).attr("href");
+    var id =href.substring(href.lastIndexOf("/") + 1);
+    $.ajax({
+      type: "POST", 
+        url: "<?php echo site_url('kaimonokago/admin/changeStatus'); ?>"+"/"+module+"/"+id,
+        complete: function()
+  {
+    updateitem();
+  }
+    });  
+  });
 });
 </script>
+
+
+
+<?php
+$base=$this->config->item('base_url');
+$mystring = $base;
+$findme   = 'localhost';
+$pos = strpos($mystring, $findme);
+if(ENVIRONMENT=='development' OR $pos)
+{
+  echo "<pre>";
+  echo "</pre>";
+}
+
+
+?>

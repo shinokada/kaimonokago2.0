@@ -1,26 +1,17 @@
-
 <div id="pageleftcont">
 <h2><?php echo $title;?></h2>
 <div id="create_edit">
 <?php
-/*
-if($info['lang_id']==0){
-    echo showtranslang($languages,$translanguages,$info, $module);
-}
- * 
- */
 
 echo form_open($module.'/admin/edit');
 
-//echo form_hidden('name', $info['name']);
-/*
-echo "<p><label for='update'>Update</label><br/>";
-echo form_checkbox('update', 'update', TRUE);
-*/
 echo "<p><label for='langname'>".$this->lang->line('kago_name')."</label><br/>";
 $data = array('name'=>'langname','id'=>'langname','size'=>25,'value' => ucfirst($info['langname']));
 echo form_input($data) ."</p>\n";
-//echo "<h2>".$info['name']."</h2>";
+
+echo "<p><label for='short_lang'>Short language</label><br/>";
+$shortlang= array('name'=>'short_lang','id'=>'short_lang','size'=>25,'value' => $info['short_lang']);
+echo form_input($shortlang) ."</p>\n";
 
 echo "<p><label for='status'>".$this->lang->line('kago_status')."</label><br/>";
 $options = array('active' => 'active', 'inactive' => 'inactive');
@@ -33,17 +24,22 @@ echo form_close();
 
 
 
-/*
-echo "<pre>info";
-print_r ($info);
-echo "</pre>";
-echo "<pre>module";
-print_r ($module);
-echo "</pre>";
-*/
-
-
 ?>
 </div>
  </div>
-   
+
+<?php
+$base=$this->config->item('base_url');
+$mystring = $base;
+$findme   = 'localhost';
+$pos = strpos($mystring, $findme);
+if(ENVIRONMENT=='development' OR $pos)
+{
+  echo "<pre>";
+  print_r ($info); 
+  
+  echo "</pre>";
+}
+
+
+?>
