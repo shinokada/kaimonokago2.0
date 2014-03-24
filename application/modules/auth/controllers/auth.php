@@ -24,48 +24,48 @@
  */
 class auth extends Public_Controller
 {
-	/**
-	 * Constructor
-	 */
-	function __construct()
-	{
-		parent::__construct();
+  /**
+   * Constructor
+   */
+  function __construct()
+  {
+    parent::__construct();
 
-		// Load the Auth_form_processing class
-		$this->load->library('auth/auth_form_processing');
-		log_message('debug','BackendPro : Auth class loaded');
-                //$this->output->enable_profiler(TRUE);
-	}
+    // Load the Auth_form_processing class
+    $this->load->library('auth/auth_form_processing');
+    log_message('debug','BackendPro : Auth class loaded');
+    //$this->output->enable_profiler(TRUE);
+  }
 
-	function index()
-	{
-		$this->login();
-	}
+  function index()
+  {
+    $this->login();
+  }
 
-	function login()
-	{
-		$this->auth_form_processing->login_form($this->_container);
-	}
+  function login()
+  {
+    $this->auth_form_processing->login_form($this->_container);
+  }
 
-	function logout()
-	{
-		$this->auth_form_processing->logout();
-	}
+  function logout()
+  {
+    $this->auth_form_processing->logout();
+  }
 
-	function forgotten_password()
-	{
-		$this->auth_form_processing->forgotten_password_form($this->_container);
-	}
+  function forgotten_password()
+  {
+    $this->auth_form_processing->forgotten_password_form($this->_container);
+  }
 
-	function register()
-	{
-		$this->auth_form_processing->register_form($this->_container);
-	}
+  function register()
+  {
+    $this->auth_form_processing->register_form($this->_container);
+  }
 
-	function activate()
-	{
-		$this->auth_form_processing->activate();
-	}
+  function activate()
+  {
+    $this->auth_form_processing->activate();
+  }
 }
 /* End of file auth.php */
 /* Location: ./modules/auth/controllers/auth.php */

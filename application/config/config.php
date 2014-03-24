@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://localhost:8888/kaimonokago2.0/";
+$config['base_url']	= "http://localhost/kaimonokago3.0/";
 
 /*
 |--------------------------------------------------------------------------
