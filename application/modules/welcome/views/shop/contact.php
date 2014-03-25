@@ -60,3 +60,13 @@ if(isset($pagecontent['content']))
   </div>
 </div>
 
+<?php
+$base=$this->config->item('base_url');
+$mystring = $base;
+$findme   = 'localhost';
+$pos = strpos($mystring, $findme);
+if(ENVIRONMENT=='development' OR $pos)
+{
+
+}
+?>

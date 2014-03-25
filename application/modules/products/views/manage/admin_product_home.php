@@ -1,3 +1,4 @@
+<?php   //location ./application/modules/products/views/manage/admin_product_home.php ?> 
 <h2><?php echo $title;?></h2>
 <div class="buttons">
 	<a href="<?php
@@ -47,7 +48,7 @@ $(document).ready(function(){
     }
 
         //on submit event
-    $(".changestatus").live('click', function(event){
+    $("#tablesorter1").on('click',".changestatus", function(event){
         event.preventDefault();
         var href = $(this).attr("href");
         var id =href.substring(href.lastIndexOf("/") + 1);
@@ -65,3 +66,4 @@ $(document).ready(function(){
     });
 });
 </script>
+<?php   //location ./application/modules/products/views/manage/admin_product_home.php ?> 

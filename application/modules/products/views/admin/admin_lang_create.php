@@ -121,6 +121,13 @@ echo form_hidden('lang_id',$selected_lang['id']);
 echo form_close();
 
 
+$base=$this->config->item('base_url');
+$mystring = $base;
+$findme   = 'localhost';
+$pos = strpos($mystring, $findme);
+if(ENVIRONMENT=='development' OR $pos)
+{
+
 echo "<pre>languages";
 print_r ($languages);
 echo "</pre>";
@@ -136,7 +143,7 @@ echo "</pre>";
 echo "<pre>categories";
 print_r ($categories);
 echo "</pre>";
- 
+} 
 ?>
 
  

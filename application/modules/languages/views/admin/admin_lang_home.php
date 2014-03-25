@@ -1,3 +1,4 @@
+<?php // /application/modules/languages/views/admin/admin_lang_home.php ?>
 <?php print displayStatus();?>
 <?php
 // get the module name. We use this in the link. Then it will be used in kaimonokago controller to redirect to the module
@@ -67,7 +68,7 @@ $(document).ready(function(){
   }
 
   //on submit event
-  $(".changestatus").live('click', function(event){
+  $("#tablesorter1").on('click',".changestatus", function(event){
     event.preventDefault();
     var href = $(this).attr("href");
     var id =href.substring(href.lastIndexOf("/") + 1);
@@ -98,3 +99,6 @@ if(ENVIRONMENT=='development' OR $pos)
 
 
 ?>
+
+
+<?php // /application/modules/languages/views/admin/admin_lang_home.php ?>

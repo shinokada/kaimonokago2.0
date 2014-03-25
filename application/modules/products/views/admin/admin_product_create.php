@@ -78,7 +78,7 @@ echo form_input($data);
 echo "</td></tr>\n";
 
 echo "<tr><td class='label'><label for='featured'>".$this->lang->line('kago_featured')."</label></td>\n";
-$options = array('none' => 'none', 'quicksand' => 'Quicksand');// you can add more here as you wish
+$options = array('none' => 'none','webshop'=>'Web shop','garalley1'=>'Garalley 1', 'quicksand' => 'Quicksand');// you can add more here as you wish
 echo "<td>";
 echo form_dropdown('featured',$options);
 echo "</td></tr>\n";
@@ -107,5 +107,15 @@ echo form_hidden('table_id', '0');
 //echo form_submit('submit',$this->lang->line('kago_create_product'));
 echo form_close();
 
+?>
 
+<?php
+$base=$this->config->item('base_url');
+$mystring = $base;
+$findme   = 'localhost';
+$pos = strpos($mystring, $findme);
+if(ENVIRONMENT=='development' OR $pos)
+{
+
+}
 ?>
