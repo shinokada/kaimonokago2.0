@@ -266,7 +266,6 @@ class MProducts extends CI_Model
 
   function getFrontFeature($feature)
   {
-  
     $data = array();
     $this->db->where('featured',$feature);
     $this->db->where('status', 'active');

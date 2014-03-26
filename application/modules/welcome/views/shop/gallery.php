@@ -36,6 +36,36 @@
 </div>
 
 <div id="links">
+<?php
+
+  foreach ($galleryimages as $image)
+  {
+  $imageinfo = $image['image'];
+  $thumbnail=convert_image_path($imageinfo);
+  $imagelink=base_url().$thumbnail;
+  echo '<a href="' .$imagelink. '" title="'.$image['shortdesc'].'" data-gallery>';
+    echo "<img src='".$imagelink."' width='125' height='115'>";
+    echo "\n</a>\n";
+  }
+
+  ?>
+</div>
+
+<?php elseif($galleryname =="blueimp"): ?>
+<!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
+
+
+
+<div id="links">
   <?php
 
   foreach ($galleryimages as $image)
@@ -49,6 +79,7 @@
   }
 
   ?>
+
 </div>
 <?php else: ?>
 <div class="popup-gallery">
@@ -78,11 +109,13 @@ if(ENVIRONMENT=='development' OR $pos)
 echo "<pre>";
   echo "path: ";
   print_r ($path);
+  echo "<br>";
   if(isset($galleryimages))
   {
-    echo "galleryimages: <br>";
+    echo "galleryimages: ";
     print_r ($galleryimages);
   }
+  echo "<br>";
   print_r ($this->data['navlist']);
   print_r($galleryname);
   echo "<br>thumbnail";
