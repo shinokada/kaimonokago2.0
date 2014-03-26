@@ -15,7 +15,7 @@ if(isset($pagecontent['metadesc']))
   echo $pagecontent['metadesc'];
 }
 ?>" />
-  <meta name="keywords" content="<?php 
+<meta name="keywords" content="<?php 
 if(isset($pagecontent['metakeyword']))
 {
   echo $pagecontent['metakeyword'];

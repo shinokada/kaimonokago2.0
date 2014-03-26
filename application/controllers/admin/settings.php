@@ -49,7 +49,7 @@ class Settings extends Admin_Controller
       'maintenance' => array('name'=> $this->lang->line('preference_page_maintenance_debugging_settings'), 'fields'=>'page_debug,keep_error_logs_for'),
       'modulemanagement'	  => array('name'=> $this->lang->line('preference_module_management'),'fields'=>'calendar,category,customers,filemanager,languages,menus,messages,orders,pages,products,slideshow,subscribers'),
       'website'       => array('name'=> $this->lang->line('preference_website_configuration'),'fields'=>'main_module_name,multi_language,frontend_multi_language,website_language,categories_parent_id,playroom_parent_id,admin_email,security_method,security_question,security_answer'),
-      'slideshow'     => array('name'=> $this->lang->line('preference_frontpage_slideshow_settings'), 'fields'=>'webshop_slideshow,slideshow_two'),
+      'slideshow'     => array('name'=> $this->lang->line('preference_frontpage_slideshow_gallery_settings'), 'fields'=>'webshop_slideshow,slideshow_two,image_gallery'),
       'analytics'     => array('name'=> $this->lang->line('preference_google_analytics_settings'), 'fields'=>'ga_tracking,ga_profile,ga_email,ga_password'),
       'rss_feed'     => array('name'=> $this->lang->line('preference_rss_feeds_settings'), 'fields'=>'dashboard_rss,dashboard_rss_count'),
       'sharethis'     => array('name'=> 'Sharethis Settings', 'fields'=>'sharethis_pub_key,sharethis_direction,sharethis_size,sharethis_services'),     
@@ -109,6 +109,9 @@ class Settings extends Admin_Controller
     // for slideshows 
     $config['field']['webshop_slideshow'] = array('type'=>'dropdown','params'=>array('options'=>array('none'=>$this->lang->line('userlib_none'),'jmpress'=>"jmpress",'interfade'=>$this->lang->line('userlib_interfade'),'cu3er'=>$this->lang->line('userlib_cu3er'),'coinslider'=>$this->lang->line('userlib_coin_slider'),'nivoslider'=>$this->lang->line('userlib_nivo_slider'))));
     $config['field']['slideshow_two'] = array('type'=>'dropdown','params'=>array('options'=>array('none'=>$this->lang->line('userlib_none'),'jmpress'=>"jmpress",'interfade'=>$this->lang->line('userlib_interfade'),'cu3er'=>$this->lang->line('userlib_cu3er'),'coinslider'=>$this->lang->line('userlib_coin_slider'),'nivoslider'=>$this->lang->line('userlib_nivo_slider'))));
+    
+    // image gallery
+    $config['field']['image_gallery'] = array('type'=>'dropdown','params'=>array('options'=>array('none'=>$this->lang->line('userlib_none'),'colorbox1'=>"Color Box 1",'colorbox2'=>"Color Box 2",'colorbox3'=>"Color Box 3",'colorbox4'=>"Color Box 4",'colorbox5'=>"Color Box 5",'magnific'=>"Magnific Popup",'bootstrap-image-gallery'=>"Bootstrap Image Gallery")));
 
     // module management
     $config['field']['calendar'] = array('type'=>'boolean');

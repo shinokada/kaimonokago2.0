@@ -59,6 +59,7 @@ $lang['preference_website_configuration'] = "Website Configuration";
 
 /* For slideshows */
 $lang['preference_frontpage_slideshow_settings'] = "Slideshow Settings";
+$lang['preference_frontpage_slideshow_gallery_settings'] = "Slideshow & Image Gallery Settings";
 
 
 /**
@@ -121,11 +122,13 @@ $lang['preference_label_security_method'] = 'Select a security method';
 $lang['preference_desc_security_method'] = 'This will be used for contact, registration, subscribe and unsubscribe.';
 
 
-// for Slideshow Settings label and description
+// for Slideshow & Image Gallery Settings label and description
 $lang['preference_label_webshop_slideshow'] = 'Slideshow type for webshop front page';
 $lang['preference_desc_webshop_slideshow'] = 'Select a slideshow type for webshop front page';
 $lang['preference_label_slideshow_two'] = 'Slideshow type for other page';
 $lang['preference_desc_slideshow_two'] = 'Select a slideshow type for other pages';
+$lang['preference_label_image_gallery'] = 'Image gallery';
+$lang['preference_desc_image_gallery'] = 'Select a image gallery';
 
 // modulemanagement
 $lang['preference_label_calendar'] = 'Calendar';

@@ -80,7 +80,7 @@ $data = array('name'=>'grouping','id'=>'group','size'=>50);
 echo form_input($data) ."</p>\n";
 */
 
-echo form_hidden('category_id',$category_id);
+echo form_hidden('category_id',$product['category_id']);
 echo form_hidden('class',$product['class']);
 echo form_hidden('grouping',$product['grouping']);
 
@@ -120,30 +120,29 @@ echo form_hidden('lang_id',$selected_lang['id']);
 //echo form_submit('submit',$this->lang->line('kago_add_translation'));
 echo form_close();
 
+?>
 
+
+<?php
 $base=$this->config->item('base_url');
 $mystring = $base;
 $findme   = 'localhost';
 $pos = strpos($mystring, $findme);
 if(ENVIRONMENT=='development' OR $pos)
 {
-
-echo "<pre>languages";
-print_r ($languages);
-echo "</pre>";
-
-echo "<pre>selected_lang";
+  echo "<pre>languages";
+  print_r ($languages);
+  echo "<br>translanguages";
+  print_r($translanguages);
+  echo "<br>product";
+  print_r($product);
+  echo "<br>module";
+  print_r($module);
+  echo "<br>categories";
+  print_r($categories);
+echo "<br>selected_lang";
 print_r ($selected_lang);
 echo "</pre>";
-
-echo "<pre>product";
-print_r ($product);
-echo "</pre>";
-
-echo "<pre>categories";
-print_r ($categories);
-echo "</pre>";
-} 
+}
 ?>
 
- 

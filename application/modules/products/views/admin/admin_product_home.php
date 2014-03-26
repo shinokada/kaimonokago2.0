@@ -1,4 +1,4 @@
-<?php //location application/moduels/products/views/admin/admin_product_home.php  ?>
+<?php //location application/modules/products/views/admin/admin_product_home.php  ?>
 <?php
 /*
 * application/moudles/products/views/admin/admin_product_home.php
@@ -60,4 +60,4 @@ $(document).ready(function(){
     });
 });
 </script>
-<?php //location application/moduels/products/views/admin/admin_product_home.php  ?>
+<?php //location application/modules/products/views/admin/admin_product_home.php  ?>

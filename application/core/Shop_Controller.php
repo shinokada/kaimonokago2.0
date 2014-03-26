@@ -211,6 +211,7 @@ class Shop_Controller extends MY_Controller
     $this->load->model('languages/MLangs');
     // get all the languages
     $this->data['langs'] = $this->MLangs->getLangDropDown();
+    $this->data['alllangs'] = $this->MLangs->getalllang();
     // get the main module, this must be the same as $route['default_controller'] = "welcome"; in config/routes.php
 
   }

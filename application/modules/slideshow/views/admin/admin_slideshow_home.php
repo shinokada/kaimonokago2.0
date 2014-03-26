@@ -1,4 +1,4 @@
-<?php //location ./application/modules/slideshow/views/admin/admin_slideshow_home.php ?>
+<?php //location application/modules/slideshow/views/admin/admin_slideshow_home.php ?>
 <h2><?php echo $title;?></h2>
 <div class="buttons">
 	<a href="<?php print  site_url('slideshow/admin/create')?>">
@@ -65,4 +65,4 @@ $(document).ready(function(){
     });
 });
 </script>
-<?php //location ./application/modules/slideshow/views/admin/admin_slideshow_home.php ?>
+<?php //location application/modules/slideshow/views/admin/admin_slideshow_home.php ?>

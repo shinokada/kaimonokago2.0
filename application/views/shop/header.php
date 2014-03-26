@@ -4,20 +4,10 @@
         <a href="<?php echo base_url();?>index.php/">
         <img src="assets/images/banner_logo_top.gif" alt="Logo" name="logo" width="53" height="118" id="logo" title="Logo" /></a>
     </div>
-    <div id="langbox"><!-- start of #langbox -->
-    <?php
-    // if preference multi_language is yes display the following
-    $multilang = $this->data['multilang'];
-    if ($multilang)
-    {
-        echo form_open($this->data['mainmodule'].'/index');
-        //  echo "<label for='parent'>Change Language</label>\n";
-        echo form_dropdown('lang',$this->data['langs']) ."\n";
-        echo form_submit('submit','Change Language');
-        echo form_close();
-    }
-    ?>
-    </div><!-- end of #langbox -->
+
+<?php 
+  $this->load->view($this->config->item('backendpro_template_shop') . 'inc/languages');
+?>
     <div id="greenbox"><!-- start of #greenbox -->
         <div class="insideright10">
             <p><span id="cart">
@@ -99,3 +89,21 @@
 		
         <div class="cb">&nbsp;</div>
 </div><!-- End of div header-->
+
+
+
+<?php
+$base=$this->config->item('base_url');
+$mystring = $base;
+$findme   = 'localhost';
+$pos = strpos($mystring, $findme);
+if(ENVIRONMENT=='development' OR $pos)
+{
+  echo "<pre>";
+  foreach ($this->data['alllangs'] as $key=>$value)
+  {
+    print_r($value['langname']);
+  }
+  echo "</pre>";
+}
+?>

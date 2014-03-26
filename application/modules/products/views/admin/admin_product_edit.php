@@ -114,23 +114,30 @@ echo form_hidden('id',$product['id']);
 <?php
 //echo form_submit('submit',$this->lang->line('kago_update'));
 echo form_close();
-/*
-echo "<pre>languages";
-print_r($languages);
-echo "</pre>";
 
-echo "<pre>translanguages";
-print_r($translanguages);
-echo "</pre>";
 
-echo "<pre>product";
-print_r($product);
-echo "</pre>";
-
-echo "<pre>categories";
-print_r($categories);
-echo "</pre>";
-*/
 ?>
 
    
+<?php
+$base=$this->config->item('base_url');
+$mystring = $base;
+$findme   = 'localhost';
+$pos = strpos($mystring, $findme);
+if(ENVIRONMENT=='development' OR $pos)
+{
+  echo "<pre>languages";
+  print_r ($languages);
+  echo "<br>translanguages";
+  print_r($translanguages);
+  echo "<br>product";
+  print_r($product);
+  echo "<br>module";
+  print_r($module);
+  echo "<br>categories";
+  print_r($categories);
+  echo "</pre>";
+}
+?>
+
+

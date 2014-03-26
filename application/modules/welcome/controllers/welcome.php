@@ -44,21 +44,6 @@ class Welcome extends Shop_Controller
   function index()
   {
     // this one is for a visitor changing a language first time through form
-    if ($this->input->post('lang'))
-    {
-      $lang = $this->input->post('lang');
-      // set it in session
-      // delete session in cart 
-      unset($_SESSION['cart']);
-      unset($_SESSION['totalprice']);
-      // currently session is stored in the form of english = english rather than 0 english
-      $this->session->set_userdata('lang', $lang);
-      // then load that language file
-      // for testing language in header
-      //$this->lang->load($this->langfilename, $lang);
-      // $module is name of folder
-      redirect( $this->module.'/index','refresh');
-    }
     //$webshop = $module;
     $indexpath = $this->index_path;
     // if session lang is set then pull that language contetnt
@@ -119,8 +104,14 @@ class Welcome extends Shop_Controller
     // delete upto here
     $data['page'] = $this->config->item('backendpro_template_shop') . 'frontpage';
     $data['header'] ="HOME";
-    $data['metadesc'] =$page['metadesc'];
-    $data['metakeyword'] =$page['metakeyword'];
+    if($page['metadesc'])
+    {
+      $data['metadesc'] =$page['metadesc'];
+    }
+    if($page['metakeyword'])
+    {
+      $data['metakeyword'] =$page['metakeyword'];
+    }
     $data['module'] = $this->module;
     $this->load->view($this->_container,$data); 
   }
@@ -128,8 +119,9 @@ class Welcome extends Shop_Controller
 
 
 
-  function cat($id)
+  function cat()
   {
+    $id = $this->uri->segment(3);
     $module ='category';
     $lang_id=$this->data['lang_id'];
     $cat = $this->MKaimonokago->getinfo($module,$id);
@@ -205,7 +197,7 @@ class Welcome extends Shop_Controller
     $menu_id = $this->uri->segment(3);
     //$module='pages';
     $path = $this->MMenus->getMenuwithPage($menu_id);
-    $path = $path['path'];
+    $data['path'] = $path = $path['path'];
 
     if($path==$this->index_path)
     {// for home page
@@ -218,10 +210,6 @@ class Welcome extends Shop_Controller
     elseif($path =='cart')
     {
       redirect($this->module.'/cart','refresh');
-    }
-    elseif($path =='playroom')
-    {
-      redirect('playroom/index','refresh');
     }
     elseif($path =='checkout')
     {
@@ -254,6 +242,14 @@ class Welcome extends Shop_Controller
       {//$page will return empty array if there is no page
         $data['pagecontent'] = $page;
         $data['title'] = $this->preference->item('site_name')." | ".$page['name'];
+        if($path =='image-gallery')
+        {
+          $feature='gallery1';
+          //$data['galleryimages'] = $this -> MProducts -> getFrontFeaturebyLang($feature,$this->lang_id);
+          $data['galleryimages'] = $this -> MProducts -> getFrontFeature($feature);
+          $data['galleryname']=$this->preference->item('image_gallery');
+          $this->bep_assets->load_asset_group($this->preference->item('image_gallery'));
+        }
       }
       else
       {
@@ -431,7 +427,7 @@ class Welcome extends Shop_Controller
       $this->email->send();
       flashMsg('success', lang('webshop_message_thank_for_message'));
       // $this->session->set_flashdata('subscribe_msg', lang('webshop_message_thank_for_message'));
-      redirect($this->module.'/contact');
+      redirect($this->module.'/index');
     }
   }
 
@@ -1216,4 +1212,27 @@ response_type=code
     $this->load->view("shop/ajaxsubscribe",$data);
     //return $result;
   }
+
+
+
+  function changelang()
+  {
+    $langinput = $this->uri->segment(3);  
+    if ($langinput)
+    {
+      $lang =$langinput;
+      // set it in session
+      // delete session in cart 
+      unset($_SESSION['cart']);
+      unset($_SESSION['totalprice']);
+      // currently session is stored in the form of english = english rather than 0 english
+      $this->session->set_userdata('lang', $lang);
+      // then load that language file
+      // for testing language in header
+      //$this->lang->load($this->langfilename, $lang);
+      // $module is name of folder
+      redirect( $this->module.'/index','refresh');
+    }
+  }
+
 }//end controller class
