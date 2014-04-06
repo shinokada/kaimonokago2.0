@@ -1,4 +1,4 @@
-# Kaimonokago 3.0.1
+# Kaimonokago 2.1.0
 
 Multi-Languages Shopping Cart on CodeIgniter 2.1.0 and BackendPro 0.6.7
 PHP 5.3 compatible
