@@ -1,4 +1,5 @@
 # Kaimonokago 2.1.0
+**Please try a newer version [kaimonokago3](https://github.com/shinokada/kaimonokago3)**
 
 Multi-Languages Shopping Cart on CodeIgniter 2.1.0 and BackendPro 0.6.7
 PHP 5.3 compatible
